@@ -43,8 +43,9 @@ public class DBDisponibilitaOrarieSettimanali {
     public int SalvaInDB(String giorno){
         int esitoQuery = 0;
 
+        int valoreApertura = this.apertura ? 1 : 0; //meglio convertire il valore booleano per non avere problemi di incompatibilità con il tipo TINYINT su MySQL
         String query = "INSERT INTO DisponibilitaOrarieSettimanali(giorno,apertura,orarioPrimoAppuntamento,orarioUltimoAppuntamento) " +
-                "VALUES ('"+ this.giorno +"',"+this.apertura+",'"+this.orarioPrimoAppuntamento.format(TIME_FORMATTER)+"','"+this.orarioUltimoAppuntamento.format(TIME_FORMATTER)+"')";
+                "VALUES ('"+ this.giorno +"',"+valoreApertura+",'"+this.orarioPrimoAppuntamento.format(TIME_FORMATTER)+"','"+this.orarioUltimoAppuntamento.format(TIME_FORMATTER)+"')";
         System.out.println(query);
 
         try {
