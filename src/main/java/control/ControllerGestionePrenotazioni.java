@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ControllerGestionePrenotazioni {
-    private ControllerGestionePrenotazioni controller_prenotazioni=null;
+    private static ControllerGestionePrenotazioni controller_prenotazioni;
 
     public static ControllerGestionePrenotazioni getControllerGestione_prenotazioni(){}
     private ControllerGestionePrenotazioni(){}

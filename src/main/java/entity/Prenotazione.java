@@ -1,5 +1,7 @@
 package entity;
 
+import database.DBPrenotazione;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,11 +16,20 @@ public class Prenotazione {
         this.data = data;
         this.stato = stato;
     }
-
-    void registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){}
-    void annullaPrenotazione(int id){}
     int scriviSuDB(int id){
-        return 1; }
+        DBPrenotazione p= new DBPrenotazione(); //DAO
+        p.setData(this.data);
+        p.setStato(this.stato);
+        int i = p.salvaInDB(id);
+
+        return i;
+    }
+
+
+    //Di seguito i metodi che non implementeremo:
+   /* void registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){}
+    void annullaPrenotazione(int id){}
+  */
 
     //GETTER E SETTER con visibilità di package
 

@@ -1,7 +1,7 @@
 package control;
 
 public class ControllerGestioneProfiloCliente {
-    private ControllerGestioneProfiloCliente controller_profilo_cliente=null;
+    private static ControllerGestioneProfiloCliente controller_profilo_cliente;
 
     public static ControllerGestioneProfiloCliente getControllerGestioneProfiloCliente(){}
     private ControllerGestioneProfiloCliente(){}

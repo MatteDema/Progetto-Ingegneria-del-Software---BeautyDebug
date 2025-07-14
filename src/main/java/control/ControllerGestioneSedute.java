@@ -1,7 +1,7 @@
 package control;
 
 public class ControllerGestioneSedute {
-    private ControllerGestioneSedute controller_sedute=null;
+    private  static ControllerGestioneSedute controller_sedute;
 
     public static ControllerGestioneSedute getControllerGestioneSedute(){}
     private ControllerGestioneSedute(){}

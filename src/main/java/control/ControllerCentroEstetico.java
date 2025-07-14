@@ -5,7 +5,7 @@ import dto.DTOTrattamento;
 import java.util.ArrayList;
 
 public class ControllerCentroEstetico {
-    private ControllerCentroEstetico controller_centro_Estetico=null;
+    private static ControllerCentroEstetico controller_centro_Estetico;
 
     public static ControllerCentroEstetico getControllerCentroEstetico(){}
     private ControllerCentroEstetico(){}
