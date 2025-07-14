@@ -8,5 +8,5 @@ public class Trattamento {
 
     public Trattamento(String nome,String descrizione,int costo,String ripetizionePeriodica){}
 
-     void scriviSuDB(){}
+     int scriviSuDB(String nome){}
 }
