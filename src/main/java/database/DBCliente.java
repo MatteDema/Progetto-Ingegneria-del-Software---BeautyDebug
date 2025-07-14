@@ -116,8 +116,13 @@ public class DBCliente {
         return clienti_lista_temp;
     }
 
-    public void aggiornaInDB(){}
+    /*
+    public void aggiornaInDB(){
+        metodo per aggiornare i dati personali del cliente
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
+    }
 
+    */
     public void setNome(String nome) {
         this.nome = nome;
     }
