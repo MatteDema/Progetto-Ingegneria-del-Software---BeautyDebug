@@ -64,4 +64,8 @@ public class DBFasceOrarieLavorative {
     public void setDisponibilitaOraria(LocalDateTime disponibilitaOraria) {
         this.disponibilitaOraria = disponibilitaOraria;
     }
+
+    public LocalDateTime getDisponibilitaOraria() {
+        return disponibilitaOraria;
+    }
 }
