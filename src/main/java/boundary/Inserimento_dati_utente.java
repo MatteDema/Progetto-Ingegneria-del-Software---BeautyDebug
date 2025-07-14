@@ -58,8 +58,7 @@ public class Inserimento_dati_utente extends JFrame {
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         setContentPane(contentPane);
 
-        //Uso imageIcon al posto di GetResource perché l'immagine si trova al di fuori della mia cartella del progetto.
-        ImageIcon appIcon = new ImageIcon("C:\\Users\\stron\\Pictures\\Centro_estetico.png");
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
         setIconImage(appIcon.getImage());
 
         initComponents();

@@ -2,8 +2,7 @@ package boundary;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class Homepage_utente extends JFrame {
@@ -24,6 +23,10 @@ public class Homepage_utente extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
+        setIconImage(appIcon.getImage());
+
     }
 
 }

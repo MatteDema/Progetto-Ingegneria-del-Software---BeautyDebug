@@ -42,9 +42,14 @@ public class Interfaccia_iniziale extends JFrame {
 
     public Interfaccia_iniziale() {
 
-        //Uso imageIcon al posto di GetResource perché l'immagine si trova al di fuori della mia cartella del progetto.
-        ImageIcon appIcon = new ImageIcon("C:\\Users\\stron\\Pictures\\Centro_estetico.png");
+        /*
+            Crea un oggetto ImageIcon caricando l’immagine "Centro_estetico.png" dalla cartella resources del progetto
+            (usando il class loader per trovarla nel classpath) e omposto l’immagine caricata come icona principale della
+             finestra (ad esempio per un JFrame).
+         */
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
         setIconImage(appIcon.getImage());
+
 
         setTitle("Home");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
