@@ -8,5 +8,6 @@ public class Seduta {
     private float costoEffettivo;
     private LocalDate dataConsigliata;
 
+    public Seduta(String noteCliente,String prodottiUtilizzati,float costoEffettivo,LocalDate dataConsigliata) {}
     void inviaNotificaNuovoAppuntamemto(){}
 }

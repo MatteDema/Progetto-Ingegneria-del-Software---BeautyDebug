@@ -46,6 +46,21 @@ public class DBFasceOrarieLavorative {
         return fasce_orarie;
     }
 
+    /*
+    public int aggiungiElencoDisponibilitaInDB(ArrayList<LocalDateTime> fasce_orarie) {
+        metodo per creare delle disponibilità orarie nel DB
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
+    }
+     */
+
+
+    /*
+    public int aggiornaElencoDisponibilitaInDB() {
+        metodo per aggiornare alcune disponibilita orarie nel DB
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
+    }
+     */
+
     public void setDisponibilitaOraria(LocalDateTime disponibilitaOraria) {
         this.disponibilitaOraria = disponibilitaOraria;
     }
