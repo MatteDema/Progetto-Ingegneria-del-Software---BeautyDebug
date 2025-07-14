@@ -8,6 +8,12 @@ public class CentroEstetico {
     //classe singleton
     private static CentroEstetico centroEstetico = null; //riferimento all'unica istanza
 
+    private RegistroClienti registroClienti;
+
+    void associaRegistroClienti(RegistroClienti registroClienti) {
+        this.registroClienti = registroClienti;
+    }
+
     public static CentroEstetico getCentroEstetico(){ //metodo per ottenere l'istanza di CentroEstetico
         if(centroEstetico == null){
             centroEstetico = new CentroEstetico();
