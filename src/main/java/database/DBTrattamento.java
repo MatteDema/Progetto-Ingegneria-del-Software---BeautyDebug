@@ -124,8 +124,15 @@ public class DBTrattamento {
 
     }
 
-    public void aggiornaDB(){}
-    public void rimuoviDaDB(){}
+   /* public void aggiornaDB(){
+     metodo per aggiornare un trattamento nel DB
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato}
+    public void rimuoviDaDB(){
+      metodo per rimuovere un trattamento nel DB
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
+    }
+    */
+
     public DBTrattamento(){}
     public int getCosto() {return costo;}
     public String getDescrizione() {return descrizione;}
