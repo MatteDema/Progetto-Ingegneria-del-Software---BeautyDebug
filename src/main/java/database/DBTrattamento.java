@@ -47,7 +47,7 @@ public class DBTrattamento {
 
             if(rs.next()) {
                 //3.Accedo tramite il nome dell'attributo-colonna ai dati
-                this.setNome(rs.getString("nome"));
+
                 this.setDescrizione(rs.getString("descrizione"));
                 this.setCosto(rs.getInt("costo"));
                 this.setRipetizionePeriodica(rs.getString("ripetizionePeriodica"));
@@ -78,7 +78,7 @@ public class DBTrattamento {
 
                 trattamento_temp.setNome(rs.getString("nome"));
                 trattamento_temp.setDescrizione(rs.getString("descrizione"));
-                trattamento_temp.setCosto(rs.getInt("costo"));
+
                 trattamento_temp.setRipetizionePeriodica(rs.getString("ripetizionePeriodica"));
                 //Aggiungo trattamento alla lista
                 trattamenti_lista_temp.add(trattamento_temp);
@@ -124,8 +124,15 @@ public class DBTrattamento {
 
     }
 
-    public void aggiornaDB(){}
-    public void rimuoviDaDB(){}
+   /* public void aggiornaDB(){
+     metodo per aggiornare un trattamento nel DB
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato}
+    public void rimuoviDaDB(){
+      metodo per rimuovere un trattamento nel DB
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
+    }
+    */
+
     public DBTrattamento(){}
     public int getCosto() {return costo;}
     public String getDescrizione() {return descrizione;}
