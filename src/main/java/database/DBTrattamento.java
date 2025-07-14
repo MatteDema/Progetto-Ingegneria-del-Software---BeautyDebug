@@ -10,6 +10,9 @@ public class DBTrattamento {
     private int costo;
     private String ripetizionePeriodica;
 
+    // costruttore che prende in ingresso la chiave primaria, ossia il nome del Trattamento
+    // viene usato dall'entity per effettuare la lettura dal database
+
     public DBTrattamento(String nome){
         this.nome=nome;
         caricaDaDB();
@@ -21,7 +24,7 @@ public class DBTrattamento {
         String query = "INSERT INTO Trattamenti(nome,descrizione,costo,ripetizionePeriodica) VALUES ( "+nome+","+this.descrizione+",'"+this.costo+",'"+this.ripetizionePeriodica+"')";
         System.out.println(query);
         try {
-
+        // faccio la query di UPDATE sfruttando il DBConnectionManager
             esitoQuery = DBConnectionManager.updateQuery(query);
 
 
@@ -37,12 +40,12 @@ public class DBTrattamento {
     }
 
     public void caricaDaDB(){
-        //1.Definisco la query
+        //Definisco la query
 
         String query = "SELECT * FROM Trattamenti WHERE nome='"+this.nome+"';";
         System.out.println(query); //per debug
         try {
-            //2.Query di select
+            //Query di select sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
             if(rs.next()) {
