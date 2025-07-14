@@ -62,13 +62,13 @@ public class DBDisponibilitaOrarieSettimanali {
     /*
     public int aggiornaInDB(String giorno){
         metodo per aggiornare una disponibilità oraria nel DB
-        non implementata perché non facente parte delle funzionalità che abbiamo implementato
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
 
     /*
     public int caricaDisponibilitàOrarieSettimanaliDaDB(String giorno){
         metodo per caricare l'elenco completo delle disponibilità orarie da DB
-        non implementata perché non facente parte delle funzionalità che abbiamo implementato
+        non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
 
     public DBDisponibilitaOrarieSettimanali() {
