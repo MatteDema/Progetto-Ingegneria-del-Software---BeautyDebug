@@ -5,6 +5,10 @@ import dto.DTOTrattamento;
 import java.util.ArrayList;
 
 public class ControllerCentroEstetico {
+    private ControllerCentroEstetico controllerCentroEstetico=null;
+
+    public static ControllerCentroEstetico getControllerCentroEstetico(){}
+    public ControllerCentroEstetico(){}
     public boolean aggiungiTrattamento(String nome,String descrizione,int costo,String ripetizionePeriodica){}
     public ArrayList<DTOTrattamento> visualizzaTuttiTrattamentiDisponibili(){}
     public DTOTrattamento visualizzaTrattamentiPerNome(String nomeTrattamento){}
