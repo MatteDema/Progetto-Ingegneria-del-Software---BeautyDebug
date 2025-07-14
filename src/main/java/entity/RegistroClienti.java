@@ -1,6 +1,7 @@
 package entity;
 
 public class RegistroClienti {
+    //Classe Singleton
      private RegistroClienti registroClienti=null;
 
 
