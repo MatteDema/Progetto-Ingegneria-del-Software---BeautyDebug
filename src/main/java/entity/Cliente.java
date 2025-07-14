@@ -1,5 +1,7 @@
 package entity;
 
+import database.DBPrenotazione;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,8 +15,20 @@ public class Cliente {
     private String email;
     private String username;
     private String password;
-    private Prenotazione[] prenotazioni;
-    private Seduta[] storico_trattamenti;
+    private ArrayList<Prenotazione> prenotazioni;
+    private ArrayList<Trattamento> storicoTrattamenti;
+
+    Cliente(String nome, String cognome, String indirizzo, String telefono, String email, String username, String password) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.indirizzo = indirizzo;
+        this.telefono = telefono;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        //this.prenotazioni = new ArrayList<>();
+        //this.storicoTrattamenti = new ArrayList<>();
+    }
 
     void visualizzaDatiPersonali(){
 
@@ -29,15 +43,20 @@ public class Cliente {
     }
 
     private boolean verificaSeGiaPrenotazioneAttiva(String nomeTrattamento){
-        boolean ris = false;
+        DBPrenotazione prenotazione = new DBPrenotazione();
 
-        return ris;
+        int risultato = prenotazione.caricaPrenotazioneAttivaClientePerTrattamentoDaDB(nomeTrattamento, this.username);
+
+        if(risultato == 0){
+            // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
-        boolean ris = false;
-
-        return ris;
 
     }
 
