@@ -49,17 +49,17 @@ public class DBPrenotazione {
 
     public int salvaInDB(int ID) {
 
-        int esitoQuery = 0;
+        int esitoQuery = 0; // 0 = nessun errore di scrittura sul database
 
-        String query = "INSERT INTO Prenotazioni(ID, data, stato, tipologiaTrattamento, usernameCliente) VALUES (" + ID + ", " + this.data + ", '" + this.stato + "', '" + this.tipologiaTrattamento + "', '" + this.usernameCliente + "')";
+        // definisco la query
+        String query = "INSERT INTO Prenotazioni(ID, data, stato, usernameCliente, tipologiaTrattamento) VALUES (" + ID + ", '" + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "')";
 
-        System.out.println(query); // stampa di debug
+        System.out.println(query); // stampa di debug della query
 
         try {
 
-            // eseguo la query
+            // eseguo la query di INSERT sfruttando il DBConnectionManager
             esitoQuery = DBConnectionManager.updateQuery(query);
-
 
         }
         /*
@@ -70,12 +70,33 @@ public class DBPrenotazione {
             e.printStackTrace();
         }*/
         catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             esitoQuery = -1; //per segnalare l'errore di scrittura
         }
 
         return esitoQuery;
+
+    }
+
+    public int caricaPrenotazioneAttivaClientePerTrattamentoDaDB(String nomeTrattamento, String usernameCliente) {
+
+        // definisco la query
+        String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = "  nomeTrattamento " AND Clienti_username =
+
+        System.out.println(query); // stampa di debug della query
+
+        try {
+            // faccio la query di SELECT sfruttando il DBConnectionManager
+            ResultSet rs = DBConnectionManager.selectQuery(query);
+
+            if(rs.next()) {
+                // la query di SELECT dà un risultato -> esiste già una prenotazione attiva per
+            }
+        }
+
+
+
+
 
 
     }
