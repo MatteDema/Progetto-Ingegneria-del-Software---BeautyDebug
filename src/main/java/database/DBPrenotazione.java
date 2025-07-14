@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 
 public class DBPrenotazione {
@@ -103,6 +104,40 @@ public class DBPrenotazione {
         }
 
         return esitoQuery;
+    }
+
+    public ArrayList<DBPrenotazione> caricaListaPrenotazioniAttiveDaDB() {
+
+        // lista di appoggio contenente tutte le prenotazioni attive
+        ArrayList<DBPrenotazione> prenotazioni_attive = new ArrayList<>();
+
+        String query = "SELECT * FROM Prenotazioni WHERE stato = 'attivo';";
+
+        System.out.println(query); // stampa di debug della query
+
+        try {
+            ResultSet rs = DBConnectionManager.selectQuery(query);
+
+            while(rs.next()) {
+                // finché ho un risultato, prelevo dalla tabella Prenotazioni i valori delle sue colonne, e li uso
+                // per settare gli attributi di ogni oggetto DBPrenotazione che aggiungerò alla lista di appoggio da restituire
+
+                // creo un DAO di tipo DBPrenotazione
+                DBPrenotazione dbPrenotazione = new DBPrenotazione();
+                dbPrenotazione.setID(rs.getInt("ID"));
+                dbPrenotazione.setData(rs.getObject("data", LocalDateTime.class));
+                dbPrenotazione.setStato(rs.getString("stato"));
+                dbPrenotazione.setUsernameCliente(rs.getString("Clienti_username"));
+                dbPrenotazione.setTipologiaTrattamento(rs.getString("Trattamenti_nome"));
+
+                // aggiungo il nuovo DAO Prenotazione alla lista da restituire
+                prenotazioni_attive.add(dbPrenotazione);
+            }
+        } catch(ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return prenotazioni_attive;
     }
 
     // getter e setter per recuperare e impostare i valori degli attributi di un DAO DBPrenotazione
