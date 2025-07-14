@@ -1,5 +1,7 @@
 package entity;
 
+import database.DBTrattamento;
+
 public class Trattamento {
     private String nome;
     private String descrizione;
@@ -16,7 +18,17 @@ public class Trattamento {
 
     }
 
-     int scriviSuDB(String nome){}
+     int scriviSuDB(String nome){
+         DBTrattamento t= new DBTrattamento(); //DAO
+
+
+         t.setDescrizione(this.descrizione);
+         t.setCosto(this.costo);
+         t.setDescrizione(this.descrizione);
+         int i = t.salvaInDB(nome);
+
+         return i;
+     }
 
 
     // GETTER E SETTER
