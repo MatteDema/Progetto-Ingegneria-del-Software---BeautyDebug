@@ -12,4 +12,14 @@ public class Cliente {
     private Prenotazione[] prenotazioni;
     private Seduta[] storico_trattamenti;
 
+    void visualizzaDatiPersonali(){
+
+    }
+
+    void modificaDatiPersonali(){
+
+    }
+
+    LocalDateTime prenotaTrattamento(String nomeTrattamento){}
+
 }
