@@ -89,7 +89,6 @@ public class DBCliente {
         } catch (SQLException | ClassNotFoundException e) {
             ((Exception)e).printStackTrace();
         }
-
     }
 
     public ArrayList<DBCliente> getListaClienti() {
@@ -117,14 +116,12 @@ public class DBCliente {
         return clienti_lista_temp;
     }
 
-    public void aggiornaInDB(){
-
-    }
-
+    public void aggiornaInDB(){}
 
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
@@ -147,5 +144,33 @@ public class DBCliente {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
