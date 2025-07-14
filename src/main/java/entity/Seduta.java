@@ -16,7 +16,9 @@ public class Seduta {
         this.costoEffettivo = costoEffettivo;
         this.dataConsigliata = dataConsigliata;
     }
-    void inviaNotificaNuovoAppuntamemto(){}
+
+    //Di seguito il metodo che non implementeremo:
+   // void inviaNotificaNuovoAppuntamemto(){}
 
     // GETTER E SETTER con visibilita di package
      float getCostoEffettivo() {return costoEffettivo;}

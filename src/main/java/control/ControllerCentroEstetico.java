@@ -5,7 +5,7 @@ import dto.DTOTrattamento;
 import java.util.ArrayList;
 
 public class ControllerCentroEstetico {
-    private ControllerCentroEstetico controller_centro_Estetico=null;
+    private static ControllerCentroEstetico controller_centro_Estetico;
 
     public static ControllerCentroEstetico getControllerCentroEstetico(){}
     private ControllerCentroEstetico(){}
@@ -13,7 +13,7 @@ public class ControllerCentroEstetico {
     public ArrayList<DTOTrattamento> visualizzaTuttiTrattamentiDisponibili(){}
     public DTOTrattamento visualizzaTrattamentiPerNome(String nomeTrattamento){}
     public ArrayList<DTOTrattamento> visualizzaTrattamentiPerCosto(int costo){}
-   // DI SEGUITO LE FIRME DEI METODI CHE NON IMPLEMENTEREMO
+   // Di seguito i metodi che non implementeremo:
    /* public boolean rimuoviMetodo(){}
       public boolean modificaTrattamento(){}
       public void definisciDisponibilitaOrarie(){}
