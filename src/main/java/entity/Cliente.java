@@ -1,5 +1,6 @@
 package entity;
 
+import database.DBCliente;
 import database.DBPrenotazione;
 
 import java.time.LocalDate;
@@ -17,6 +18,21 @@ public class Cliente {
     private String password;
     private ArrayList<Prenotazione> prenotazioni;
     private ArrayList<Trattamento> storicoTrattamenti;
+
+    // costruttore con chiave primaria per la lettura dal database di un cliente
+    Cliente(String username) {
+        // chiama il costruttore con chiave primaria della classe DAO associata
+        DBCliente dbCliente = new DBCliente(username);
+
+        // popolo gli attributi del Cliente a livello Entity
+        this.nome = dbCliente.getNome();
+        this.cognome = dbCliente.getCognome();
+        this.indirizzo = dbCliente.getIndirizzo();
+        this.telefono = dbCliente.getTelefono();
+        this.email = dbCliente.getEmail();
+        this.username = username;
+        this.password = dbCliente.getPassword();
+    }
 
     Cliente(String nome, String cognome, String indirizzo, String telefono, String email, String username, String password) {
         this.nome = nome;
