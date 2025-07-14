@@ -125,6 +125,7 @@ public class DBTrattamento {
     }
 
     public void aggiornaDB(){}
+    public void rimuoviDaDB(){}
     public DBTrattamento(){}
     public int getCosto() {return costo;}
     public String getDescrizione() {return descrizione;}

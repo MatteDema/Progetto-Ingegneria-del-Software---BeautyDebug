@@ -14,16 +14,19 @@ public class DBPrenotazione {
     private String tipologiaTrattamento;
     private String usernameCliente;
 
-    // costruttore che prende in ingresso la chiave primaria
+    // costruttore che prende in ingresso la chiave primaria, ossia l'ID della prenotazione
     // viene usato dall'entity per effettuare la lettura dal database
     public DBPrenotazione(int ID) {
         this.ID = ID;
     }
 
+    // costruttore vuoto
+    public DBPrenotazione() {}
+
     public void caricaDaDB() {
 
         // definisco la query
-        String query = "SELECT * FROM Prenotazioni WHERE ID = " + this.ID;
+        String query = "SELECT * FROM Prenotazioni WHERE ID = " + this.ID +";";
 
         System.out.println(query); // stampa di debug della query
 
@@ -44,22 +47,22 @@ public class DBPrenotazione {
         } catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public int salvaInDB(int ID) {
 
-        int esitoQuery = 0;
+        int esitoQuery = 0; // 0 = nessun errore di scrittura sul database
 
-        String query = "INSERT INTO Prenotazioni(ID, data, stato, tipologiaTrattamento, usernameCliente) VALUES (" + ID + ", " + this.data + ", '" + this.stato + "', '" + this.tipologiaTrattamento + "', '" + this.usernameCliente + "')";
+        // definisco la query
+        String query = "INSERT INTO Prenotazioni(ID, data, stato, Clienti_username, Trattamenti_nome) VALUES (" +
+                ID + ", '" + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
 
-        System.out.println(query); // stampa di debug
+        System.out.println(query); // stampa di debug della query
 
         try {
 
-            // eseguo la query
+            // eseguo la query di INSERT sfruttando il DBConnectionManager
             esitoQuery = DBConnectionManager.updateQuery(query);
-
 
         }
         /*
@@ -70,13 +73,78 @@ public class DBPrenotazione {
             e.printStackTrace();
         }*/
         catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             esitoQuery = -1; //per segnalare l'errore di scrittura
         }
 
         return esitoQuery;
-
-
     }
+
+    public int caricaPrenotazioneAttivaClientePerTrattamentoDaDB(String nomeTrattamento, String usernameCliente) {
+
+        int esitoQuery = 0; // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
+
+        // definisco la query
+        String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = '" + nomeTrattamento + "' AND Clienti_username = '" + usernameCliente + "' AND stato = 'attivo';";
+
+        System.out.println(query); // stampa di debug della query
+
+        try {
+            // faccio la query di SELECT sfruttando il DBConnectionManager
+            ResultSet rs = DBConnectionManager.selectQuery(query);
+
+            if (rs.next()) {
+                // la query di SELECT dà un risultato -> il cliente avente l'username passato come parametro
+                // ha già una prenotazione attiva per la tipologia di trattamento specificata nell'altro parametro
+                esitoQuery = -1;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return esitoQuery;
+    }
+
+    // getter e setter per recuperare e impostare i valori degli attributi di un DAO DBPrenotazione
+    public int getID() {
+        return this.ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public LocalDateTime getData() {
+        return this.data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public String getStato() {
+        return this.stato;
+    }
+
+    public void setStato(String stato) {
+        this.stato = stato;
+    }
+
+    public String getTipologiaTrattamento() {
+        return this.tipologiaTrattamento;
+    }
+
+    public void setTipologiaTrattamento(String tipologiaTrattamento) {
+        this.tipologiaTrattamento = tipologiaTrattamento;
+    }
+
+    public String getUsernameCliente() {
+        return this.usernameCliente;
+    }
+
+    public void setUsernameCliente(String usernameCliente) {
+        this.usernameCliente = usernameCliente;
+    }
+
+
 }
