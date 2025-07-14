@@ -8,6 +8,16 @@ public class Trattamento {
     private int costo;
     private String ripetizionePeriodica="non prevista";
 
+    // costruttore con chiave primaria per la lettura dal database di un trattamento
+    Trattamento(String nome) {
+        // chiama il costruttore con chiave primaria della classe DAO associata
+        DBTrattamento dbTrattamento = new DBTrattamento(nome);
+
+        this.nome = nome;
+        this.descrizione = dbTrattamento.getDescrizione();
+        this.costo = dbTrattamento.getCosto();
+        this.ripetizionePeriodica = dbTrattamento.getRipetizionePeriodica();
+    }
 
     //Costruttore
     public Trattamento(String nome,String descrizione,int costo,String ripetizionePeriodica){
