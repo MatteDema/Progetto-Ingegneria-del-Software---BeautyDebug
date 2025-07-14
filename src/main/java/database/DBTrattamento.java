@@ -136,7 +136,10 @@ public class DBTrattamento {
     }
     */
 
+    //costruttore vuoto
     public DBTrattamento(){}
+
+    //getter e setter
     public int getCosto() {return costo;}
     public String getDescrizione() {return descrizione;}
     public String getNome() {return nome;}

@@ -62,7 +62,7 @@ public class DBDisponibilitaOrarieSettimanali {
 
     /*
     public int aggiornaInDB(String giorno){
-        metodo per aggiornare una disponibilità oraria nel DB
+        metodo per aggiornare gli orari di apertura e ultimo appuntamento di un giorno settimanale nel DB
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
 

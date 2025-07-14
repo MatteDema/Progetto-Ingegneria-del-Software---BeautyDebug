@@ -64,7 +64,7 @@ public class Interfaccia_iniziale extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new GridBagLayout());
 
-        JLabel titoloLabel = new JLabel("BeautyDeBug");
+        JLabel titoloLabel = new JLabel("BeautyDebug");
         titoloLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
 
         GridBagConstraints gbcTitolo = new GridBagConstraints();
@@ -193,8 +193,8 @@ public class Interfaccia_iniziale extends JFrame {
             public void mouseClicked(MouseEvent evt) {
                 //Apertura della finestra di registrazione utente
                 System.out.println("Registrazione cliccata");
-                //Inserimento_dati_utente finestra = new Inserimento_dati_utente();
-                //finestra.setVisible(true);
+                Inserimento_dati_utente finestra = new Inserimento_dati_utente();
+                finestra.setVisible(true);
             }
         });
         registrazionePanel.add(lblRegistratiQui);
