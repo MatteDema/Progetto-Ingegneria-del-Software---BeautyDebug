@@ -23,7 +23,7 @@ public class DBPrenotazione {
     public void caricaDaDB() {
 
         // definisco la query
-        String query = "SELECT * FROM Prenotazioni WHERE ID = " + this.ID;
+        String query = "SELECT * FROM Prenotazioni WHERE ID = " + this.ID +";";
 
         System.out.println(query); // stampa di debug della query
 
@@ -52,7 +52,7 @@ public class DBPrenotazione {
         int esitoQuery = 0; // 0 = nessun errore di scrittura sul database
 
         // definisco la query
-        String query = "INSERT INTO Prenotazioni(ID, data, stato, usernameCliente, tipologiaTrattamento) VALUES (" + ID + ", '" + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "')";
+        String query = "INSERT INTO Prenotazioni(ID, data, stato, usernameCliente, tipologiaTrattamento) VALUES (" + ID + ", '" + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
 
         System.out.println(query); // stampa di debug della query
 
@@ -80,8 +80,10 @@ public class DBPrenotazione {
 
     public int caricaPrenotazioneAttivaClientePerTrattamentoDaDB(String nomeTrattamento, String usernameCliente) {
 
+        int esitoQuery = 0; // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
+
         // definisco la query
-        String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = "  nomeTrattamento " AND Clienti_username =
+        String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = '" + nomeTrattamento + "' AND Clienti_username = '" + usernameCliente + "';";
 
         System.out.println(query); // stampa di debug della query
 
@@ -89,15 +91,17 @@ public class DBPrenotazione {
             // faccio la query di SELECT sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
-            if(rs.next()) {
-                // la query di SELECT dà un risultato -> esiste già una prenotazione attiva per
+            if (rs.next()) {
+                // la query di SELECT dà un risultato -> il cliente avente l'username passato come parametro
+                // ha già una prenotazione attiva per la tipologia di trattamento specificata nell'altro parametro
+                esitoQuery = -1;
             }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
 
-
-
-
-
+        return esitoQuery;
 
     }
+
 }
