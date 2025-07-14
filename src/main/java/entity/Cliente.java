@@ -9,5 +9,7 @@ public class Cliente {
     private String email;
     private String username;
     private String password;
+    private Prenotazione[] prenotazioni;
+    private Seduta[] storico_trattamenti;
 
 }
