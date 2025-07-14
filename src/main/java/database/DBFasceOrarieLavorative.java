@@ -60,6 +60,7 @@ public class DBFasceOrarieLavorative {
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     }
      */
+
     public void setDisponibilitaOraria(LocalDateTime disponibilitaOraria) {
         this.disponibilitaOraria = disponibilitaOraria;
     }
