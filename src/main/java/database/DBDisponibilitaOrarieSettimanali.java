@@ -75,11 +75,18 @@ public class DBDisponibilitaOrarieSettimanali {
     }
 
     public String getGiorno() { return giorno; }
+
     public void setGiorno(String giorno) { this.giorno = giorno; }
+
     public boolean isApertura() { return apertura; }
+
     public void setApertura(boolean apertura) { this.apertura = apertura; }
+
     public LocalTime getOrarioPrimoAppuntamento() { return orarioPrimoAppuntamento; }
+
     public void setOrarioPrimoAppuntamento(LocalTime orarioPrimoAppuntamento) { this.orarioPrimoAppuntamento = orarioPrimoAppuntamento; }
+
     public LocalTime getOrarioUltimoAppuntamento() { return orarioUltimoAppuntamento; }
+
     public void setOrarioUltimoAppuntamento(LocalTime orarioUltimoAppuntamento) { this.orarioUltimoAppuntamento = orarioUltimoAppuntamento; }
 }
