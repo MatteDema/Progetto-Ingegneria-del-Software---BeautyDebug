@@ -67,7 +67,7 @@ public class DBSeduta {
     } */
 
     /*
-    public int salvaInDB(){
+    public int salvaInDB(int idPrenotazione){
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
 
