@@ -6,5 +6,5 @@ public class Trattamento {
     private int costo;
     private String ripetizionePeriodica="non prevista";
 
-    private void scriviSuDB(){}
+     void scriviSuDB(){}
 }
