@@ -17,19 +17,27 @@ public class DBCliente {
 
 
     /*
-    Passo al costruttore la chiave primaria della tabella, nel nostro
-    caso è l'username
+        Passo al costruttore la chiave primaria della tabella, nel nostro
+        caso è l'username
      */
     public DBCliente(String idUsername) {
         this.username = idUsername;
         this.caricaDaDB();
     }
 
+    /*
+        Costruttore vuoto
+    */
     public DBCliente(){}
 
+
+    /*
+        Questo metodo va a inserire nella tabella clienti un cliente andando a verificare se questo è già presente
+        a livello entity vengono effettuate le assegnazioni delle variabili
+     */
     public int salvaInDB(String username){
         int ret = 0;
-        String query = "INSERT INTO clienti(nome,cognome,indirizzo,telefono,email,username,password) VALUES ('" + this.nome + "'," + "'" + this.cognome + "'," + "'" + this.indirizzo + "'," + "'" + this.telefono + "'," + "'" + this.email + "'," + "'" + username + "'," + "'" + this.password + "')";
+        String query = "INSERT INTO clienti (nome, cognome, indirizzo, telefono, email, username, password) VALUES ('" + this.nome + "', '" + this.cognome + "', '" + this.indirizzo + "', '" + this.telefono + "', '" + this.email + "', '" + username + "', '" + this.password + "');";
         System.out.println(query);
 
         try {
@@ -84,7 +92,7 @@ public class DBCliente {
 
     }
 
-    public ArrayList<DBCliente> getListaStudenti() {
+    public ArrayList<DBCliente> getListaClienti() {
         ArrayList<DBCliente> clienti_lista_temp = new ArrayList();
         String query = "SELECT * FROM clienti;";
 
@@ -107,6 +115,10 @@ public class DBCliente {
         }
 
         return clienti_lista_temp;
+    }
+
+    public void aggiornaInDB(){
+
     }
 
 
