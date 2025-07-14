@@ -91,7 +91,7 @@ public class DBCliente {
         }
     }
 
-    public ArrayList<DBCliente> getListaClienti() {
+    public ArrayList<DBCliente> caricaListaClientiDaDB() {
         ArrayList<DBCliente> clienti_lista_temp = new ArrayList();
         String query = "SELECT * FROM clienti;";
 
