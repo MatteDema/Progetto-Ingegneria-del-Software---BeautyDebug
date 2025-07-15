@@ -50,6 +50,9 @@ public class DBCliente {
         return ret;
     }
 
+    /*
+        il metodo caricaDaDB non fa altro che prendere i dati del cliente dal database dato l'username
+     */
     public void caricaDaDB() {
         String query = "SELECT * FROM clienti WHERE username='" + this.username + "';";
         System.out.println(query);
@@ -63,37 +66,72 @@ public class DBCliente {
                 this.setTelefono(rs.getString("telefono"));
                 this.setEmail(rs.getString("email"));
                 this.setPassword(rs.getString("password"));
-
-            }
+            } else{}
         } catch (SQLException | ClassNotFoundException e) {
             ((Exception)e).printStackTrace();
         }
 
     }
 
-    public void caricaPerEmailDaDB(String email) {
-        String query = "SELECT * FROM clienti WHERE email='" + email + "';";
+    /*
+        Il metodo emailPresenteInDB restituisce true se la mail è presente nella
+        tabella clienti, false altrimenti
+     */
+    public boolean emailPresenteInDB(String email) {
+        boolean emailpresente = false;
+        String query = "SELECT * FROM clienti WHERE email='"+email+"';";
         System.out.println(query);
 
         try {
             ResultSet rs = DBConnectionManager.selectQuery(query);
             if (rs.next()) {
-                this.setNome(rs.getString("nome"));
-                this.setCognome(rs.getString("cognome"));
-                this.setIndirizzo(rs.getString("indirizzo"));
-                this.setTelefono(rs.getString("telefono"));
-                this.setUsername(rs.getString("username"));
-                this.setPassword(rs.getString("password"));
-
+                System.out.println("Esiste già una mail nel sistema come quella indicata");
+                emailpresente = true;
+            }
+            else{
+                System.out.println("Non esiste una mail nel sistema come quella indicata");
             }
         } catch (SQLException | ClassNotFoundException e) {
-            ((Exception)e).printStackTrace();
+            e.printStackTrace();
         }
+
+        return emailpresente;
     }
 
+    /*
+        Il metodo usernamePresenteInDB restituisce true se l'username
+        è presente nella tabella clienti, false altrimenti
+     */
+    public boolean usernamePresenteInDB(String username) {
+        boolean usernamepresente = false;
+        String query = "SELECT * FROM clienti WHERE username='"+username+"';";
+        System.out.println(query);
+
+        try {
+            ResultSet rs = DBConnectionManager.selectQuery(query);
+            if (rs.next()) {
+                System.out.println("Esiste già un username nel sistema come quello indicato");
+                usernamepresente = true;
+            }
+            else{
+                System.out.println("Non esiste un username nel sistema come quello indicato");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return usernamepresente;
+    }
+
+    /*
+        Il metodo caricaListaClientiDaDB prende tutti i clienti dalla
+        tabella clienti e li mette all'interno di un arraylist che
+        successivamente ritorna
+     */
     public ArrayList<DBCliente> caricaListaClientiDaDB() {
         ArrayList<DBCliente> clienti_lista_temp = new ArrayList();
         String query = "SELECT * FROM clienti;";
+        System.out.println(query);
 
         try {
             ResultSet rs = DBConnectionManager.selectQuery(query);
@@ -177,5 +215,21 @@ public class DBCliente {
 
     public String getUsername() {
         return username;
+    }
+
+    /*
+        Metodo toString di clienti usato per verificare l'output
+     */
+    @Override
+    public String toString() {
+        return "{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", indirizzo='" + indirizzo + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
