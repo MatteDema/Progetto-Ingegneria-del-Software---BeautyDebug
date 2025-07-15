@@ -21,40 +21,40 @@ public class ControllerCentroEstetico {
 
     public boolean aggiungiTrattamento(String nome, String descrizione, int costo, String ripetizionePeriodica){
         // Ottengo l'istanza unica della classe Singleton CentroEstetico
-        CentroEstetico centroEsteticoEntity= CentroEstetico.getCentroEstetico();
+        CentroEstetico centroEsteticoEntity = CentroEstetico.getCentroEstetico();
 
         // Delego alla classe Entity CentroEstetico l'aggiunta di un nuovo trattamento
-        boolean esito_aggiunta= centroEsteticoEntity.aggiungiTrattamento(nome, descrizione, costo, ripetizionePeriodica);
+        boolean esito_aggiunta = centroEsteticoEntity.aggiungiTrattamento(nome, descrizione, costo, ripetizionePeriodica);
 
         return esito_aggiunta;
     }
 
     public ArrayList<DTOTrattamento> visualizzaTuttiTrattamentiDisponibili(){
         // Ottengo l'istanza della classe Singleton CentroEstetico
-        CentroEstetico centroEsteticoEntity= CentroEstetico.getCentroEstetico();
+        CentroEstetico centroEsteticoEntity = CentroEstetico.getCentroEstetico();
 
         // Recupero dal livello Entity la lista di tutti i trattamenti disponibili che si intende visualizzare
-        ArrayList<DTOTrattamento> lista_dei_trattamenti= centroEsteticoEntity.visualizzaTuttiTrattamentiDisponibili();
+        ArrayList<DTOTrattamento> lista_dei_trattamenti = centroEsteticoEntity.visualizzaTuttiTrattamentiDisponibili();
 
         return lista_dei_trattamenti;
     }
 
     public ArrayList<DTOTrattamento> visualizzaTrattamentiPerNome(String nomeTrattamento){
         // Ottengo l'istanza della classe Singleton CentroEstetico
-        CentroEstetico centroEsteticoEntity= CentroEstetico.getCentroEstetico();
+        CentroEstetico centroEsteticoEntity = CentroEstetico.getCentroEstetico();
 
         // Recupero dal livello Entity il trattamento, avente il nome passato come parametro, che si intende visualizzare
-        ArrayList<DTOTrattamento> trattamentoPerNome= centroEsteticoEntity.visualizzaTrattamentoPerNome(nomeTrattamento);
+        ArrayList<DTOTrattamento> trattamentoPerNome = centroEsteticoEntity.visualizzaTrattamentoPerNome(nomeTrattamento);
 
         return trattamentoPerNome;
     }
 
     public ArrayList<DTOTrattamento> visualizzaTrattamentiPerCosto(int costo){
         // Ottengo l'istanza della classe Singleton CentroEstetico
-        CentroEstetico centroEsteticoEntity= CentroEstetico.getCentroEstetico();
+        CentroEstetico centroEsteticoEntity = CentroEstetico.getCentroEstetico();
 
         // Recupero dal livello Entity la lista dei trattamenti, filtrati per costo, che si intende visualizzare
-        ArrayList<DTOTrattamento> trattamentiPerCosto= centroEsteticoEntity.visualizzaTrattamentiPerCosto(costo);
+        ArrayList<DTOTrattamento> trattamentiPerCosto = centroEsteticoEntity.visualizzaTrattamentiPerCosto(costo);
 
         return trattamentiPerCosto;
     }

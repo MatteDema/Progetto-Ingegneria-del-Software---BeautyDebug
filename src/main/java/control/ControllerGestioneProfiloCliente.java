@@ -34,7 +34,7 @@ public class ControllerGestioneProfiloCliente {
 
         if(!username_gia_presente){
             // Delego alla classe façade InfoClientiEPrenotazioni l'inserimento di un nuovo cliente
-            esito_inserimento_cliente= InfoClientiEPrenotazioni.inserisciCliente(nome,cognome,indirizzo,telefono,email,username,password);
+            esito_inserimento_cliente = InfoClientiEPrenotazioni.inserisciCliente(nome,cognome,indirizzo,telefono,email,username,password);
         }
 
         return esito_inserimento_cliente;

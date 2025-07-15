@@ -30,7 +30,7 @@ public class ControllerGestionePrenotazioni {
 
     public boolean verificaFasciaOraria(LocalDateTime fasciaOraria){
        // Delego la verifica della fascia oraria inserita alla classe façade InfoClientiEPrenotazioni
-       boolean fascia_valida= InfoClientiEPrenotazioni.verificaFasciaOraria(fasciaOraria);
+       boolean fascia_valida = InfoClientiEPrenotazioni.verificaFasciaOraria(fasciaOraria);
 
        return fascia_valida;
     }
