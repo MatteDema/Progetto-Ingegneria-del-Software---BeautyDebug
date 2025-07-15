@@ -11,15 +11,15 @@ public class InfoClientiEPrenotazioni {
     // fornisce dei metodi pubblici che saranno invocati dai Controller, e che richiamano i metodi con visibilità di package
     // delle classi Entity con le quali essa interagisce
 
-    public ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento) {
-        //return Cliente.prenotaTrattamento(nomeTrattamento); // metodo statico
+    public static ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento, String usernameCliente) {
+        return Cliente.prenotaTrattamento(nomeTrattamento, usernameCliente); // metodo statico
     }
 
-    public boolean selezionaFasciaOraria(LocalDateTime fasciaOraria) {
-        // return Cliente.selezionaFasciaOraria(fasciaOraria);
+    public static boolean selezionaFasciaOraria(LocalDateTime fasciaOraria) {
+        return Cliente.selezionaFasciaOraria(fasciaOraria);
     }
 
-    public boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria, String nomeTrattamento, String usernameCliente) {
+    public static boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria, String nomeTrattamento, String usernameCliente) {
         // ricava l'unica istanza della classe Singleton Agenda, e su di essa invoca il metodo per aggiungere una prenotazione
         Agenda agenda = Agenda.getAgenda();
 

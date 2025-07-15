@@ -46,7 +46,7 @@ public class Cliente {
     }
 
 
-    ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento){
+    static ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento, String usernameCliente){
 
         // ricavo l'unica istanza della classe Singleton CentroEstetico
         CentroEstetico centro_estetico = CentroEstetico.getCentroEstetico();
@@ -56,7 +56,7 @@ public class Cliente {
 
         if(trattamento_esiste) {
             // verifica se il cliente ha già una prenotazione attiva per quella tipologia di trattamento
-            boolean prenotazione_gia_attiva = verificaSeGiaPrenotazioneAttiva(nomeTrattamento);
+            boolean prenotazione_gia_attiva = verificaSeGiaPrenotazioneAttiva(nomeTrattamento, usernameCliente);
 
             if(prenotazione_gia_attiva == false) {
                 // il cliente si può prenotare
@@ -71,14 +71,14 @@ public class Cliente {
         return null;
     }
 
-    private boolean verificaSeGiaPrenotazioneAttiva(String nomeTrattamento){
+    private static boolean verificaSeGiaPrenotazioneAttiva(String nomeTrattamento, String usernameCliente){
         DBPrenotazione prenotazione = new DBPrenotazione();
 
-        return prenotazione.esistePrenotazioneAttivaClientePerTrattamentoDaDB(nomeTrattamento, this.username);
+        return prenotazione.esistePrenotazioneAttivaClientePerTrattamentoDaDB(nomeTrattamento, usernameCliente);
 
     }
 
-    boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
+    static boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
 
         // verifica se la fascia oraria per la quale ci si vuole prenotare è valida
 
