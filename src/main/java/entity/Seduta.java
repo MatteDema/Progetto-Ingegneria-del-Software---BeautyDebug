@@ -7,9 +7,7 @@ public class Seduta {
     private String prodottiUtilizzati;
     private float costoEffettivo;
     private LocalDate dataConsigliata;
-    //private Prenotazione trattamentoEseguito;
-    // il precedente attributo commentato è legato al ruolo dell'associazione tra Seduta e Prenotazione,
-    // ed è commentato poiché non lo useremo nei metodi implementati
+    private Prenotazione trattamentoEseguito;
 
     //Costruttore
     public Seduta(String noteCliente,String prodottiUtilizzati,float costoEffettivo,LocalDate dataConsigliata) {
@@ -17,13 +15,13 @@ public class Seduta {
         this.prodottiUtilizzati = prodottiUtilizzati;
         this.costoEffettivo = costoEffettivo;
         this.dataConsigliata = dataConsigliata;
-        //this.trattamentoEseguito = new Prenotazione();
+        this.trattamentoEseguito = new Prenotazione();
     }
 
     //Di seguito il metodo che non implementeremo:
     // boolean inviaNotificaNuovoAppuntamento(){}
 
-    //GETTER E SETTER con visibilità di package
+    //GETTER E SETTER
 
     public String getNoteCliente() {
         return noteCliente;
@@ -57,7 +55,6 @@ public class Seduta {
         this.dataConsigliata = dataConsigliata;
     }
 
-    /*
     public Prenotazione getTrattamentoEseguito() {
         return trattamentoEseguito;
     }
@@ -65,5 +62,4 @@ public class Seduta {
     public void setTrattamentoEseguito(Prenotazione trattamentoEseguito) {
         this.trattamentoEseguito = trattamentoEseguito;
     }
-     */
 }

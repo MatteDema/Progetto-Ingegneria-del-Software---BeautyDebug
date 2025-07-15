@@ -9,7 +9,11 @@ public class CentroEstetico {
     // classe Singleton: in tutta l'applicazione avremo una sola istanza di CentroEstetico
     private static CentroEstetico centroEstetico = null; // attributo statico che rappresenta l'unica istanza della classe CentroEstetico
 
-    private RegistroClienti registroClienti;
+    // private RegistroClienti registroClienti;
+    // private ArrayList<Trattamento> trattamentiDisponibili;
+    // private ArrayList<GiornoSettimanale> disponibilitaOrarieSettimanali;
+    // i precedenti attributi commentati sono legati ai ruoli delle associazioni di CentroEstetico con RegistroClienti, Trattamento e GiornoSettimanale,
+    // ed sono commentati poiché non li useremo nei metodi implementati
 
     public static CentroEstetico getCentroEstetico(){ //metodo per ottenere l'istanza di CentroEstetico
         if(centroEstetico == null){

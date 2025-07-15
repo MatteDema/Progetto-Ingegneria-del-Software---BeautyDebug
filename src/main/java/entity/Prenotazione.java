@@ -44,24 +44,45 @@ public class Prenotazione {
     void annullaPrenotazione(int id){}
     */
 
-    //GETTER E SETTER con visibilità di package
+    //GETTER E SETTER
 
-    LocalDateTime getData() {return data;}
-    void setData(LocalDateTime data) {this.data = data;}
-    int getID() {return ID;}
-    void setID(int ID) {this.ID = ID;}
-    String getStato() {return stato;}
-    void setStato(String stato) {this.stato = stato;}
-    void setTipologiaTrattamento(String tipologiaTrattamento) {
-        this.tipologiaTrattamento = new Trattamento(tipologiaTrattamento);
+    public int getID() {
+        return ID;
     }
-    Trattamento getTipologiaTrattamento() {
-        return this.tipologiaTrattamento;
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
-    void setCliente(String usernameCliente) {
-        this.cliente = new Cliente(usernameCliente);
+
+    public LocalDateTime getData() {
+        return data;
     }
-    Cliente getCliente() {
-        return this.cliente;
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public String getStato() {
+        return stato;
+    }
+
+    public void setStato(String stato) {
+        this.stato = stato;
+    }
+
+    public Trattamento getTipologiaTrattamento() {
+        return tipologiaTrattamento;
+    }
+
+    public void setTipologiaTrattamento(Trattamento tipologiaTrattamento) {
+        this.tipologiaTrattamento = tipologiaTrattamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
