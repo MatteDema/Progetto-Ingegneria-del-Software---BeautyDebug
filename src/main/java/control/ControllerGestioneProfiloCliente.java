@@ -17,7 +17,7 @@ public class ControllerGestioneProfiloCliente {
 
     public boolean registrazione(String nome,String cognome,String indirizzo,String telefono,String email){
         //Delego alla classe facade InfoClientiEPrenotazioni la registrazione di un nuovo cliente
-       boolean esito_registrazione= InfoClientiEPrenotazioni.registrazione(nome,cognome,indirizzo,telefono,email);
+       boolean esito_registrazione= InfoClientiEPrenotazioni.registrazione(email);
 
        return esito_registrazione;
 
