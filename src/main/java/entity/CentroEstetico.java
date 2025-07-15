@@ -6,8 +6,8 @@ import dto.DTOTrattamento;
 import java.util.ArrayList;
 
 public class CentroEstetico {
-    //classe singleton
-    private static CentroEstetico centroEstetico = null; //riferimento all'unica istanza
+    // classe Singleton: in tutta l'applicazione avremo una sola istanza di CentroEstetico
+    private static CentroEstetico centroEstetico = null; // attributo statico che rappresenta l'unica istanza della classe CentroEstetico
 
     private RegistroClienti registroClienti;
 
