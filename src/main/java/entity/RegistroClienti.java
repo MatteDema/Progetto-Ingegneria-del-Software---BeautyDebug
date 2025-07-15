@@ -63,5 +63,5 @@ public class RegistroClienti {
     }
 
     //Di seguito il metodo che non implementeremo:
-    // void accesso(String email,String password){}
+    // void accesso(String username, String password){}
 }

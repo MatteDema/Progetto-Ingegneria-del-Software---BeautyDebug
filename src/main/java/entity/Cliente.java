@@ -89,15 +89,15 @@ public class Cliente {
     }
 
     /*
-    void visualizzaDatiPersonali(){}
+    DTOCliente visualizzaDatiPersonali(){}
 
-    void modificaDatiPersonali(){}
+    boolean modificaDatiPersonali(){}
 
-    void visualizzaPrenotazioniAttive(){}
+    ArrayList<DTOPrenotazione> visualizzaPrenotazioniAttive(){}
 
     ArrayList<DTOSeduta> consultaStoricoTrattamenti(){}
 
-    void disdiciPrenotazioneAttiva(){}
+    boolean disdiciPrenotazioneAttiva(){}
 
     private Prenotazione ricercaPrenotazioneDaDisdire(){}
     */
