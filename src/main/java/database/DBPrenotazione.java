@@ -49,13 +49,13 @@ public class DBPrenotazione {
         }
     }
 
-    public int salvaInDB(int ID) {
+    public int salvaInDB() {
 
         int esitoQuery = 0; // 0 = nessun errore di scrittura sul database
 
         // definisco la query
-        String query = "INSERT INTO Prenotazioni(ID, data, stato, Clienti_username, Trattamenti_nome) VALUES (" +
-                ID + ", '" + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
+        String query = "INSERT INTO Prenotazioni(data, stato, Clienti_username, Trattamenti_nome) VALUES ('"
+                + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
 
         System.out.println(query); // stampa di debug della query
 
@@ -69,7 +69,7 @@ public class DBPrenotazione {
         // il primo catch per l'eccezione di violazione del vincolo di primary key è stato aggiunto da me
         catch(SQLIntegrityConstraintViolationException e) {
             esitoQuery = -1;
-            System.out.println("Esiste già uno studente con matricola " + matricola + "!");
+            System.out.println("Esiste già una prenotazione" + matricola + "!");
             e.printStackTrace();
         }*/
         catch (ClassNotFoundException | SQLException e) {
@@ -82,7 +82,7 @@ public class DBPrenotazione {
 
     public boolean esistePrenotazioneAttivaClientePerTrattamentoDaDB(String nomeTrattamento, String usernameCliente) {
 
-        boolean esitoQuery = false; // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
+        boolean esitoQuery = false; // false = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
 
         // definisco la query
         String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = '" + nomeTrattamento + "' AND Clienti_username = '" + usernameCliente + "' AND stato = 'attivo';";

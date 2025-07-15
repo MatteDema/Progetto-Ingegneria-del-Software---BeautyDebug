@@ -60,10 +60,8 @@ public class DBTrattamento {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
-
     }
+
     public ArrayList<DBTrattamento> caricaTrattamentiPerCostoDaDB(int costo){
         //Creo una lista temporanea
         ArrayList<DBTrattamento> trattamenti_lista_temp = new ArrayList<>();

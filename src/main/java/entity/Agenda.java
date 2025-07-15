@@ -88,8 +88,9 @@ public class Agenda {
         getSlotOccupati();
 
         // inizializzo le fasce orarie libere con tutte le disponibilità orarie del centro estetico
-        for (int i = 0; i < fasce_orarie_complessive.size(); i++) {
-            fasceOrarieLibere.add(fasce_orarie_complessive.get(i));
+        fasceOrarieLibere.clear();
+        for (LocalDateTime localDateTime : fasce_orarie_complessive) {
+            fasceOrarieLibere.add(localDateTime);
         }
 
         // for per aggiornare le fasce orarie libere, sottraendo alle disponibilità orarie complessive
@@ -103,6 +104,43 @@ public class Agenda {
 
         // restiruisco le fasce orarie libere
         return fasceOrarieLibere;
+    }
+
+    boolean verificaData(LocalDateTime fasciaOraria) {
+
+        boolean data_valida = false;
+
+        // abbiamo impostato data_limite aggiungendo tre giorni alla data corrente
+        LocalDateTime data_limite = LocalDateTime.now().plusDays(3);
+
+        // la data per la quale ci si prenota, per essere considerata valida, deve rientrare tra le fasce orarie libere
+        // e non deve essere antecedente a tre giorni dalla data corrente
+        if(fasceOrarieLibere.contains(fasciaOraria) && (fasciaOraria.isAfter(data_limite))) {
+            data_valida = true;
+        }
+
+        return data_valida;
+    }
+
+    boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria, String nomeTrattamento, String usernameCliente) {
+
+        boolean prenotazione_aggiunta = false;
+
+        // creazione di un oggetto Prenotazione
+        Prenotazione nuovaPrenotazione = new Prenotazione(fasciaOraria, nomeTrattamento, usernameCliente);
+
+        // avvio la scrittura sul database chiamando scriviSuDB sull'oggetto Prenotazione Entity
+        int esito_scrittura_suDB = nuovaPrenotazione.scriviSuDB();
+
+        if(esito_scrittura_suDB == 0) {
+            // scrittura della nuova prenotazione sul database andata a buon fine
+            prenotazione_aggiunta = true;
+            System.out.println("Prenotazione aggiunta!");
+        } else if (esito_scrittura_suDB == -1) {
+            System.out.println("Errore nell'aggiunta della prenotazione!");
+        }
+
+        return prenotazione_aggiunta;
     }
 
 

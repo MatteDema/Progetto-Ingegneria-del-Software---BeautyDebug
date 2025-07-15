@@ -44,10 +44,8 @@ public class CentroEstetico {
         return esitoAggiunta;
     }
 
-    boolean verificaSeTrattamentoGiàEsistente(String nomeTrattamento){
-        boolean trattamentoEsiste=false;
+    boolean verificaSeTrattamentoGiaEsistente(String nomeTrattamento){
 
-        return trattamentoEsiste;
     }
 
     /*
