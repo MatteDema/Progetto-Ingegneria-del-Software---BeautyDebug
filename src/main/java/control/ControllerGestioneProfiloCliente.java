@@ -2,7 +2,7 @@ package control;
 
 public class ControllerGestioneProfiloCliente {
     private static ControllerGestioneProfiloCliente controller_profilo_cliente;
-
+    /*
     public static ControllerGestioneProfiloCliente getControllerGestioneProfiloCliente(){}
     private ControllerGestioneProfiloCliente(){}
 
@@ -15,5 +15,7 @@ public class ControllerGestioneProfiloCliente {
        public ArrayList<DTOCliente> visualizzaDatiPersonali(){}
        public boolean modificaDatiPersonali(){}
        */
+
+
 
 }

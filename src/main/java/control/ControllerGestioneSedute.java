@@ -3,7 +3,9 @@ package control;
 public class ControllerGestioneSedute {
     private  static ControllerGestioneSedute controller_sedute;
 
-    public static ControllerGestioneSedute getControllerGestioneSedute(){}
+    public static ControllerGestioneSedute getControllerGestioneSedute(){
+        return null;
+    }
     private ControllerGestioneSedute(){}
     //Di seguito i metodi che non implementeremo:
     /*

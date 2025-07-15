@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ControllerCentroEstetico {
     private static ControllerCentroEstetico controller_centro_Estetico;
-
+    /*
     public static ControllerCentroEstetico getControllerCentroEstetico(){}
     private ControllerCentroEstetico(){}
     public boolean aggiungiTrattamento(String nome,String descrizione,int costo,String ripetizionePeriodica){}

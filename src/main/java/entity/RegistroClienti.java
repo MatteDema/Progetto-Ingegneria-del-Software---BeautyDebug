@@ -13,11 +13,12 @@ public class RegistroClienti {
         return registroClienti;
     }
 
+    /*
     boolean registrazione(String nome,String cognome,String indirizzo,String telefono,String email){}
     private boolean verificaSeEmailGiaPresente(String email){}
     boolean verificaSeUtenteGiaRegistrato(String email){}
     boolean inserisciCliente(String nome,String cognome,String indirizzo,String telefono,String email,String username,String password){}
-
+    */
     //Di seguito il metodo che non implementeremo:
     // void accesso(String email,String password){}
 

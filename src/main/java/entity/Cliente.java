@@ -54,10 +54,11 @@ public class Cliente {
 
     }
 
+    /*
     ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento){
 
     }
-
+*/
     private boolean verificaSeGiaPrenotazioneAttiva(String nomeTrattamento){
         DBPrenotazione prenotazione = new DBPrenotazione();
 
@@ -73,7 +74,7 @@ public class Cliente {
     }
 
     boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
-
+    return true;
     }
 
     void visualizzaPrenotazioniAttive(){
@@ -88,10 +89,11 @@ public class Cliente {
 
     }
 
+    /*
     private Prenotazione ricercaPrenotazioneDaDisdire(){
 
     }
-
+*/
     void scriviSuDB(){
 
     }
