@@ -6,7 +6,7 @@ public class RegistroClienti {
      // classe Singleton: in tutta l'applicazione avremo una sola istanza di RegistroClienti
      private static RegistroClienti registroClienti; // attributo statico che rappresenta l'unica istanza della classe RegistroClienti
 
-     //Costruttore privato
+     // Costruttore privato
      private RegistroClienti(){}
 
      // metodo statico (con visibilità di package) che nasconde la creazione dell'unica istanza di RegistroClienti
@@ -21,8 +21,8 @@ public class RegistroClienti {
     boolean registrazione(String nome,String cognome,String indirizzo,String telefono,String email){
         // la prima parte della registrazione l'utente inserisce i validi fino alla email
         // il sistema verifica che non sia già presente associata a un altro cliente
-         boolean email_presente = verificaSeEmailGiaPresente(email);
-         return email_presente;
+        boolean email_presente = verificaSeEmailGiaPresente(email);
+        return email_presente;
     }
 
 
