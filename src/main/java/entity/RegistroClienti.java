@@ -3,12 +3,14 @@ package entity;
 import database.DBCliente;
 
 public class RegistroClienti {
-    // classe Singleton: in tutta l'applicazione avremo una sola istanza di RegistroClienti
+     // classe Singleton: in tutta l'applicazione avremo una sola istanza di RegistroClienti
      private static RegistroClienti registroClienti; // attributo statico che rappresenta l'unica istanza della classe RegistroClienti
 
-     //Costruttore vuoto
+     // Costruttore privato
      private RegistroClienti(){}
-     private static RegistroClienti getRegistroClienti(){
+
+     // metodo statico (con visibilità di package) che nasconde la creazione dell'unica istanza di RegistroClienti
+     static RegistroClienti getRegistroClienti(){
         if (registroClienti == null) {
             registroClienti= new RegistroClienti();
         }
@@ -19,8 +21,8 @@ public class RegistroClienti {
     boolean registrazione(String nome,String cognome,String indirizzo,String telefono,String email){
         // la prima parte della registrazione l'utente inserisce i validi fino alla email
         // il sistema verifica che non sia già presente associata a un altro cliente
-         boolean email_presente = verificaSeEmailGiaPresente(email);
-         return email_presente;
+        boolean email_presente = verificaSeEmailGiaPresente(email);
+        return email_presente;
     }
 
 
@@ -40,7 +42,7 @@ public class RegistroClienti {
         return dbCliente.usernamePresenteInDB(username);
     }
 
-    boolean inserisciCliente(String nome,String cognome,String indirizzo,String telefono,String email,String username,String password){
+    boolean inserisciCliente(String nome, String cognome, String indirizzo, String telefono, String email, String username, String password){
         boolean cliente_aggiunto = false;
         // creazione di un oggetto Cliente
         Cliente cliente = new Cliente(nome,cognome,indirizzo,telefono,email,username,password);

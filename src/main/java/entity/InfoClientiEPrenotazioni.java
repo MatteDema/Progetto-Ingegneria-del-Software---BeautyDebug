@@ -11,6 +11,30 @@ public class InfoClientiEPrenotazioni {
     // fornisce dei metodi pubblici che saranno invocati dai Controller, e che richiamano i metodi con visibilità di package
     // delle classi Entity con le quali essa interagisce
 
+    public static boolean registrazione(String nome, String cognome, String indirizzo, String telefono, String email) {
+        // ricava l'unica istanza della classe Singleton RegistroClienti,
+        // e su di essa invoca il metodo per avviare le registrazione di un cliente
+        RegistroClienti registroClienti = RegistroClienti.getRegistroClienti();
+
+        return registroClienti.registrazione(nome, cognome, indirizzo, telefono, email);
+    }
+
+    public static boolean verificaSeUtenteGiaRegistrato(String username) {
+        // ricava l'unica istanza della classe Singleton RegistroClienti,
+        // e su di essa invoca il metodo per verificare che non esista già nel sistema l'username passato come parametro
+        RegistroClienti registroClienti = RegistroClienti.getRegistroClienti();
+
+        return registroClienti.verificaSeUtenteGiaRegistrato(username);
+    }
+
+    public static boolean inserisciCliente(String nome, String cognome, String indirizzo, String telefono, String email, String username, String password) {
+        // ricava l'unica istanza della classe Singleton RegistroClienti,
+        // e su di essa invoca il metodo per completare la registrazione del nuovo cliente
+        RegistroClienti registroClienti = RegistroClienti.getRegistroClienti();
+
+        return registroClienti.inserisciCliente(nome, cognome, indirizzo, telefono, email, username, password);
+    }
+
     public static ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento, String usernameCliente) {
         return Cliente.prenotaTrattamento(nomeTrattamento, usernameCliente); // metodo statico
     }
