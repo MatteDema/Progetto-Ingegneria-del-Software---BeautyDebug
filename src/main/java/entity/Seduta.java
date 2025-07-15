@@ -20,7 +20,7 @@ public class Seduta {
     //Di seguito il metodo che non implementeremo:
     // boolean inviaNotificaNuovoAppuntamento(){}
 
-    // GETTER E SETTER con visibilita di package
+    // GETTER E SETTER con visibilità di package
      float getCostoEffettivo() {return costoEffettivo;}
      void setCostoEffettivo(float costoEffettivo) {this.costoEffettivo = costoEffettivo;}
     LocalDate getDataConsigliata() {return dataConsigliata;}

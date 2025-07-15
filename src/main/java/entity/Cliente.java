@@ -58,7 +58,7 @@ public class Cliente {
             // verifica se il cliente ha già una prenotazione attiva per quella tipologia di trattamento
             boolean prenotazione_gia_attiva = verificaSeGiaPrenotazioneAttiva(nomeTrattamento, usernameCliente);
 
-            if(prenotazione_gia_attiva == false) {
+            if(!prenotazione_gia_attiva) {
                 // il cliente si può prenotare
                 // ricavo l'unica istanza della classe Singleton Agenda
                 Agenda agenda = Agenda.getAgenda();
