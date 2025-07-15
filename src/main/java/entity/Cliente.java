@@ -42,7 +42,7 @@ public class Cliente {
         this.telefono = telefono;
         this.email = email;
         this.username = username;
-        this.password = password; ddddd
+        this.password = password;
     }
 
 
