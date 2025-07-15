@@ -2,7 +2,6 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -81,9 +80,9 @@ public class DBPrenotazione {
         return esitoQuery;
     }
 
-    public int caricaPrenotazioneAttivaClientePerTrattamentoDaDB(String nomeTrattamento, String usernameCliente) {
+    public boolean esistePrenotazioneAttivaClientePerTrattamentoDaDB(String nomeTrattamento, String usernameCliente) {
 
-        int esitoQuery = 0; // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
+        boolean esitoQuery = false; // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
 
         // definisco la query
         String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = '" + nomeTrattamento + "' AND Clienti_username = '" + usernameCliente + "' AND stato = 'attivo';";
@@ -97,7 +96,7 @@ public class DBPrenotazione {
             if (rs.next()) {
                 // la query di SELECT dà un risultato -> il cliente avente l'username passato come parametro
                 // ha già una prenotazione attiva per la tipologia di trattamento specificata nell'altro parametro
-                esitoQuery = -1;
+                esitoQuery = true;
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

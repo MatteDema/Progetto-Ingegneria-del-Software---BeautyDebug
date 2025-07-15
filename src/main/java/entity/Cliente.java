@@ -3,7 +3,6 @@ package entity;
 import database.DBCliente;
 import database.DBPrenotazione;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -62,7 +61,7 @@ public class Cliente {
     private boolean verificaSeGiaPrenotazioneAttiva(String nomeTrattamento){
         DBPrenotazione prenotazione = new DBPrenotazione();
 
-        int risultato = prenotazione.caricaPrenotazioneAttivaClientePerTrattamentoDaDB(nomeTrattamento, this.username);
+        int risultato = prenotazione.esistePrenotazioneAttivaClientePerTrattamentoDaDB(nomeTrattamento, this.username);
 
         if(risultato == 0){
             // 0 = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
