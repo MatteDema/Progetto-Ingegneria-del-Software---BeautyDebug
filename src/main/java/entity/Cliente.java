@@ -18,7 +18,7 @@ public class Cliente {
     // private ArrayList<Prenotazione> prenotazioni;
     // private ArrayList<Seduta> storicoTrattamenti;
     // i precedenti attributi commentati sono legati ai ruoli delle associazioni di Cliente con Prenotazione e Seduta,
-    // e sono commentati poiché non li useremo nei metodi implementati
+    // ed sono commentati poiché non li useremo nei metodi implementati
 
     // costruttore con chiave primaria per la lettura dal database di un cliente
     Cliente(String username) {
@@ -44,7 +44,6 @@ public class Cliente {
         this.username = username;
         this.password = password;
     }
-
 
     static ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento, String usernameCliente){
 
@@ -79,7 +78,6 @@ public class Cliente {
     }
 
     static boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
-
         // verifica se la fascia oraria per la quale ci si vuole prenotare è valida
 
         // ricavo l'unica istanza della classe Singleton Agenda
@@ -159,6 +157,7 @@ public class Cliente {
         this.storicoTrattamenti = storicoTrattamenti;
     }
     */
+
     public String getNome() {
         return nome;
     }
@@ -186,6 +185,7 @@ public class Cliente {
     public String getPassword() {
         return password;
     }
+
     /*
     public ArrayList<Prenotazione> getPrenotazioni() {
         return prenotazioni;
