@@ -1,5 +1,6 @@
 package entity;
 
+import database.DBTrattamento;
 import dto.DTOTrattamento;
 
 import java.util.ArrayList;
@@ -45,7 +46,11 @@ public class CentroEstetico {
     }
 
     boolean verificaSeTrattamentoGiaEsistente(String nomeTrattamento){
+        // creazione di un DAO DBTrattamento
+        DBTrattamento dbTrattamento = new DBTrattamento();
 
+        // usa il DAO per verificare se il trattamento esiste
+        return dbTrattamento.trattamentoPresenteInDB(nomeTrattamento);
     }
 
     /*
