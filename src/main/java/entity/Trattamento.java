@@ -24,22 +24,22 @@ public class Trattamento {
         this.nome=nome;
         this.descrizione=descrizione;
         this.costo=costo;
+        if (ripetizionePeriodica.isEmpty()){
+            ripetizionePeriodica="Non prevista";
+        }
         this.ripetizionePeriodica=ripetizionePeriodica;
-
     }
 
-     int scriviSuDB(String nome){
-         DBTrattamento dbTrattamento= new DBTrattamento(); //DAO
+    int scriviSuDB(String nome){
+        DBTrattamento dbTrattamento= new DBTrattamento(); //DAO
 
+        dbTrattamento.setDescrizione(this.descrizione);
+        dbTrattamento.setCosto(this.costo);
+        dbTrattamento.setDescrizione(this.descrizione);
+        int i = dbTrattamento.salvaInDB(nome);
 
-         dbTrattamento.setDescrizione(this.descrizione);
-         dbTrattamento.setCosto(this.costo);
-         dbTrattamento.setDescrizione(this.descrizione);
-         int i = dbTrattamento.salvaInDB(nome);
-
-         return i;
-     }
-
+        return i;
+    }
 
     // GETTER E SETTER
     int getCosto() {return costo;}
