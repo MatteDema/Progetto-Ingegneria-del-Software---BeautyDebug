@@ -16,7 +16,7 @@ public class InfoClientiEPrenotazioni {
         // e su di essa invoca il metodo per avviare le registrazione di un cliente
         RegistroClienti registroClienti = RegistroClienti.getRegistroClienti();
 
-        return registroClienti.registrazione(nome, cognome, indirizzo, telefono, email);
+        return registroClienti.registrazione(email);
     }
 
     public static boolean verificaSeUtenteGiaRegistrato(String username) {
