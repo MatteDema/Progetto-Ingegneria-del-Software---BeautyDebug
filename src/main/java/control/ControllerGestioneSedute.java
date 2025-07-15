@@ -1,12 +1,19 @@
 package control;
 
 public class ControllerGestioneSedute {
+    //classe Singleton
     private  static ControllerGestioneSedute controller_sedute;
 
+    //metodo per ottenere l'istanza di ControllerGestioneSedute
     public static ControllerGestioneSedute getControllerGestioneSedute(){
-        return null;
+        if(controller_sedute == null){
+            controller_sedute = new ControllerGestioneSedute();
+        }
+        return controller_sedute;
     }
-    private ControllerGestioneSedute(){}
+    private ControllerGestioneSedute(){} //costruttore privato
+
+
     //Di seguito i metodi che non implementeremo:
     /*
      public void registraDatiSeduta(){}
