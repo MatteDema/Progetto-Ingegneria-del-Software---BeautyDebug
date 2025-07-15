@@ -42,7 +42,7 @@ public class RegistroClienti {
         return dbCliente.usernamePresenteInDB(username);
     }
 
-    boolean inserisciCliente(String nome,String cognome,String indirizzo,String telefono,String email,String username,String password){
+    boolean inserisciCliente(String nome, String cognome, String indirizzo, String telefono, String email, String username, String password){
         boolean cliente_aggiunto = false;
         // creazione di un oggetto Cliente
         Cliente cliente = new Cliente(nome,cognome,indirizzo,telefono,email,username,password);
