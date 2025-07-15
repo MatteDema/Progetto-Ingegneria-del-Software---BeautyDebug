@@ -67,8 +67,8 @@ public class Agenda {
             prenotazione.setID(DBprenotazioniAttive.get(i).getID());
             prenotazione.setData(DBprenotazioniAttive.get(i).getData());
             prenotazione.setStato(DBprenotazioniAttive.get(i).getStato());
-            prenotazione.setTipologiaTrattamento(DBprenotazioniAttive.get(i).getTipologiaTrattamento());
-            prenotazione.setCliente(DBprenotazioniAttive.get(i).getUsernameCliente());
+            prenotazione.setTipologiaTrattamento(new Trattamento(DBprenotazioniAttive.get(i).getTipologiaTrattamento()));
+            prenotazione.setCliente(new Cliente(DBprenotazioniAttive.get(i).getUsernameCliente()));
 
             // aggiungo la prenotazione alla lista di prenotazioni attive
             prenotazioniAttive.add(prenotazione);
