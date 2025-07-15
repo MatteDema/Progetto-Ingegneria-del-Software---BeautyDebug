@@ -39,8 +39,12 @@ public class InfoClientiEPrenotazioni {
         return Cliente.prenotaTrattamento(nomeTrattamento, usernameCliente); // metodo statico
     }
 
-    public static boolean selezionaFasciaOraria(LocalDateTime fasciaOraria) {
-        return Cliente.selezionaFasciaOraria(fasciaOraria);
+    public static boolean verificaFasciaOraria(LocalDateTime fasciaOraria) {
+
+        // ricava l'unica istanza della classe Singleton Agenda, e su di essa invoca il metodo per verificare la fascia oraria inserita
+        Agenda agenda = Agenda.getAgenda();
+
+        return agenda.verificaFasciaOraria(fasciaOraria);
     }
 
     public static boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria, String nomeTrattamento, String usernameCliente) {

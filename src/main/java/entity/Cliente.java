@@ -77,16 +77,6 @@ public class Cliente {
 
     }
 
-    static boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
-        // verifica se la fascia oraria per la quale ci si vuole prenotare è valida
-
-        // ricavo l'unica istanza della classe Singleton Agenda
-        Agenda agenda = Agenda.getAgenda();
-
-        boolean fascia_valida = agenda.verificaData(fasciaOraria);
-
-        return fascia_valida;
-    }
 
     /*
     DTOCliente visualizzaDatiPersonali(){}

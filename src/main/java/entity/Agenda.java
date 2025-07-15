@@ -105,9 +105,9 @@ public class Agenda {
         return fasceOrarieLibere;
     }
 
-    boolean verificaData(LocalDateTime fasciaOraria) {
+    boolean verificaFasciaOraria(LocalDateTime fasciaOraria) {
 
-        boolean data_valida = false;
+        boolean fascia_valida = false;
 
         // abbiamo impostato data_limite aggiungendo tre giorni alla data corrente
         LocalDateTime data_limite = LocalDateTime.now().plusDays(3);
@@ -115,10 +115,10 @@ public class Agenda {
         // la data per la quale ci si prenota, per essere considerata valida, deve rientrare tra le fasce orarie libere
         // e non deve essere antecedente a tre giorni dalla data corrente
         if(fasceOrarieLibere.contains(fasciaOraria) && (fasciaOraria.isAfter(data_limite))) {
-            data_valida = true;
+            fascia_valida = true;
         }
 
-        return data_valida;
+        return fascia_valida;
     }
 
     boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria, String nomeTrattamento, String usernameCliente) {

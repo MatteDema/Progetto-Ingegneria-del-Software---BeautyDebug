@@ -8,42 +8,44 @@ import java.util.ArrayList;
 
 
 public class ControllerGestionePrenotazioni {
-    //classe Singleton
-    private static ControllerGestionePrenotazioni controller_prenotazioni;
+    // classe Singleton: in tutta l'applicazione avremo una sola istanza di ControllerGestionePrenotazioni
+    private static ControllerGestionePrenotazioni controller_prenotazioni; // attributo statico che rappresenta l'unica istanza della classe ControllerGestionePrenotazioni
 
-    //metodo per ottenere l'istanza di ControllerGestionePrenotazioni
+    // metodo statico che nasconde la creazione dell'unica istanza di ControllerGestionePrenotazioni
     public static ControllerGestionePrenotazioni getControllerGestione_prenotazioni(){
         if(controller_prenotazioni == null){
             controller_prenotazioni = new ControllerGestionePrenotazioni();
         }
         return controller_prenotazioni;
-
     }
-    private ControllerGestionePrenotazioni(){} //costruttore privato
+
+    private ControllerGestionePrenotazioni(){} // costruttore privato
+
     public ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento,String usernameCliente){
-        //Recupero la lista delle fsce orarie libere dal metodo prenotaTrattamento della classe facade InfoClientiEPrenotazioni
-        ArrayList<LocalDateTime>lista_fasce_orarie_libere=InfoClientiEPrenotazioni.prenotaTrattamento(nomeTrattamento,usernameCliente);
+        // Recupero la lista delle fasce orarie libere dal metodo prenotaTrattamento della classe façade InfoClientiEPrenotazioni
+        ArrayList<LocalDateTime> lista_fasce_orarie_libere = InfoClientiEPrenotazioni.prenotaTrattamento(nomeTrattamento, usernameCliente);
 
         return lista_fasce_orarie_libere;
     }
-    public boolean selezionaFasciaOraria(LocalDateTime fasciaOraria){
-       //Delego la verifica della validità della fascia oraria inserita alla classe facade InfoClientiEPrenotazioni
-       boolean fascia_valida= InfoClientiEPrenotazioni.selezionaFasciaOraria(fasciaOraria);
+
+    public boolean verificaFasciaOraria(LocalDateTime fasciaOraria){
+       // Delego la verifica della fascia oraria inserita alla classe façade InfoClientiEPrenotazioni
+       boolean fascia_valida= InfoClientiEPrenotazioni.verificaFasciaOraria(fasciaOraria);
+
        return fascia_valida;
     }
+
     public boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria,String nomeTrattamento,String usernameCliente){
-        //Delego l'aggiunta di una nuova prenotazione alla classe facade InfoClientiEPrenotazioni
-        boolean esito_prenotazione=InfoClientiEPrenotazioni.aggiungiNuovaPrenotazione(fasciaOraria,nomeTrattamento,usernameCliente);
-        return esito_prenotazione;
+        // Delego l'aggiunta di una nuova prenotazione alla classe façade InfoClientiEPrenotazioni
+        boolean esito_aggiunta_prenotazione = InfoClientiEPrenotazioni.aggiungiNuovaPrenotazione(fasciaOraria,nomeTrattamento,usernameCliente);
+
+        return esito_aggiunta_prenotazione;
     }
-
-
 
 
     // Di seguito i metodi che non implementeremo;
     /*
-
     public boolean disdiciPrenotazioneAttiva(){}
-    public ArrayList<DTOPrenotazioni> visualizzaPrenotazioniAttive()
-     */
+    public ArrayList<DTOPrenotazione> visualizzaPrenotazioniAttive()
+    */
 }
