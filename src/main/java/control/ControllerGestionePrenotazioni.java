@@ -22,7 +22,7 @@ public class ControllerGestionePrenotazioni {
     private ControllerGestionePrenotazioni(){} // costruttore privato
 
     public ArrayList<LocalDateTime> prenotaTrattamento(String nomeTrattamento,String usernameCliente){
-        // Recupero la lista delle fasce orarie libere dal metodo prenotaTrattamento della classe façade InfoClientiEPrenotazioni
+        // Avvio la richiesta di prenotazione, recuperando la lista delle fasce orarie libere dal metodo prenotaTrattamento della classe façade InfoClientiEPrenotazioni
         ArrayList<LocalDateTime> lista_fasce_orarie_libere = InfoClientiEPrenotazioni.prenotaTrattamento(nomeTrattamento, usernameCliente);
 
         return lista_fasce_orarie_libere;
