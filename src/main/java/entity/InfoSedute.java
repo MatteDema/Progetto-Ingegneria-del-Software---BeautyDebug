@@ -25,7 +25,4 @@ public class InfoSedute {
         return Cliente.consultaStoricoTrattamenti();
     }
     */
-
-
-
 }

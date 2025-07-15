@@ -49,4 +49,6 @@ public class InfoClientiEPrenotazioni {
 
         return agenda.aggiungiNuovaPrenotazione(fasciaOraria, nomeTrattamento, usernameCliente);
     }
+
+    //i metodi che non abbiamo inserito non verranno utilizzati per le funzionalità implementate
 }
