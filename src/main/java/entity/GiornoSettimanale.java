@@ -18,12 +18,35 @@ public class GiornoSettimanale {
 
     //GETTER E SETTER
 
-    boolean isApertura() {return apertura;}
-    void setApertura(boolean apertura) {this.apertura = apertura;}
-    String getGiorno() {return giorno;}
-    void setGiorno(String giorno) {this.giorno = giorno;}
-    LocalTime getOrarioPrimoAppuntamento() {return orarioPrimoAppuntamento;}
-    LocalTime getOrarioUltimoAppuntamento() {return orarioUltimoAppuntamento;}
-    void setOrarioUltimoAppuntamento(LocalTime orarioUltimoAppuntamento) {this.orarioUltimoAppuntamento = orarioUltimoAppuntamento;}
-    void setOrarioPrimoAppuntamento(LocalTime orarioPrimoAppuntamento) {this.orarioPrimoAppuntamento = orarioPrimoAppuntamento;}
+    public String getGiorno() {
+        return giorno;
+    }
+
+    public void setGiorno(String giorno) {
+        this.giorno = giorno;
+    }
+
+    public boolean isApertura() {
+        return apertura;
+    }
+
+    public void setApertura(boolean apertura) {
+        this.apertura = apertura;
+    }
+
+    public LocalTime getOrarioPrimoAppuntamento() {
+        return orarioPrimoAppuntamento;
+    }
+
+    public void setOrarioPrimoAppuntamento(LocalTime orarioPrimoAppuntamento) {
+        this.orarioPrimoAppuntamento = orarioPrimoAppuntamento;
+    }
+
+    public LocalTime getOrarioUltimoAppuntamento() {
+        return orarioUltimoAppuntamento;
+    }
+
+    public void setOrarioUltimoAppuntamento(LocalTime orarioUltimoAppuntamento) {
+        this.orarioUltimoAppuntamento = orarioUltimoAppuntamento;
+    }
 }
