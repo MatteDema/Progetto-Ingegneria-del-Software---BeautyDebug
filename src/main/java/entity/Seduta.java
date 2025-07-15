@@ -18,7 +18,7 @@ public class Seduta {
     }
 
     //Di seguito il metodo che non implementeremo:
-   // void inviaNotificaNuovoAppuntamemto(){}
+    // void inviaNotificaNuovoAppuntamemto(){}
 
     // GETTER E SETTER con visibilita di package
      float getCostoEffettivo() {return costoEffettivo;}

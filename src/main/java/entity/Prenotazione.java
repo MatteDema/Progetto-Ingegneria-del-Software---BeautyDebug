@@ -39,9 +39,10 @@ public class Prenotazione {
 
 
     //Di seguito i metodi che non implementeremo:
-   /* void registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){}
+    /*
+    void registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){}
     void annullaPrenotazione(int id){}
-  */
+    */
 
     //GETTER E SETTER con visibilità di package
 
