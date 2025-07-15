@@ -2,7 +2,6 @@ package entity;
 
 import database.DBFasceOrarieLavorative;
 import database.DBPrenotazione;
-import database.DatabaseDateUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -142,6 +141,5 @@ public class Agenda {
 
         return prenotazione_aggiunta;
     }
-
 
 }
