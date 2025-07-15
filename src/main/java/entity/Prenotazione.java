@@ -2,7 +2,6 @@ package entity;
 
 import database.DBPrenotazione;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Prenotazione {
@@ -28,14 +27,14 @@ public class Prenotazione {
     }
 
     int scriviSuDB(){
-        DBPrenotazione p= new DBPrenotazione(); //DAO
-        p.setData(this.data);
-        p.setStato(this.stato);
-        p.setTipologiaTrattamento(this.tipologiaTrattamento.getNome());
-        p.setUsernameCliente(this.cliente.getUsername());
+        DBPrenotazione dbPrenotazione = new DBPrenotazione(); //DAO
+        dbPrenotazione.setData(this.data);
+        dbPrenotazione.setStato(this.stato);
+        dbPrenotazione.setTipologiaTrattamento(this.tipologiaTrattamento.getNome());
+        dbPrenotazione.setUsernameCliente(this.cliente.getUsername());
 
         // chiama salvaInDB sul DAO DBPrenotazione per la scrittura sul database
-        return p.salvaInDB();
+        return dbPrenotazione.salvaInDB();
     }
 
 
