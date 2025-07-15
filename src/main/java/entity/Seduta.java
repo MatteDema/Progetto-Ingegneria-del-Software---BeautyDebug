@@ -7,7 +7,7 @@ public class Seduta {
     private String prodottiUtilizzati;
     private float costoEffettivo;
     private LocalDate dataConsigliata;
-    private Prenotazione trattamentoEseguito;
+    //private Prenotazione trattamentoEseguito;
     // il precedente attributo commentato è legato al ruolo dell'associazione tra Seduta e Prenotazione,
     // ed è commentato poiché non lo useremo nei metodi implementati
 
@@ -55,14 +55,6 @@ public class Seduta {
 
     public void setDataConsigliata(LocalDate dataConsigliata) {
         this.dataConsigliata = dataConsigliata;
-    }
-
-    public Prenotazione getTrattamentoEseguito() {
-        return trattamentoEseguito;
-    }
-
-    public void setTrattamentoEseguito(Prenotazione trattamentoEseguito) {
-        this.trattamentoEseguito = trattamentoEseguito;
     }
 
     /*
