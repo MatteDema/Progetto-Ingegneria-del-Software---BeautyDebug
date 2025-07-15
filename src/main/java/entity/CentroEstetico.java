@@ -32,11 +32,8 @@ public class CentroEstetico {
             // creazione del DTOTrattamento di appoggio
             DTOTrattamento dtoTrattamento = new DTOTrattamento();
 
-            // estrapolo le informazioni che mi servono
-            dtoTrattamento.setCampo1(dbTrattamento.getNome());
-            dtoTrattamento.setCampo2(dbTrattamento.getDescrizione());
-            dtoTrattamento.setCampo3(dbTrattamento.getCosto());
-            dtoTrattamento.setCampo4(dbTrattamento.getRipetizionePeriodica());
+            // estrapolo le informazioni che mi servono attraverso setDati che richiama i set di tutti i campi
+            dtoTrattamento.setDati(dbTrattamento.getNome(),dbTrattamento.getDescrizione(),dbTrattamento.getCosto(),dbTrattamento.getRipetizionePeriodica());
 
             // aggiungo il DTO alla lista dei DTO
             trattamenti_disponibili.add(dtoTrattamento);
