@@ -45,7 +45,7 @@ public class RegistroClienti {
         // creazione di un oggetto Cliente
         Cliente cliente = new Cliente(nome,cognome,indirizzo,telefono,email,username,password);
 
-        // avvio la scrittura su database chiamando scriviSuDB sull'oggetto Entity Cliente
+        // avvio la scrittura su database chiamando scriviSuDB sull'oggetto Cliente Entity
         int esito_scrittura_suDB = cliente.scriviSuDB(username);
 
         if(esito_scrittura_suDB==0){
