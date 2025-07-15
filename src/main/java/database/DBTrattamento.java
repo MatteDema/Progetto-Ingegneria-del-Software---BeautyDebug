@@ -61,9 +61,27 @@ public class DBTrattamento {
             e.printStackTrace();
         }
 
-
-
     }
+
+    public boolean trattamentoPresenteInDB(String nomeTrattamento){
+        boolean trattamentoPresente = false;
+        //Definisco la query
+        String query = "SELECT * FROM Trattamenti WHERE nome='"+nomeTrattamento+"';";
+        System.out.println(query); //per debug
+
+        try {
+            //Query di select sfruttando il DBConnectionManager
+            ResultSet rs = DBConnectionManager.selectQuery(query);
+            if(rs.next()) {
+                //se la query fornisce un risultato
+                trattamentoPresente = true;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return  trattamentoPresente;
+    }
+
     public ArrayList<DBTrattamento> caricaTrattamentiPerCostoDaDB(int costo){
         //Creo una lista temporanea
         ArrayList<DBTrattamento> trattamenti_lista_temp = new ArrayList<>();
