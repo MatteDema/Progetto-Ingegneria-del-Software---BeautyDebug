@@ -29,13 +29,13 @@ public class Trattamento {
     }
 
      int scriviSuDB(String nome){
-         DBTrattamento t= new DBTrattamento(); //DAO
+         DBTrattamento dbTrattamento= new DBTrattamento(); //DAO
 
 
-         t.setDescrizione(this.descrizione);
-         t.setCosto(this.costo);
-         t.setDescrizione(this.descrizione);
-         int i = t.salvaInDB(nome);
+         dbTrattamento.setDescrizione(this.descrizione);
+         dbTrattamento.setCosto(this.costo);
+         dbTrattamento.setDescrizione(this.descrizione);
+         int i = dbTrattamento.salvaInDB(nome);
 
          return i;
      }
