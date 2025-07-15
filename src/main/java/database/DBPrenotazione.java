@@ -139,6 +139,20 @@ public class DBPrenotazione {
         return prenotazioni_attive;
     }
 
+    /*
+    public ArrayList<DBPrenotazione> caricaPrenotazioniAttivePerClienteDaDB(String usernameCliente) {
+        metodo per caricare dal database tutte le prenotazioni attive effettuate dal cliente avente l'username passato come parametro
+        non implementato poiché non fa parte delle funzionalità implementate
+    }
+     */
+
+    /*
+    public int aggiornaInDB(int ID) {
+        metodo per aggiornare una prenotazione, usando una query di UPDATE (ad esempio, per cambiarne lo stato)
+        non implementato poiché non fa parte delle funzionalità implementate
+    }
+     */
+
     // getter e setter per recuperare e impostare i valori degli attributi di un DAO DBPrenotazione
     public int getID() {
         return this.ID;
