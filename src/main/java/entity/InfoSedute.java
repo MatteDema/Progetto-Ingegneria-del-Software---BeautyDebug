@@ -13,16 +13,16 @@ public class InfoSedute {
 
     // metodi commentati perché non usati nella nostra applicazione
     /*
-    public void registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){
-        Prenotazione.registraDatiSeduta(noteCliente, prodottiUtilizzati, costoEffettivo, dataConsigliata); // metodo statico
+    public boolean registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){
+        return Prenotazione.registraDatiSeduta(noteCliente, prodottiUtilizzati, costoEffettivo, dataConsigliata); // metodo statico
     }
 
-    public void inviaNotificaNuovoAppuntamento(){
-        Seduta.inviaNotificaNuovoAppuntamento();
+    public boolean inviaNotificaNuovoAppuntamento(){
+        return Seduta.inviaNotificaNuovoAppuntamento();
     }
 
-    public void conultaStoricoTrattamenti(){
-        Cliente.consultaStoricoTrattamenti();
+    public ArrayList<DTOSeduta> conultaStoricoTrattamenti(){
+        return Cliente.consultaStoricoTrattamenti();
     }
     */
 
