@@ -97,7 +97,7 @@ public class Cliente {
 
     void visualizzaPrenotazioniAttive(){}
 
-    void consultaStoricoTrattamenti(){}
+    ArrayList<DTOSeduta> consultaStoricoTrattamenti(){}
 
     void disdiciPrenotazioneAttiva(){}
 
