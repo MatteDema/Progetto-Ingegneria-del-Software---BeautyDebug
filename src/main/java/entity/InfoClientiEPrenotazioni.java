@@ -11,7 +11,7 @@ public class InfoClientiEPrenotazioni {
     // fornisce dei metodi pubblici che saranno invocati dai Controller, e che richiamano i metodi con visibilità di package
     // delle classi Entity con le quali essa interagisce
 
-    public static boolean registrazione(String nome, String cognome, String indirizzo, String telefono, String email) {
+    public static boolean registrazione(String email) {
         // ricava l'unica istanza della classe Singleton RegistroClienti,
         // e su di essa invoca il metodo per avviare le registrazione di un cliente
         RegistroClienti registroClienti = RegistroClienti.getRegistroClienti();
