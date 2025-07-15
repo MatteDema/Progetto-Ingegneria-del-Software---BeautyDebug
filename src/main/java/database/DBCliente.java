@@ -14,7 +14,11 @@ public class DBCliente {
     private String email;
     private String username;
     private String password;
-
+    /*
+        uno dei problemi principali è il passaggio in chiaro della password
+        possiamo prevedere di usare Hash e salt andando a criptare
+        la password all'interno del DBP
+     */
 
     /*
         Passo al costruttore la chiave primaria della tabella, nel nostro
