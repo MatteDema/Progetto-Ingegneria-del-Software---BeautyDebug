@@ -64,6 +64,4 @@ public class RegistroClienti {
 
     //Di seguito il metodo che non implementeremo:
     // void accesso(String email,String password){}
-
-
 }
