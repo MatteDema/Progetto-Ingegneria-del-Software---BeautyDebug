@@ -3,7 +3,7 @@ package entity;
 import database.DBCliente;
 
 public class RegistroClienti {
-    // classe Singleton: in tutta l'applicazione avremo una sola istanza di RegistroClienti
+     // classe Singleton: in tutta l'applicazione avremo una sola istanza di RegistroClienti
      private static RegistroClienti registroClienti; // attributo statico che rappresenta l'unica istanza della classe RegistroClienti
 
      //Costruttore privato
