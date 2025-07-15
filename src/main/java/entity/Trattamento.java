@@ -36,9 +36,8 @@ public class Trattamento {
         dbTrattamento.setDescrizione(this.descrizione);
         dbTrattamento.setCosto(this.costo);
         dbTrattamento.setDescrizione(this.descrizione);
-        int i = dbTrattamento.salvaInDB(nome);
 
-        return i;
+        return dbTrattamento.salvaInDB(nome);
     }
 
     // GETTER E SETTER
