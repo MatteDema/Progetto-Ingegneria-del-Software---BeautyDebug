@@ -6,9 +6,11 @@ public class RegistroClienti {
     // classe Singleton: in tutta l'applicazione avremo una sola istanza di RegistroClienti
      private static RegistroClienti registroClienti; // attributo statico che rappresenta l'unica istanza della classe RegistroClienti
 
-     //Costruttore vuoto
+     //Costruttore privato
      private RegistroClienti(){}
-     private static RegistroClienti getRegistroClienti(){
+
+     // metodo statico (con visibilità di package) che nasconde la creazione dell'unica istanza di RegistroClienti
+     static RegistroClienti getRegistroClienti(){
         if (registroClienti == null) {
             registroClienti= new RegistroClienti();
         }
