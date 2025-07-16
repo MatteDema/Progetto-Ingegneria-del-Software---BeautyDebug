@@ -16,8 +16,8 @@ public class DBTrattamento {
     public DBTrattamento(String nome){
         this.nome=nome;
         caricaDaDB();
-
     }
+
     public int salvaInDB(String nome){
         int esitoQuery = 0;
 
@@ -40,7 +40,7 @@ public class DBTrattamento {
     public void caricaDaDB(){
         //Definisco la query
 
-        String query = "SELECT * FROM Trattamenti WHERE nome='"+this.nome+"';";
+        String query = "SELECT * FROM Trattamenti WHERE nome=\""+this.nome+"\";";
         System.out.println(query); //per debug
         try {
             //Query di select sfruttando il DBConnectionManager
@@ -64,7 +64,7 @@ public class DBTrattamento {
     public boolean trattamentoPresenteInDB(String nomeTrattamento){
         boolean trattamentoPresente = false;
         //Definisco la query
-        String query = "SELECT * FROM Trattamenti WHERE nome='"+nomeTrattamento+"';";
+        String query = "SELECT * FROM Trattamenti WHERE nome=\""+nomeTrattamento+"\";";
         System.out.println(query); //per debug
 
         try {
@@ -84,7 +84,7 @@ public class DBTrattamento {
         //Creo una lista temporanea
         ArrayList<DBTrattamento> trattamenti_lista_temp = new ArrayList<>();
         //Definisco la query
-        String query="SELECT * FROM Trattamenti WHERE costo<='"+costo+"';";
+        String query="SELECT * FROM Trattamenti WHERE costo<="+costo+";";
         System.out.println(query); //per debug
         try {
 
@@ -103,7 +103,6 @@ public class DBTrattamento {
                 trattamenti_lista_temp.add(trattamento_temp);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         //Ritorno la lista dei trattamenti
