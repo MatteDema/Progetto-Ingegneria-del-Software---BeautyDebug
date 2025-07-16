@@ -1,6 +1,9 @@
 package entity;
 
+import com.mysql.cj.xdevapi.Client;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class TestMainEntity {
 
@@ -40,8 +43,24 @@ public class TestMainEntity {
 //        System.out.println(prenotazione.scriviSuDB());
 
 
+        //TEST AGENDA ENTITY
+        //TEST 1 AGGIUNGI NUOVA PRENOTAZIONE
+        boolean pren_aggiunta = Agenda.getAgenda().aggiungiNuovaPrenotazione(LocalDateTime.of(2025,7,24,8,0),"pesche","pippozzo");
+        System.out.println(pren_aggiunta);
+
         //TEST CLIENTE ENTITY
-        //TEST 1 SCRIVI SU DB
+        //TEST 1 PRENOTA TRATTAMENTO
+//        ArrayList<LocalDateTime> array = Cliente.prenotaTrattamento("banane","marcus2");
+//        if(!array.isEmpty()){
+//            System.out.println("Cliente si può prenotare!");
+//            for(LocalDateTime dato : array){
+//                System.out.println(dato);
+//            }
+//        }else if(array.isEmpty()){
+//            System.out.println("Ha già una prenotazione attiva!");
+//        }else if(array==null){
+//            System.out.println("Trattamento scelto non esiste!");
+//        }
 
     }
 }

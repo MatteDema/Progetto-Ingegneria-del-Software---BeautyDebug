@@ -92,7 +92,7 @@ public class CentroEstetico {
             // avvio la scrittura sul database chiamando scriviSuDB sull'oggetto Trattamento Entity
             int esito_scrittura_suDB = nuovoTrattamento.scriviSuDB(nome);
 
-            if(esito_scrittura_suDB == 0){
+            if(esito_scrittura_suDB == 1){
                 // scrittura del nuovo trattamento sul database andata a buon fine
                 esitoAggiunta = true;
                 System.out.println("Trattamento aggiunto!");

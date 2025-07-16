@@ -131,7 +131,7 @@ public class Agenda {
         // avvio la scrittura sul database chiamando scriviSuDB sull'oggetto Prenotazione Entity
         int esito_scrittura_suDB = nuovaPrenotazione.scriviSuDB();
 
-        if(esito_scrittura_suDB == 0) {
+        if(esito_scrittura_suDB == 1) {
             // scrittura della nuova prenotazione sul database andata a buon fine
             prenotazione_aggiunta = true;
             System.out.println("Prenotazione aggiunta!");
