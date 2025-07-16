@@ -64,6 +64,10 @@ public class Cliente {
 
                 // uso l'unica istanza di Agenda per cercare le fasce orarie libere, e quindi prenotabili, e le ritorno
                 return agenda.cercaFasceOrarieLibere();
+            } else {
+                // se il cliente ha già una prenotazione attiva per il trattamento che ha il nome specificato come parametro
+                // ritorniamo un Array List di LocalDateTime vuoto
+                return new ArrayList<>();
             }
         }
 
