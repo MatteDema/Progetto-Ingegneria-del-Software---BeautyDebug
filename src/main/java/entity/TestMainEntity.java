@@ -1,6 +1,7 @@
 package entity;
 
 import com.mysql.cj.xdevapi.Client;
+import dto.DTOTrattamento;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class TestMainEntity {
 //        Trattamento trattamento = new Trattamento("banane");
 //        System.out.println(trattamento);
 
-        //TEST CLASSE ENTITY REGISTRO RegistroClienti
+        //TEST CLASSE ENTITY REGISTRO CLIENTI
         //TEST 1 INSERISCI CLIENTE
 //        boolean cliente_aggiunto = RegistroClienti.getRegistroClienti().inserisciCliente("aaaaa","aaaaa","aaaaaa 3","1231231231","alessandro@gmail.com", "daje","DAIperfavore12#");
 //        System.out.println(cliente_aggiunto);
@@ -48,32 +49,72 @@ public class TestMainEntity {
 //        boolean pren_aggiunta = Agenda.getAgenda().aggiungiNuovaPrenotazione(LocalDateTime.of(2025,7,24,8,0),"pesche","pippozzo");
 //        System.out.println(pren_aggiunta);
 
-        //TEST 2 GET FASCE ORARIE LAVORATIVE
-        ArrayList<LocalDateTime> array = Agenda.getAgenda().cercaFasceOrarieLibere();
-        ArrayList<Prenotazione> slot_occupati = Agenda.getSlotOccupati();
-        System.out.println("Di seguito le prenotazioni attive");
-        for (Prenotazione p : slot_occupati) {
-            System.out.println(p);
-        }
-        System.out.println("Di seguito le fasce orarie libere");
-        for (LocalDateTime ldt : array) {
-            System.out.println(ldt);
-        }
+        //TEST 2 CERCA FASCE ORARIE LIBERE, SLOT OCCUPATI
+//        ArrayList<LocalDateTime> array = Agenda.getAgenda().cercaFasceOrarieLibere();
+//        ArrayList<Prenotazione> slot_occupati = Agenda.getSlotOccupati();
+//        System.out.println("Di seguito le prenotazioni attive");
+//        for (Prenotazione p : slot_occupati) {
+//            System.out.println(p);
+//        }
+//        System.out.println("Di seguito le fasce orarie libere");
+//        for (LocalDateTime ldt : array) {
+//            System.out.println(ldt);
+//        }
+
+        //TEST 3 VERIFICA FASCIA ORARIA
+//        Agenda.getAgenda().cercaFasceOrarieLibere();
+//        for(LocalDateTime data : Agenda.getFasceOrarieLibere()){
+//            System.out.println(data.toString());
+//        }
+//        boolean fascia_valida = Agenda.getAgenda().verificaFasciaOraria(LocalDateTime.of(2025,7,25,10,0));
+//        System.out.println(fascia_valida); //true
+//        boolean fascia_valida2 = Agenda.getAgenda().verificaFasciaOraria(LocalDateTime.of(2025,7,25,16,0));
+//        System.out.println(fascia_valida2); //false
 
 
         //TEST CLIENTE ENTITY
         //TEST 1 PRENOTA TRATTAMENTO
-//        ArrayList<LocalDateTime> array = Cliente.prenotaTrattamento("banane","marcus2");
-//        if(!array.isEmpty()){
+//        ArrayList<LocalDateTime> array = Cliente.prenotaTrattamento("Manicuree","pippozzo");
+//        if(array==null){
+//            System.out.println("Trattamento scelto non esiste!");
+//        } else if(!array.isEmpty()){
 //            System.out.println("Cliente si può prenotare!");
 //            for(LocalDateTime dato : array){
 //                System.out.println(dato);
 //            }
 //        }else if(array.isEmpty()){
 //            System.out.println("Ha già una prenotazione attiva!");
-//        }else if(array==null){
-//            System.out.println("Trattamento scelto non esiste!");
 //        }
 
+
+        //TEST CLASSE CENTRO ESTETICO ENTITY
+        //TEST 1 AGGIUNTA TRATTAMENTO
+//        boolean trattamento_aggiunto = CentroEstetico.getCentroEstetico().aggiungiTrattamento("Percoche", "E quant'è bello magna", 5, "Giornaliero");
+//        System.out.println(trattamento_aggiunto);
+
+        //TEST 2 VISUALIZZA TUTTI I TRATTAMENTI
+//        ArrayList<DTOTrattamento> dtoTrattamento = CentroEstetico.getCentroEstetico().visualizzaTuttiTrattamentiDisponibili();
+//        int i=0;
+//        for (DTOTrattamento dtoTrattamento1: dtoTrattamento) {
+//            System.out.println(dtoTrattamento1 + "numero" + i++);
+//        }
+
+        //TEST 2 VISUALIZZA TRATTAMENTO PER NOME
+//        ArrayList<DTOTrattamento> dtoTrattamento = CentroEstetico.getCentroEstetico().visualizzaTrattamentoPerNome("PercAoche");
+//        int i=0;
+//        if(dtoTrattamento!=null) {
+//            for (DTOTrattamento dtoTrattamento1: dtoTrattamento) {
+//                System.out.println(dtoTrattamento1 + "numero" + i++);
+//            }
+//        }
+
+        //TEST 3 VISUALIZZA TRATTAMENTI PER COSTO
+//        ArrayList<DTOTrattamento> dtoTrattamento = CentroEstetico.getCentroEstetico().visualizzaTrattamentiPerCosto(80);
+//        int i=0;
+//        if(dtoTrattamento!=null) {
+//            for (DTOTrattamento dtoTrattamento1: dtoTrattamento) {
+//                System.out.println(dtoTrattamento1 + "numero" + i++);
+//            }
+//        }
     }
 }
