@@ -49,7 +49,7 @@ public class Agenda {
     }
 
     // metodo di utilità per caricare le fasce orarie occupate dal DB
-    private static void getSlotOccupati() {
+    private static void caricaSlotOccupati() {
 
         // istanzio un DAO DBPrenotazione
         DBPrenotazione dbPrenotazione = new DBPrenotazione();
@@ -84,7 +84,7 @@ public class Agenda {
 
         // recupera le fasce orarie occupate (legate alle prenotazioni attive)
         // recupera le prenotazioni attive
-        getSlotOccupati();
+        caricaSlotOccupati();
 
         // inizializzo le fasce orarie libere con tutte le disponibilità orarie del centro estetico
         fasceOrarieLibere.clear();
@@ -131,7 +131,7 @@ public class Agenda {
         // avvio la scrittura sul database chiamando scriviSuDB sull'oggetto Prenotazione Entity
         int esito_scrittura_suDB = nuovaPrenotazione.scriviSuDB();
 
-        if(esito_scrittura_suDB == 0) {
+        if(esito_scrittura_suDB == 1) {
             // scrittura della nuova prenotazione sul database andata a buon fine
             prenotazione_aggiunta = true;
             System.out.println("Prenotazione aggiunta!");
@@ -142,4 +142,19 @@ public class Agenda {
         return prenotazione_aggiunta;
     }
 
+    public static ArrayList<LocalDateTime> getFasceOrarieLibere() {
+        return fasceOrarieLibere;
+    }
+
+    public static ArrayList<Prenotazione> getSlotOccupati() {
+        return slotOccupati;
+    }
+
+    public static void setFasceOrarieLibere(ArrayList<LocalDateTime> fasceOrarieLibere) {
+        Agenda.fasceOrarieLibere = fasceOrarieLibere;
+    }
+
+    public static void setSlotOccupati(ArrayList<Prenotazione> slotOccupati) {
+        Agenda.slotOccupati = slotOccupati;
+    }
 }
