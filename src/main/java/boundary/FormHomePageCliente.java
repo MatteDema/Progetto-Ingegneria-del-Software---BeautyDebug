@@ -1,18 +1,16 @@
 package boundary;
 
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Homepage_utente extends JFrame {
+public class FormHomePageCliente extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
     private JPanel contentPane;
     private String username;
 
-    public Homepage_utente(String username) {
+    public FormHomePageCliente(String username) {
 
         this.username = username;
 

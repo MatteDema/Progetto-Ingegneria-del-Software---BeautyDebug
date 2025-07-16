@@ -7,9 +7,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
-import java.awt.Image; // Importa questa classe
 
-public class Inserimento_dati_utente extends JFrame {
+public class FormRegistrazioneInserimentoDati extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -40,7 +39,7 @@ public class Inserimento_dati_utente extends JFrame {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-                Inserimento_dati_utente frame = new Inserimento_dati_utente();
+                FormRegistrazioneInserimentoDati frame = new FormRegistrazioneInserimentoDati();
                 frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -48,7 +47,7 @@ public class Inserimento_dati_utente extends JFrame {
         });
     }
 
-    public Inserimento_dati_utente() {
+    public FormRegistrazioneInserimentoDati() {
         setTitle("Registrazione Utente - Inserimento dati personali");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 650, 420);
@@ -228,7 +227,7 @@ public class Inserimento_dati_utente extends JFrame {
         messaggiErroreLabel.setForeground(new Color(0, 102, 204));
         messaggiErroreLabel.setText("Dati personali validati! Ora inserisci le credenziali.");
 
-        Inserimento_credenziali_utente credenzialiPane = new Inserimento_credenziali_utente(this, capitalizeEachWord(nome), capitalizeEachWord(cognome), email.toLowerCase(), indirizzo.toLowerCase(), telefono);
+        FormRegistrazioneInserimentoCredenziali credenzialiPane = new FormRegistrazioneInserimentoCredenziali(this, capitalizeEachWord(nome), capitalizeEachWord(cognome), email.toLowerCase(), indirizzo.toLowerCase(), telefono);
     }
 
 

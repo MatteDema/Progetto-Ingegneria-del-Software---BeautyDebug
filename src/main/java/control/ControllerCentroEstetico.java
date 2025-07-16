@@ -39,14 +39,14 @@ public class ControllerCentroEstetico {
         return lista_dei_trattamenti;
     }
 
-    public ArrayList<DTOTrattamento> visualizzaTrattamentiPerNome(String nomeTrattamento){
+    public ArrayList<DTOTrattamento> visualizzaTrattamentoPerNome(String nomeTrattamento){
         // Ottengo l'istanza della classe Singleton CentroEstetico
         CentroEstetico centroEsteticoEntity = CentroEstetico.getCentroEstetico();
 
         // Recupero dal livello Entity il trattamento, avente il nome passato come parametro, che si intende visualizzare
-        ArrayList<DTOTrattamento> trattamentoPerNome = centroEsteticoEntity.visualizzaTrattamentoPerNome(nomeTrattamento);
+        ArrayList<DTOTrattamento> trattamento_per_nome = centroEsteticoEntity.visualizzaTrattamentoPerNome(nomeTrattamento);
 
-        return trattamentoPerNome;
+        return  trattamento_per_nome;
     }
 
     public ArrayList<DTOTrattamento> visualizzaTrattamentiPerCosto(int costo){
@@ -54,9 +54,9 @@ public class ControllerCentroEstetico {
         CentroEstetico centroEsteticoEntity = CentroEstetico.getCentroEstetico();
 
         // Recupero dal livello Entity la lista dei trattamenti, filtrati per costo, che si intende visualizzare
-        ArrayList<DTOTrattamento> trattamentiPerCosto = centroEsteticoEntity.visualizzaTrattamentiPerCosto(costo);
+        ArrayList<DTOTrattamento> trattamento_per_costo = centroEsteticoEntity.visualizzaTrattamentiPerCosto(costo);
 
-        return trattamentiPerCosto;
+        return  trattamento_per_costo;
     }
 
 
@@ -64,7 +64,7 @@ public class ControllerCentroEstetico {
     /*
     public boolean rimuoviTrattamento(String nomeTrattamento){}
     public boolean modificaTrattamento(String nomeTrattamento){}
-    public boolean definisciDisponibilitaOrarie(){}
+    public boolean definisciDisponibilitaOrarie(ArrayList<DTOGiornoSettimanale> disponibilitaOrarieSettimanali){}
     public float visualizzaIncassoGiornaliero(LocalDate data){}
     public ArrayList<DTOSeduta> consultaSedutaPerData(LocalDate data){}
     */

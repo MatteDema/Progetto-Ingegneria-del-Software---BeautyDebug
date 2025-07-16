@@ -3,7 +3,7 @@ package boundary;
 import java.util.regex.Pattern;
 import javax.swing.*;
 
-public class Inserimento_credenziali_utente extends JFrame {
+public class FormRegistrazioneInserimentoCredenziali extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]{6,30}");
@@ -13,9 +13,9 @@ public class Inserimento_credenziali_utente extends JFrame {
     private String email;
     private String indirizzo;
     private String telefono;
-    private Inserimento_dati_utente finestraPrecedente;
+    private FormRegistrazioneInserimentoDati finestraPrecedente;
 
-    public Inserimento_credenziali_utente(Inserimento_dati_utente finestraPrecedente, String nome, String cognome, String email, String indirizzo, String telefono) {
+    public FormRegistrazioneInserimentoCredenziali(FormRegistrazioneInserimentoDati finestraPrecedente, String nome, String cognome, String email, String indirizzo, String telefono) {
         this.finestraPrecedente = finestraPrecedente;
         this.nome = nome;
         this.cognome = cognome;

@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-public class Interfaccia_iniziale extends JFrame {
+public class FormHomePage extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -31,7 +31,7 @@ public class Interfaccia_iniziale extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Interfaccia_iniziale frame = new Interfaccia_iniziale();
+                    FormHomePage frame = new FormHomePage();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -40,7 +40,7 @@ public class Interfaccia_iniziale extends JFrame {
         });
     }
 
-    public Interfaccia_iniziale() {
+    public FormHomePage() {
 
         /*
             Crea un oggetto ImageIcon caricando l’immagine "Centro_estetico.png" dalla cartella resources del progetto
@@ -193,7 +193,7 @@ public class Interfaccia_iniziale extends JFrame {
             public void mouseClicked(MouseEvent evt) {
                 //Apertura della finestra di registrazione utente
                 System.out.println("Registrazione cliccata");
-                Inserimento_dati_utente finestra = new Inserimento_dati_utente();
+                FormRegistrazioneInserimentoDati finestra = new FormRegistrazioneInserimentoDati();
                 finestra.setVisible(true);
             }
         });
