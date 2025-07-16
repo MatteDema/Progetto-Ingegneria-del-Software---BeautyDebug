@@ -60,6 +60,9 @@ public class DBPrenotazione {
         String query = "INSERT INTO Prenotazioni(data, stato, Clienti_username, Trattamenti_nome) VALUES (\""
                 + this.data.format(DATE_TIME_FORMATTER) + "\", \"" + this.stato + "\", \"" + this.usernameCliente + "\", \"" + this.tipologiaTrattamento + "\");";
 
+        // N.B: nella query non ho passato l'ID della prenotazione, poiché tale chiave primaria viene automaticamente
+        // generata nel database, incrementando l'ID dell'ultima prenotazione che è stata aggiunta
+        // (per fare ciò, abbiamo impostato nel database su MySQL l'opzione AUTO INCREMENT per il campo ID della tabella Prenotazioni)
         System.out.println(query); // stampa di debug della query
 
         try {
