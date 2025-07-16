@@ -41,7 +41,7 @@ public class DBCliente {
      */
     public int salvaInDB(String username){
         int ret = 0;
-        String query = "INSERT INTO clienti (nome, cognome, indirizzo, telefono, email, username, password) VALUES ('" + this.nome + "', '" + this.cognome + "', '" + this.indirizzo + "', '" + this.telefono + "', '" + this.email + "', '" + username + "', '" + this.password + "');";
+        String query = "INSERT INTO clienti (nome, cognome, indirizzo, telefono, email, username, password) VALUES (\"" + this.nome + "\", \"" + this.cognome + "\", \"" + this.indirizzo + "\", \"" + this.telefono + "\", \"" + this.email + "\", \"" + username + "\", \"" + this.password + "\");";
         System.out.println(query);
 
         try {

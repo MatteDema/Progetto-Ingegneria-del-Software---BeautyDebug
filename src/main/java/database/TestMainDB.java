@@ -98,15 +98,15 @@ public class TestMainDB {
 //        System.out.println(cliente);
 
 //        DBCliente cliente = new DBCliente();
-//        cliente.setUsername("ciaosonoio");
+//        cliente.setUsername("ciaosonoio2");
 //        cliente.setPassword("Ciao12#");
 //        cliente.setNome("Jhonny");
-//        cliente.setCognome("Bravo");
+//        cliente.setCognome("Bravo'dai");
 //        cliente.setIndirizzo("Via Claudio 104");
 //        cliente.setTelefono("1231231231");
-//        cliente.setEmail("jhonny@gmail.com");
+//        cliente.setEmail("jhonny2@gmail.com");
 //
-//        System.out.println("valore ritorno query insert:" + cliente.salvaInDB("ciaosonoio"));
+//        System.out.println("valore ritorno query insert:" + cliente.salvaInDB("ciaosonoio2"));
 
         //TEST 2 EMAIL PRESENTE IN DB
 //        DBCliente cliente = new DBCliente();
