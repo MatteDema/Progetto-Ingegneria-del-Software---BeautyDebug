@@ -34,7 +34,18 @@ public class testMainDB {
 //        System.out.println(trattamento1.trattamentoPresenteInDB("Manicure"));
 
         // TEST 3 CARICA TRATTAMENTI PER COSTO
-        ArrayList<DBTrattamento>
+//        DBTrattamento trattamento1 =  new DBTrattamento();
+//        ArrayList<DBTrattamento> arraypercosto= trattamento1.caricaTrattamentiPerCostoDaDB(80);
+//        for(DBTrattamento trattamento:arraypercosto){
+//            System.out.println(trattamento);
+//        }
+
+        // TEST 4 CARICA LISTA TRATTAMENTI TUTTI
+//        DBTrattamento trattamento1 =  new DBTrattamento();
+//        ArrayList<DBTrattamento> arraytutti= trattamento1.caricaListaTrattamentiDaDB();
+//        for(DBTrattamento trattamento:arraytutti){
+//            System.out.println(trattamento);
+//        }
 
     }
 }

@@ -99,7 +99,7 @@ public class DBTrattamento {
 
                 trattamento_temp.setNome(rs.getString("nome"));
                 trattamento_temp.setDescrizione(rs.getString("descrizione"));
-
+                trattamento_temp.setCosto(rs.getInt("costo"));
                 trattamento_temp.setRipetizionePeriodica(rs.getString("ripetizionePeriodica"));
                 //Aggiungo trattamento alla lista
                 trattamenti_lista_temp.add(trattamento_temp);
@@ -166,4 +166,14 @@ public class DBTrattamento {
     public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
     public void setCosto(int costo) {this.costo = costo;}
     public void setRipetizionePeriodica(String ripetizionePeriodica) {this.ripetizionePeriodica = ripetizionePeriodica;}
+
+    @Override
+    public String toString() {
+        return "DBTrattamento{" +
+                "nome='" + nome + '\'' +
+                ", descrizione='" + descrizione + '\'' +
+                ", costo=" + costo +
+                ", ripetizionePeriodica='" + ripetizionePeriodica + '\'' +
+                '}';
+    }
 }
