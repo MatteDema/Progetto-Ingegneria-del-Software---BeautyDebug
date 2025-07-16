@@ -21,15 +21,13 @@ public class DBTrattamento {
     public int salvaInDB(String nome){
         int esitoQuery = 0;
 
-        String query = "INSERT INTO Trattamenti(nome,descrizione,costo,ripetizionePeriodica) VALUES ('"+nome+"','"+this.descrizione+"',"+this.costo+",'"+this.ripetizionePeriodica+"')";
+        String query = "INSERT INTO Trattamenti(nome,descrizione,costo,ripetizionePeriodica) VALUES (\""+nome+"\",\""+this.descrizione+"\","+this.costo+",\""+this.ripetizionePeriodica+"\")";
         System.out.println(query);
         try {
-        // faccio la query di UPDATE sfruttando il DBConnectionManager
+            // faccio la query di UPDATE sfruttando il DBConnectionManager
             esitoQuery = DBConnectionManager.updateQuery(query);
 
-
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             esitoQuery = -1;
         }

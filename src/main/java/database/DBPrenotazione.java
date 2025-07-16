@@ -57,8 +57,8 @@ public class DBPrenotazione {
         int esitoQuery = 0; // 0 = nessun errore di scrittura sul database
 
         // definisco la query
-        String query = "INSERT INTO Prenotazioni(data, stato, Clienti_username, Trattamenti_nome) VALUES ('"
-                + this.data.format(DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
+        String query = "INSERT INTO Prenotazioni(data, stato, Clienti_username, Trattamenti_nome) VALUES (\""
+                + this.data.format(DATE_TIME_FORMATTER) + "\", \"" + this.stato + "\", \"" + this.usernameCliente + "\", \"" + this.tipologiaTrattamento + "\");";
 
         System.out.println(query); // stampa di debug della query
 
@@ -88,7 +88,7 @@ public class DBPrenotazione {
         boolean esitoQuery = false; // false = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
 
         // definisco la query
-        String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = '" + nomeTrattamento + "' AND Clienti_username = '" + usernameCliente + "' AND stato = 'attivo';";
+        String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = \"" + nomeTrattamento + "\" AND Clienti_username = \"" + usernameCliente + "\" AND stato = \"attivo\";";
 
         System.out.println(query); // stampa di debug della query
 

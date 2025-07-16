@@ -13,7 +13,7 @@ public class TestMainDB {
         //TEST PER DBTrattamento
         // TEST 1 DI SALVA IN DB e CARICA DA DB con Costruttore
 //        DBTrattamento trattamento1 =  new DBTrattamento();
-//        trattamento1.setNome("Manicuree");
+//        trattamento1.setNome("Mani'curee");
 //        trattamento1.setDescrizione("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 //        trattamento1.setCosto(500);
 //        trattamento1.setRipetizionePeriodica("");
@@ -24,11 +24,11 @@ public class TestMainDB {
 //        trattamento2.setCosto(500);
 //        trattamento2.setRipetizionePeriodica("Mensile");
 //
-//        int i1= trattamento1.salvaInDB("Manicuree");
+//        int i1= trattamento1.salvaInDB("Mani'curee");
 //        int i2= trattamento2.salvaInDB("Pedicuree");
 //
-//        System.out.println("trattamento1="+i1+ " dati: " + trattamento1.getNome());
-//        System.out.println("trattamento2="+i2+ " dati: " + trattamento2.getNome());
+//        System.out.println("trattamento1="+i1+ " dati: " + trattamento1);
+//        System.out.println("trattamento2="+i2+ " dati: " + trattamento2);
 //
 //        trattamento1 = new DBTrattamento("Pedicuree");
 //        System.out.println("trattamento1="+ trattamento1.getNome());
@@ -60,7 +60,7 @@ public class TestMainDB {
 //        DBPrenotazione p2 = new DBPrenotazione();
 //        p2.setData(LocalDateTime.of(2025, 7, 22, 14, 0));
 //        p2.setStato("attivo");
-//        p2.setTipologiaTrattamento("Manicuree");
+//        p2.setTipologiaTrattamento("Mani'curee");
 //        p2.setUsernameCliente("pippozzo");
 //
 //        System.out.println("valore ritorno query insert:" + p2.salvaInDB());
