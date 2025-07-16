@@ -85,4 +85,15 @@ public class Prenotazione {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Prenotazione{" +
+                "ID=" + ID +
+                ", data=" + data +
+                ", stato='" + stato + '\'' +
+                ", tipologiaTrattamento=" + tipologiaTrattamento +
+                ", cliente=" + cliente +
+                '}';
+    }
 }

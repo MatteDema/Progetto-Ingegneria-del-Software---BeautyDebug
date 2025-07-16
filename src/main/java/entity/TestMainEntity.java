@@ -51,8 +51,14 @@ public class TestMainEntity {
         //TEST 2 GET FASCE ORARIE LAVORATIVE
         ArrayList<LocalDateTime> array = Agenda.getAgenda().cercaFasceOrarieLibere();
         ArrayList<Prenotazione> slot_occupati = Agenda.getSlotOccupati();
-
-
+        System.out.println("Di seguito le prenotazioni attive");
+        for (Prenotazione p : slot_occupati) {
+            System.out.println(p);
+        }
+        System.out.println("Di seguito le fasce orarie libere");
+        for (LocalDateTime ldt : array) {
+            System.out.println(ldt);
+        }
 
 
         //TEST CLIENTE ENTITY
