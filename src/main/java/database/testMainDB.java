@@ -1,10 +1,12 @@
 package database;
 
+import java.util.ArrayList;
+
 public class testMainDB {
 
     public static void main(String[] args) {
 
-        //TEST 1 DU SALVA IN DB
+        // TEST 1 DU SALVA IN DB
 //        DBTrattamento trattamento1 =  new DBTrattamento();
 //        trattamento1.setNome("Manicuree");
 //        trattamento1.setDescrizione("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -27,10 +29,12 @@ public class testMainDB {
 //        System.out.println("trattamento1="+ trattamento1.getNome());
 
 
-        //TEST 2
+        // TEST 2 TRATTAMENTO PRESENTE IN DB
 //        DBTrattamento trattamento1 =  new DBTrattamento();
 //        System.out.println(trattamento1.trattamentoPresenteInDB("Manicure"));
 
+        // TEST 3 CARICA TRATTAMENTI PER COSTO
+        ArrayList<DBTrattamento>
 
     }
 }
