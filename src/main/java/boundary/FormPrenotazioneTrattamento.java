@@ -110,7 +110,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
                     for(LocalDateTime fascia_oraria : fasce_orarie_libere) {
-                        // tableModel.addRow(new LocalDateTime[]{fascia_oraria}); // senza formatter
+                        // tableModel.addRow(new LocalDateTime[]{fascia_oraria}); // senza formatter -> inserisco nella tabella dei LocalDateTime
                         tableModel.addRow(new String[]{fascia_oraria.format(formatter)});
                     }
 
