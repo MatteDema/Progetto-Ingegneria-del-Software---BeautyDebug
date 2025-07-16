@@ -57,7 +57,7 @@ public class CentroEstetico {
         // creazione del DAO DBTrattamento per verificare che il trattamento che si vuole visualizzare esista
         DBTrattamento dbTrattamento = new DBTrattamento();
 
-        // se il trattamento non esiste, ritorniano null
+        // se il trattamento non esiste, ritorniamo null
         if(!dbTrattamento.trattamentoPresenteInDB(nomeTrattamento)) {
             return null;
         }
