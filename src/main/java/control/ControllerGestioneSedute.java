@@ -14,13 +14,10 @@ public class ControllerGestioneSedute {
 
     private ControllerGestioneSedute(){} // costruttore privato
 
-
     //Di seguito i metodi che non implementeremo:
     /*
     public boolean registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){}
     public boolean inviaNotificaNuovoAppuntamento(){}
     public ArrayList<DTOSeduta> consultaStoricoTrattamenti(){}
     */
-
-
 }
