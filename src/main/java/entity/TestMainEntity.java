@@ -45,8 +45,15 @@ public class TestMainEntity {
 
         //TEST AGENDA ENTITY
         //TEST 1 AGGIUNGI NUOVA PRENOTAZIONE
-        boolean pren_aggiunta = Agenda.getAgenda().aggiungiNuovaPrenotazione(LocalDateTime.of(2025,7,24,8,0),"pesche","pippozzo");
-        System.out.println(pren_aggiunta);
+//        boolean pren_aggiunta = Agenda.getAgenda().aggiungiNuovaPrenotazione(LocalDateTime.of(2025,7,24,8,0),"pesche","pippozzo");
+//        System.out.println(pren_aggiunta);
+
+        //TEST 2 GET FASCE ORARIE LAVORATIVE
+        ArrayList<LocalDateTime> array = Agenda.getAgenda().cercaFasceOrarieLibere();
+        ArrayList<Prenotazione> slot_occupati = Agenda.getSlotOccupati();
+
+
+
 
         //TEST CLIENTE ENTITY
         //TEST 1 PRENOTA TRATTAMENTO
