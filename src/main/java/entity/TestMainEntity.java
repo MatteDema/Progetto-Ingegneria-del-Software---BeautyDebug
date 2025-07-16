@@ -1,5 +1,7 @@
 package entity;
 
+import java.time.LocalDateTime;
+
 public class TestMainEntity {
 
     public static void main(String[] args) {
@@ -34,7 +36,12 @@ public class TestMainEntity {
 
         //TEST PRENOTAZIONE ENTITY
         //TEST 1 SCRIVI SU DB
-        Prenotazione prenotazione = new Prenotazione();
+//        Prenotazione prenotazione = new Prenotazione(LocalDateTime.of(2025,7,23,12,0),"Pedicuree","pippozzo");
+//        System.out.println(prenotazione.scriviSuDB());
+
+
+        //TEST CLIENTE ENTITY
+        //TEST 1 SCRIVI SU DB
 
     }
 }
