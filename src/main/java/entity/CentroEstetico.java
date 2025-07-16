@@ -133,7 +133,7 @@ public class CentroEstetico {
     } */
 
     /*
-    public int visualizzaIncassoGiornaliero(LocalDate data){
+    public float visualizzaIncassoGiornaliero(LocalDate data){
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
 }
