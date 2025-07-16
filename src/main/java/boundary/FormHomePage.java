@@ -182,7 +182,7 @@ public class FormHomePage extends JFrame {
         });
 
         //Pannello interno per testo “Non sei registrato? Registrati qui”
-        //Ho fatto un macello ma ora funziona bene ed è centrato
+
         JPanel registrazionePanel = new JPanel();
         registrazionePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
