@@ -54,14 +54,22 @@ public class CentroEstetico {
     }
 
     public ArrayList<DTOTrattamento> visualizzaTrattamentoPerNome(String nomeTrattamento){
+        // creazione del DAO DBTrattamento per verificare che il trattamento che si vuole visualizzare esista
+        DBTrattamento dbTrattamento = new DBTrattamento();
+
+        // se il trattamento non esiste, ritorniano null
+        if(!dbTrattamento.trattamentoPresenteInDB(nomeTrattamento)) {
+            return null;
+        }
+
         // creazione del DAO DBTrattamento per caricare il singolo DAO sulla base della sua PK (nomeTrattamento)
-        DBTrattamento DBtrattamento = new DBTrattamento(nomeTrattamento);
+        dbTrattamento = new DBTrattamento(nomeTrattamento);
 
         // inizializzo un ArrayList di DBTrattamento
         ArrayList<DBTrattamento> DB_trattamenti_disponibili = new ArrayList<>();
 
         // aggiungo il DBtrattamento trovato all'ArrayList di DBTrattamento
-        DB_trattamenti_disponibili.add(DBtrattamento);
+        DB_trattamenti_disponibili.add(dbTrattamento);
 
         // chiamo il metodo che crea una lista di DTOTrattamento da restituire al Controller
         return creaListaDTOTrattamento(DB_trattamenti_disponibili);
