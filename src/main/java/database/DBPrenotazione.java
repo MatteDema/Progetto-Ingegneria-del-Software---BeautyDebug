@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import static database.DatabaseDateUtils.DATE_TIME_FORMATTER;
+
 
 public class DBPrenotazione {
 
@@ -18,6 +20,7 @@ public class DBPrenotazione {
     // viene usato dall'entity per effettuare la lettura dal database
     public DBPrenotazione(int ID) {
         this.ID = ID;
+        caricaDaDB();
     }
 
     // costruttore vuoto
@@ -31,13 +34,13 @@ public class DBPrenotazione {
         System.out.println(query); // stampa di debug della query
 
         try {
-
             // faccio la query di SELECT sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
             // se la query dà risultati, prendo i dati della prenotazione dai campi-colonne della tabella
             // Prenotazioni e li uso per settare gli attributi dell'oggetto DBPrenotazione
             if(rs.next()) {
+                this.ID = rs.getInt("ID");
                 this.data = rs.getObject("data", LocalDateTime.class);
                 this.stato = rs.getString("stato");
                 this.tipologiaTrattamento = rs.getString("Trattamenti_nome");
@@ -55,7 +58,7 @@ public class DBPrenotazione {
 
         // definisco la query
         String query = "INSERT INTO Prenotazioni(data, stato, Clienti_username, Trattamenti_nome) VALUES ('"
-                + this.data.format(DatabaseDateUtils.DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
+                + this.data.format(DATE_TIME_FORMATTER) + "', '" + this.stato + "', '" + this.usernameCliente + "', '" + this.tipologiaTrattamento + "');";
 
         System.out.println(query); // stampa di debug della query
 
@@ -194,5 +197,14 @@ public class DBPrenotazione {
         this.usernameCliente = usernameCliente;
     }
 
-
+    @Override
+    public String toString() {
+        return "DBPrenotazione{" +
+                "ID=" + ID +
+                ", data=" + data.format(DATE_TIME_FORMATTER) +
+                ", stato='" + stato + '\'' +
+                ", tipologiaTrattamento='" + tipologiaTrattamento + '\'' +
+                ", usernameCliente='" + usernameCliente + '\'' +
+                '}';
+    }
 }
