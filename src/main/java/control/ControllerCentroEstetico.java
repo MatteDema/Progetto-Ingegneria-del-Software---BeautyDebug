@@ -46,7 +46,7 @@ public class ControllerCentroEstetico {
         // Recupero dal livello Entity il trattamento, avente il nome passato come parametro, che si intende visualizzare
         ArrayList<DTOTrattamento> trattamento_per_nome = centroEsteticoEntity.visualizzaTrattamentoPerNome(nomeTrattamento);
 
-        return  trattamento_per_nome;
+        return trattamento_per_nome;
     }
 
     public ArrayList<DTOTrattamento> visualizzaTrattamentiPerCosto(int costo){
@@ -56,9 +56,8 @@ public class ControllerCentroEstetico {
         // Recupero dal livello Entity la lista dei trattamenti, filtrati per costo, che si intende visualizzare
         ArrayList<DTOTrattamento> trattamento_per_costo = centroEsteticoEntity.visualizzaTrattamentiPerCosto(costo);
 
-        return  trattamento_per_costo;
+        return trattamento_per_costo;
     }
-
 
     // Di seguito i metodi che non implementeremo:
     /*
@@ -68,6 +67,4 @@ public class ControllerCentroEstetico {
     public float visualizzaIncassoGiornaliero(LocalDate data){}
     public ArrayList<DTOSeduta> consultaSedutaPerData(LocalDate data){}
     */
-
-
 }
