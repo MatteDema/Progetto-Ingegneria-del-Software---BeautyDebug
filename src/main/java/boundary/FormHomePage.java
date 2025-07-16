@@ -123,8 +123,8 @@ public class FormHomePage extends JFrame {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                //Homepage_utente finestrautente= new Homepage_utente(username);
-                //finestrautente.setVisible(true);
+                FormHomePageCliente finestra_cliente= new FormHomePageCliente(username);
+                finestra_cliente.setVisible(true);
 
                 //logica di autenticazione utente
 
@@ -166,6 +166,10 @@ public class FormHomePage extends JFrame {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
+                /*
+                FormHomePageAmministratore finestra_amministratore = new FormHomePageAmministratore();
+                finestra_amministratore.setVisible(true);
+                */
                 //logica di autenticazione amministratore
 
                 if(username.isEmpty() || password.isEmpty()) {
