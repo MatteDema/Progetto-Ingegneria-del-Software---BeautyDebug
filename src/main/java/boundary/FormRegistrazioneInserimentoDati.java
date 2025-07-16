@@ -1,6 +1,9 @@
 package boundary;
 
+import control.ControllerGestioneProfiloCliente;
+
 import java.awt.EventQueue;
+import javax.naming.ldap.Control;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
@@ -32,9 +35,10 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
     private static final Pattern INDIRIZZO_PATTERN = Pattern.compile("[a-zA-Z0-9àèìòùÀÈÌÒÙ'/. ]+");
     private static final Pattern TELEFONO_PATTERN = Pattern.compile("[0-9]+");
 
-    /* qui il main potrebbe anche non esserci in quante pensiamo di rendere "avviabile"
+    /* qui il main potrebbe anche non esserci in quanto pensiamo di rendere "avviabile"
      * solo l'interfaccia iniziale.
      * */
+
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -46,6 +50,8 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
             }
         });
     }
+
+
 
     public FormRegistrazioneInserimentoDati() {
         setTitle("Registrazione Utente - Inserimento dati personali");
@@ -166,7 +172,6 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
 
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
-                        .addComponent(messaggiErroreLabel)
                         .addComponent(disclaimerLabel)
                         .addGap(10)
 
@@ -188,6 +193,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
 
                         .addGap(20)
                         .addComponent(confermaButton)
+                        .addComponent(messaggiErroreLabel)
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }
@@ -224,10 +230,22 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
             return;
         }
 
-        messaggiErroreLabel.setForeground(new Color(0, 102, 204));
-        messaggiErroreLabel.setText("Dati personali validati! Ora inserisci le credenziali.");
 
-        FormRegistrazioneInserimentoCredenziali credenzialiPane = new FormRegistrazioneInserimentoCredenziali(this, capitalizeEachWord(nome), capitalizeEachWord(cognome), email.toLowerCase(), indirizzo.toLowerCase(), telefono);
+        // chiama il metodo registrazione del ControllerGestioneProfiloCliente per avviare la registrazione (verificando la email)
+        // Ottengo l'unica istanza della classe Singleton ControllerGestioneProfiloCliente
+        ControllerGestioneProfiloCliente controller_profilo_cliente= ControllerGestioneProfiloCliente.getControllerGestioneProfiloCliente();
+        boolean email_gia_presente = controller_profilo_cliente.registrazione(email);
+
+        if(!email_gia_presente){
+            messaggiErroreLabel.setForeground(new Color(0, 102, 204));
+            messaggiErroreLabel.setText("Dati personali validati! Ora inserisci le credenziali");
+            FormRegistrazioneInserimentoCredenziali credenzialiPane = new FormRegistrazioneInserimentoCredenziali(this, capitalizeEachWord(nome), capitalizeEachWord(cognome), email.toLowerCase(), indirizzo, telefono);
+            credenzialiPane.setVisible(true);
+        } else {
+            messaggiErroreLabel.setForeground(Color.RED);
+            messaggiErroreLabel.setText("Dati personali validati ma email già presente nel sistema! Scegliere un'altra email");
+            emailTextField.requestFocusInWindow();
+        }
     }
 
 

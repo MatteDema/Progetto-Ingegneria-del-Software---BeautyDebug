@@ -153,6 +153,7 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
         return isValid;
     }
 
+    // metodo usato per verificare i dati ricevuti dalla finestra precedente
     private void debugDatiPersonali(String nome, String cognome, String email, String indirizzo, String telefono) {
         System.out.println("Nome ricevuto: " + nome);
         System.out.println("Nome ricevuto: " + cognome);

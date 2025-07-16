@@ -1,10 +1,6 @@
 package boundary;
 
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -42,10 +38,10 @@ public class FormHomePage extends JFrame {
 
     public FormHomePage() {
 
-        /*
+         /*
             Crea un oggetto ImageIcon caricando l’immagine "Centro_estetico.png" dalla cartella resources del progetto
-            (usando il class loader per trovarla nel classpath) e omposto l’immagine caricata come icona principale della
-             finestra (ad esempio per un JFrame).
+            (usando il class loader per trovarla nel classpath) e imposto l’immagine caricata come icona principale della
+            finestra (ad esempio per un JFrame).
          */
         ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
         setIconImage(appIcon.getImage());
@@ -54,8 +50,8 @@ public class FormHomePage extends JFrame {
         setTitle("Home");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 500, 500);
-        //Questo metodo centra la finestra nello schermo
-        //I primi due argomenti di setBounds vengono ignorati s euso questo metodo
+        // Questo metodo centra la finestra nello schermo
+        // I primi due argomenti di setBounds vengono ignorati se uso questo metodo
         setLocationRelativeTo(null);
 
 
@@ -65,7 +61,9 @@ public class FormHomePage extends JFrame {
         contentPane.setLayout(new GridBagLayout());
 
         JLabel titoloLabel = new JLabel("BeautyDebug");
-        titoloLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+        titoloLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+        Color colore_titolo = new Color(0x9783B4);
+        titoloLabel.setForeground(colore_titolo);
 
         GridBagConstraints gbcTitolo = new GridBagConstraints();
         gbcTitolo.insets = new Insets(10, 10, 10, 10);
@@ -123,17 +121,19 @@ public class FormHomePage extends JFrame {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                FormHomePageCliente finestra_cliente= new FormHomePageCliente(username);
+                // utilizziamo l'username di un cliente che è già presente nel nostro database (pippozzo)
+                // in questo modo la nostra applicazione funzionerà, poiché non abbiamo implementato la funzionalità di accesso
+                FormHomePageCliente finestra_cliente= new FormHomePageCliente("pippozzo");
                 finestra_cliente.setVisible(true);
 
-                //logica di autenticazione utente
+                // logica di autenticazione utente
 
                 if(username.isEmpty() || password.isEmpty()) {
-                    setError("Inserisci username e password");
+                    setError("Inserisci username e password!");
                 } else {
                     setError(""); //pulisce errori precedenti
 
-                    /**
+                    /*
                      * if(nome utente non esiste nel sistema){
                      *     setError("L'utente con questo username non risulta registrato nel sistema.\nUtilizza un username valido oppure registrati.");
                      * } else{
@@ -141,8 +141,8 @@ public class FormHomePage extends JFrame {
                      * 			setError("Password sbagliata, riprovare.");
                      * 		} else{
                      * 			System.out.println("Login utente effettuato con: " + username);
-                     *            Homepage_utente finestrautente= new Homepage_utente(username);
-                     *           finestrautente.setVisible(true);
+                     *           FormHomePageCliente finestra_cliente= new FormHomePageCliente(username);
+                     *           finestra_cliente.setVisible(true);
                      * 		}
                      * }
                      */
@@ -170,7 +170,7 @@ public class FormHomePage extends JFrame {
                 FormHomePageAmministratore finestra_amministratore = new FormHomePageAmministratore();
                 finestra_amministratore.setVisible(true);
                 */
-                //logica di autenticazione amministratore
+                // logica di autenticazione amministratore
 
                 if(username.isEmpty() || password.isEmpty()) {
                     setError("Inserisci username e password");
@@ -181,7 +181,7 @@ public class FormHomePage extends JFrame {
             }
         });
 
-        //Pannello interno per testo “Non sei registrato? Registrati qui”
+        // Pannello interno per testo “Non sei registrato? Registrati qui”
 
         JPanel registrazionePanel = new JPanel();
         registrazionePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -195,7 +195,7 @@ public class FormHomePage extends JFrame {
         lblRegistratiQui.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
-                //Apertura della finestra di registrazione utente
+                // Apertura della finestra di registrazione utente
                 System.out.println("Registrazione cliccata");
                 FormRegistrazioneInserimentoDati finestra = new FormRegistrazioneInserimentoDati();
                 finestra.setVisible(true);
