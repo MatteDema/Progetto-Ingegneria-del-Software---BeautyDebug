@@ -16,9 +16,10 @@ public class DBDisponibilitaOrarieSettimanali {
     //costruttore che prende in ingresso la PK di DisponibilitaOrarieSettimanali
     public DBDisponibilitaOrarieSettimanali(String giorno) {
         this.giorno = giorno;
-        caricaDaDB();
+        //caricaDaDB();
     }
 
+    /* METODI COMMENTATATI perché non facenti parte delle funzionalità che abbiamo implementato
     public void caricaDaDB() {
         //definisco la query di select
         String query="SELECT * FROM DisponibilitaOrarieSettimanali WHERE giorno='"+this.giorno+"';";
@@ -59,6 +60,7 @@ public class DBDisponibilitaOrarieSettimanali {
 
         return esitoQuery;
     }
+     */
 
     /*
     public int aggiornaInDB(String giorno){

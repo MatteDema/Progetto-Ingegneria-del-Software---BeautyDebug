@@ -33,9 +33,10 @@ public class Trattamento {
     int scriviSuDB(String nome){
         DBTrattamento dbTrattamento= new DBTrattamento(); //DAO
 
+        dbTrattamento.setNome(nome);
         dbTrattamento.setDescrizione(this.descrizione);
         dbTrattamento.setCosto(this.costo);
-        dbTrattamento.setDescrizione(this.descrizione);
+        dbTrattamento.setRipetizionePeriodica(this.ripetizionePeriodica);
 
         return dbTrattamento.salvaInDB(nome);
     }
@@ -72,5 +73,15 @@ public class Trattamento {
 
     public void setRipetizionePeriodica(String ripetizionePeriodica) {
         this.ripetizionePeriodica = ripetizionePeriodica;
+    }
+
+    @Override
+    public String toString() {
+        return "Trattamento{" +
+                "nome='" + nome + '\'' +
+                ", descrizione='" + descrizione + '\'' +
+                ", costo=" + costo +
+                ", ripetizionePeriodica='" + ripetizionePeriodica + '\'' +
+                '}';
     }
 }

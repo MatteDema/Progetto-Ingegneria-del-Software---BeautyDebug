@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import static database.DatabaseDateUtils.DATE_TIME_FORMATTER;
+
 public class DBFasceOrarieLavorative {
 
     private LocalDateTime disponibilitaOraria;
@@ -67,5 +69,12 @@ public class DBFasceOrarieLavorative {
 
     public LocalDateTime getDisponibilitaOraria() {
         return disponibilitaOraria;
+    }
+
+    @Override
+    public String toString() {
+        return "DBFasceOrarieLavorative{" +
+                "disponibilitaOraria=" + disponibilitaOraria.format(DATE_TIME_FORMATTER) +
+                '}';
     }
 }

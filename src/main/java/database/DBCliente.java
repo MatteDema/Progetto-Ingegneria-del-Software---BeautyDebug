@@ -132,7 +132,9 @@ public class DBCliente {
         Il metodo caricaListaClientiDaDB prende tutti i clienti dalla
         tabella clienti e li mette all'interno di un arraylist che
         successivamente ritorna
-     */
+
+        Metodo commentato perché non facente parte delle funzionalità implementate
+
     public ArrayList<DBCliente> caricaListaClientiDaDB() {
         ArrayList<DBCliente> clienti_lista_temp = new ArrayList();
         String query = "SELECT * FROM clienti;";
@@ -158,6 +160,7 @@ public class DBCliente {
 
         return clienti_lista_temp;
     }
+     */
 
     /*
     public void aggiornaInDB(){

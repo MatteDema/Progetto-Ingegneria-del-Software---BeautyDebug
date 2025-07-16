@@ -240,7 +240,6 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
             messaggiErroreLabel.setForeground(new Color(0, 102, 204));
             messaggiErroreLabel.setText("Dati personali validati! Ora inserisci le credenziali");
             FormRegistrazioneInserimentoCredenziali credenzialiPane = new FormRegistrazioneInserimentoCredenziali(this, capitalizeEachWord(nome), capitalizeEachWord(cognome), email.toLowerCase(), indirizzo, telefono);
-            credenzialiPane.setVisible(true);
         } else {
             messaggiErroreLabel.setForeground(Color.RED);
             messaggiErroreLabel.setText("Dati personali validati ma email già presente nel sistema! Scegliere un'altra email");
