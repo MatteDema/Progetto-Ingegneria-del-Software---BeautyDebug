@@ -45,7 +45,8 @@ public class DBCliente {
         System.out.println(query);
 
         try {
-            ret = DBConnectionManager.updateQuery(query);
+            ret = DBConnectionManager.updateQuery(query); // se la query di UPDATE va a buon fine, ret diventa 1
+            // updateQuery restituisce il numero di righe inserite
         } catch (SQLException | ClassNotFoundException e) {
             ((Exception)e).printStackTrace();
             ret = -1;

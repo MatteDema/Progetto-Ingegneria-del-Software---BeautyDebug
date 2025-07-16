@@ -1,5 +1,7 @@
 package boundary;
 
+import control.ControllerGestioneProfiloCliente;
+
 import java.util.regex.Pattern;
 import javax.swing.*;
 
@@ -8,20 +10,20 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
     private static final long serialVersionUID = 1L;
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]{6,30}");
 
-    private String nome;
-    private String cognome;
-    private String email;
-    private String indirizzo;
-    private String telefono;
-    private FormRegistrazioneInserimentoDati finestraPrecedente;
+    // private String nome;
+    // private String cognome;
+    // private String email;
+    // private String indirizzo;
+    // private String telefono;
+    // private FormRegistrazioneInserimentoDati finestraPrecedente;
 
     public FormRegistrazioneInserimentoCredenziali(FormRegistrazioneInserimentoDati finestraPrecedente, String nome, String cognome, String email, String indirizzo, String telefono) {
-        this.finestraPrecedente = finestraPrecedente;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.email = email;
-        this.indirizzo = indirizzo;
-        this.telefono = telefono;
+        // this.finestraPrecedente = finestraPrecedente;
+        // this.nome = nome;
+        // this.cognome = cognome;
+        // this.email = email;
+        // this.indirizzo = indirizzo;
+        // this.telefono = telefono;
 
         debugDatiPersonali(nome, cognome, email, indirizzo, telefono);
 
@@ -84,13 +86,25 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
 
             if (erroreCredenziali.length() == 0) {
                 credenzialiValide = true;
-                JOptionPane.showMessageDialog(this,
-                        "Le credenziali sono state create con successo. L'utente ora è registrato nel sistema.",
-                        "Messaggio di conferma", JOptionPane.INFORMATION_MESSAGE);
 
-                //In questa sezione deve essere chiamato il controller per poter aggiungere il cliente nel centro estetico
+                // Ottengo l'unica istanza della classe Singleton ControllerGestioneProfiloCliente
+                ControllerGestioneProfiloCliente controller_profilo_cliente = ControllerGestioneProfiloCliente.getControllerGestioneProfiloCliente();
+                // chiamo sul Controller il metodo inserisciCliente, che verifica che l'username inserito non sia già presente nel sistema
+                // se il controllo va a buon fine, avvia l'inserimento del cliente e il metodo restituisce l'esito dell'inserimento
+                boolean cliente_inserito = controller_profilo_cliente.inserisciCliente(nome, cognome, indirizzo, telefono, email, username, password);
 
-                finestraPrecedente.dispose();
+                if(cliente_inserito) {
+                    JOptionPane.showMessageDialog(this,
+                            "Le credenziali sono state create con successo. L'utente ora è registrato nel sistema.",
+                            "Messaggio di conferma", JOptionPane.INFORMATION_MESSAGE);
+
+                    finestraPrecedente.dispose();
+                } else {
+                    JOptionPane.showConfirmDialog(this,
+                            "Username già presente nel sistema! Inserisci un altro username.", "Messaggio di errore",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Ci sono problemi con le credenziali:\n" + erroreCredenziali + "Riprova.",

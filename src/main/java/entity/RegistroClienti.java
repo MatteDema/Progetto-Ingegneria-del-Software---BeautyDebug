@@ -51,7 +51,7 @@ public class RegistroClienti {
         // avvio la scrittura su database chiamando scriviSuDB sull'oggetto Cliente Entity
         int esito_scrittura_suDB = cliente.scriviSuDB(username);
 
-        if(esito_scrittura_suDB==0){
+        if(esito_scrittura_suDB==1){
             // scrittura del nuovo cliente sul database è andata a buon fine
             cliente_aggiunto = true;
             System.out.println("Cliente aggiunto!");
