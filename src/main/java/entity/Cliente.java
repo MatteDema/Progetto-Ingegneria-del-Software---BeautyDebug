@@ -71,6 +71,7 @@ public class Cliente {
             }
         }
 
+        // se il trattamento che si intende prenotare non esiste, restituiamo null
         return null;
     }
 
