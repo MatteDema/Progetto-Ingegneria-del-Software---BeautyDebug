@@ -89,7 +89,10 @@ public class Agenda {
         // inizializzo le fasce orarie libere con tutte le disponibilità orarie del centro estetico
         fasceOrarieLibere.clear();
         for (LocalDateTime localDateTime : fasce_orarie_complessive) {
-            fasceOrarieLibere.add(localDateTime);
+            // aggiungo solo le date successive alla data corrente
+            if(localDateTime.isAfter( /*LocalDateTime.of(2025,7,22,23, 0)*/ LocalDateTime.now())) {
+                fasceOrarieLibere.add(localDateTime);
+            }
         }
 
         // for per aggiornare le fasce orarie libere, sottraendo alle disponibilità orarie complessive
@@ -101,7 +104,7 @@ public class Agenda {
             fasceOrarieLibere.remove(slotOccupati.get(i).getData());
         }
 
-        // restiruisco le fasce orarie libere
+        // restituisco le fasce orarie libere
         return fasceOrarieLibere;
     }
 
