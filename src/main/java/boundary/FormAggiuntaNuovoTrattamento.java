@@ -3,8 +3,6 @@ package boundary;
 import control.ControllerCentroEstetico;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
@@ -62,15 +60,15 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
-        setIconImage(appIcon.getImage());
-
-
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        // imposto il logo del centro estetico come icona della form
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
+        setIconImage(appIcon.getImage());
 
         lbl_inserimento_dati_trattamento = new JLabel("Inserisci i dettagli del trattamento che vuoi aggiungere");
         lbl_inserimento_dati_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 13));
@@ -215,7 +213,7 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
             setErrore("Il campo costo è vuoto!");
             return false;
         }else if (!NUMBER_PATTERN.matcher(costo).matches()) {
-            setErrore("Il costo del trattamento deve contenere solo cifre numeriche.");
+            setErrore("Il costo del trattamento deve contenere solo cifre\nnumeriche.");
             return false;
         }else if (Integer.parseInt(costo) > 1000) {
             setErrore("Il costo del trattamento è troppo alto!");

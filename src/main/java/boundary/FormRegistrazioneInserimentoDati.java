@@ -2,8 +2,6 @@ package boundary;
 
 import control.ControllerGestioneProfiloCliente;
 
-import java.awt.EventQueue;
-import javax.naming.ldap.Control;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;

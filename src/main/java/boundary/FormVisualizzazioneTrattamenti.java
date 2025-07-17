@@ -65,6 +65,10 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        // imposto il logo del centro estetico come icona della form
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
+        setIconImage(appIcon.getImage());
+
         lbl_scelta_visualizzazione = new JLabel("Scegli il tipo di visualizzazione");
         lbl_scelta_visualizzazione.setFont(new Font("Tahoma", Font.PLAIN, 14));
         lbl_scelta_visualizzazione.setBounds(10, 10, 224, 30);

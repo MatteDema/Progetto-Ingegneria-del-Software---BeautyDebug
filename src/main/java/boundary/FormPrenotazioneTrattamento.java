@@ -2,7 +2,6 @@ package boundary;
 
 import control.ControllerGestionePrenotazioni;
 
-import java.awt.EventQueue;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -65,6 +64,11 @@ public class FormPrenotazioneTrattamento extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+
+        // imposto il logo del centro estetico come icona della form
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
+        setIconImage(appIcon.getImage());
+
 
         lbl_inserimento_nome_trattamento = new JLabel("Inserisci il nome del trattamento che intendi prenotare:");
         lbl_inserimento_nome_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 13));

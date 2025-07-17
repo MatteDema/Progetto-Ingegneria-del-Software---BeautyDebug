@@ -1,8 +1,5 @@
 package boundary;
 
-
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -68,7 +65,11 @@ public class FormHomePageAmministratore extends JFrame {
         lbl_presentazione_home.setBounds(246, 121, 288, 61);
         contentPane.add(lbl_presentazione_home);
 
-        // aggiunta della foto del centro estetico
+        // imposto il logo del centro estetico come icona della form
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
+        setIconImage(appIcon.getImage());
+
+        // aggiunta della foto del centro estetico all'interno della form
         lbl_immagine_centro_estetico = new JLabel();
         ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico_logo.png"));
         lbl_immagine_centro_estetico.setIcon(image);
