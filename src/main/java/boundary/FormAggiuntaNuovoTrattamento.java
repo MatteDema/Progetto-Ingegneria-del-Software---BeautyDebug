@@ -5,16 +5,12 @@ import control.ControllerCentroEstetico;
 import java.awt.Color;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Pattern;
 
 public class FormAggiuntaNuovoTrattamento extends JFrame {
 
@@ -31,6 +27,10 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
     private JTextField textField_ripetizione_periodica;
     private JButton btn_aggiunta_trattamento;
     private JTextArea textArea_esito_aggiunta_trattamento;
+
+
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]+");
+
 
 
     /**
@@ -53,12 +53,16 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
      * Create the frame.
      */
     public FormAggiuntaNuovoTrattamento() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 500, 350);
 
         setTitle("Aggiunta trattamento");
         setLocationRelativeTo(null);
         setResizable(false);
+
+        ImageIcon appIcon = new ImageIcon(getClass().getClassLoader().getResource("Centro_estetico.png"));
+        setIconImage(appIcon.getImage());
+
 
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -125,26 +129,42 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
                 String costo = textField_costo.getText();
                 String ripetizionePeriodica = textField_ripetizione_periodica.getText();
 
+                if (!validaNomeTrattamento(nomeTrattamento)){
+                    textField_nome.requestFocusInWindow();
+                    return;
+                }
+
+                if (!validaDescrizione(descrizione)){
+                    textField_descrizione.requestFocusInWindow();
+                    return;
+                }
+
+                if (!validaCosto(costo)){
+                    textField_costo.requestFocusInWindow();
+                    return;
+                }
+
+                if (!validazionieRipetizionePeriodica(ripetizionePeriodica)){
+                    textField_ripetizione_periodica.requestFocusInWindow();
+                    return;
+                }
+
                 // Ottengo l'unica istanza della classe Singleton ControllerCentroEstetico, e la uso per avviare la richiesta
                 // di aggiunta di un nuovo trattamento
                 ControllerCentroEstetico controller_centro_estetico = ControllerCentroEstetico.getControllerCentroEstetico();
 
                 // di seguito il metodo parseInt della classe Wrapper Integer può sollevare una eccezione di tipo
                 // NumberFormatException se il costo inserito non è un numero intero
-                try {
-                    boolean trattamento_aggiunto = controller_centro_estetico.aggiungiTrattamento(nomeTrattamento, descrizione, Integer.parseInt(costo), ripetizionePeriodica);
+                boolean trattamento_aggiunto = controller_centro_estetico.aggiungiTrattamento(nomeTrattamento, descrizione, Integer.parseInt(costo), ripetizionePeriodica);
 
-                    if(trattamento_aggiunto) {
-                        textArea_esito_aggiunta_trattamento.setText("Nuovo trattamento aggiunto!");
-                        System.out.println("Nuovo trattamento aggiunto!");
-                    } else {
-                        textArea_esito_aggiunta_trattamento.setText("Aggiunta del trattamento fallita! " +
-                                "\nIl trattamento che stai provando a inserire già esiste!");
-                        System.out.println("Aggiunta del trattamento fallita! Il trattamento che stai provando a inserire già esiste!");
-                    }
-                } catch(NumberFormatException exception) {
-                    System.out.println("Il costo deve essere un numero intero!");
-                    textArea_esito_aggiunta_trattamento.setText("Il costo deve essere un numero intero!");
+                if(trattamento_aggiunto) {
+                    JOptionPane.showConfirmDialog(FormAggiuntaNuovoTrattamento.this, "Il Trattamento è stato inserito con successo!",
+                            "Messaggio di conferma", JOptionPane.DEFAULT_OPTION);
+                    dispose();
+                } else {
+                    setErrore("Aggiunta del trattamento fallita! " +
+                            "\nIl trattamento che stai provando a inserire già esiste!");
+                    System.out.println("Il trattamento già esiste!");
                 }
 
             }
@@ -156,7 +176,62 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
 
         textArea_esito_aggiunta_trattamento = new JTextArea();
         textArea_esito_aggiunta_trattamento.setForeground(new Color(128, 0, 255));
-        textArea_esito_aggiunta_trattamento.setBounds(89, 271, 318, 35);
+        textArea_esito_aggiunta_trattamento.setBounds(89, 271, 350, 35);
         contentPane.add(textArea_esito_aggiunta_trattamento);
+        textArea_esito_aggiunta_trattamento.setEditable(false);
+
     }
+
+    private boolean validaNomeTrattamento(String nomeTrattamento){
+        if (nomeTrattamento.isEmpty()) {
+            setErrore("Il nome del trattamento non deve essere vuoto!");
+            return false;
+        }else if (nomeTrattamento.length() < 2) {
+            setErrore("Il nome del trattamento è troppo corto!");
+            return false;
+        }else if (nomeTrattamento.length() >30) {
+            setErrore("Il nome del trattamento è troppo lungo!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validaDescrizione(String descrizione){
+        if (descrizione.isEmpty()) {
+            setErrore("La descrizione non può essere vuota!");
+            return false;
+        }else if (descrizione.length() > 250) {
+            setErrore("La descrizione del trattamento è troppo lunga!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validaCosto(String costo){
+        if (costo.isEmpty()) {
+            setErrore("Il campo costo è vuoto!");
+            return false;
+        }else if (!NUMBER_PATTERN.matcher(costo).matches()) {
+            setErrore("Il costo del trattamento deve contenere solo cifre numeriche.");
+            return false;
+        }else if (Integer.parseInt(costo) > 1000) {
+            setErrore("Il costo del trattamento è troppo alto!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validazionieRipetizionePeriodica(String ripetizione){
+        if (ripetizione.length() >50) {
+            setErrore("La ripetizione periodica è troppo lunga,\ndiminuire il numero di caratteri!");
+            return false;
+        }
+        return true;
+    }
+
+    private void setErrore(String messaggio) {
+        textArea_esito_aggiunta_trattamento.setForeground(Color.RED);
+        textArea_esito_aggiunta_trattamento.setText("Attenzione: " + messaggio);
+    }
+
 }
