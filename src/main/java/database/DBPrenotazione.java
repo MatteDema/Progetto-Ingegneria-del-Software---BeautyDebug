@@ -116,7 +116,9 @@ public class DBPrenotazione {
         // lista di appoggio contenente tutte le prenotazioni attive
         ArrayList<DBPrenotazione> prenotazioni_attive = new ArrayList<>();
 
-        String query = "SELECT * FROM Prenotazioni WHERE stato = 'attivo';";
+        // abbiamo aggiunto la condizione di stato = 'effettuato' per comprendere anche le prenotazioni effettuate
+        // in modo che esse non vengano mostrate all'utente
+        String query = "SELECT * FROM Prenotazioni WHERE stato = 'attivo' OR stato = 'effettuato';";
 
         System.out.println(query); // stampa di debug della query
 
