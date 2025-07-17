@@ -28,7 +28,7 @@ public class FormHomePage extends JFrame {
     private JButton btnLoginAmministratore;
     private JPanel registrazionePanel;
     private JLabel lblNonRegistrato;
-    private  JLabel lblRegistratiQui;
+    private JLabel lblRegistratiQui;
     private JLabel errorLabel;
 
     public static void main(String[] args) {
