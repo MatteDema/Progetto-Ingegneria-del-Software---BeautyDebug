@@ -92,6 +92,12 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // prelevo dal campo testuale il nome del trattamento inserito
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
 
+                if(trattamento_da_prenotare.isEmpty()){
+                    textArea_esito_ricerca_fasce.setForeground(Color.RED);
+                    textArea_esito_ricerca_fasce.setText("Compilare il campo del trattamento!");
+                    return;
+                }
+
                 // Ottengo l'unica istanza della classe Singleton ControllerGestionePrenotazioni, e la uso per avviare la richiesta
                 // di prenotazione di un trattamento
                 ControllerGestionePrenotazioni controller_prenotazioni = ControllerGestionePrenotazioni.getControllerGestione_prenotazioni();
