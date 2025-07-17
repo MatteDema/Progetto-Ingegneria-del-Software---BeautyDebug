@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CentroEstetico {
     // classe Singleton: in tutta l'applicazione avremo una sola istanza di CentroEstetico
-    private static CentroEstetico centroEstetico = null; // attributo statico che rappresenta l'unica istanza della classe CentroEstetico
+    private static CentroEstetico centroEstetico; // attributo statico che rappresenta l'unica istanza della classe CentroEstetico
 
     // private RegistroClienti registroClienti;
     // private ArrayList<Trattamento> trattamentiDisponibili;

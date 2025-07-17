@@ -65,6 +65,6 @@ public class ControllerCentroEstetico {
     public boolean modificaTrattamento(String nomeTrattamento){}
     public boolean definisciDisponibilitaOrarie(ArrayList<DTOGiornoSettimanale> disponibilitaOrarieSettimanali){}
     public float visualizzaIncassoGiornaliero(LocalDate data){}
-    public ArrayList<DTOSeduta> consultaSedutaPerData(LocalDate data){}
+    public ArrayList<DTOSeduta> consultaSedutePerData(LocalDate data){}
     */
 }
