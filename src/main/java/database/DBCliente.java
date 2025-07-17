@@ -2,6 +2,7 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 
@@ -14,11 +15,6 @@ public class DBCliente {
     private String email;
     private String username;
     private String password;
-    /*
-        uno dei problemi principali è il passaggio in chiaro della password
-        possiamo prevedere di usare Hash e salt andando a criptare
-        la password all'interno del DBP
-     */
 
     /*
         Passo al costruttore la chiave primaria della tabella, nel nostro
@@ -36,34 +32,48 @@ public class DBCliente {
 
 
     /*
-        Questo metodo va a inserire nella tabella clienti un cliente andando a verificare se questo è già presente
-        a livello entity vengono effettuate le assegnazioni delle variabili
+        Questo metodo va a inserire nella tabella clienti un cliente andando a verificare se questo è già presente.
+        A livello entity vengono effettuate le assegnazioni delle variabili
      */
     public int salvaInDB(String username){
-        int ret = 0;
+
+        int esitoQuery = 0;
         String query = "INSERT INTO clienti (nome, cognome, indirizzo, telefono, email, username, password) VALUES (\"" + this.nome + "\", \"" + this.cognome + "\", \"" + this.indirizzo + "\", \"" + this.telefono + "\", \"" + this.email + "\", \"" + username + "\", \"" + this.password + "\");";
-        System.out.println(query);
+        System.out.println(query); // Stampa di debug
 
         try {
-            ret = DBConnectionManager.updateQuery(query); // se la query di UPDATE va a buon fine, ret diventa 1
+
+            // Faccio la query di UPDATE sfruttando il DBConnectionManager
             // updateQuery restituisce il numero di righe inserite
+            // Se la query di UPDATE va a buon fine, esitoQuery diventa 1
+            esitoQuery = DBConnectionManager.updateQuery(query);
+
+        }
+        // Il primo catch serve per l'eccezione di violazione del vincolo di primary key
+        catch(SQLIntegrityConstraintViolationException e) {
+            esitoQuery = -1;
+            System.out.println("Esiste già un cliente con username " + username + "!");
+            e.printStackTrace();
         } catch (SQLException | ClassNotFoundException e) {
-            ((Exception)e).printStackTrace();
-            ret = -1;
+            e.printStackTrace();
+            // Se la query di UPDATE non va a buon fine, esitoQuery diventa -1
+            esitoQuery = -1;
         }
 
-        return ret;
+        return esitoQuery;
     }
 
     /*
-        il metodo caricaDaDB non fa altro che prendere i dati del cliente dal database dato l'username
+        Il metodo caricaDaDB non fa altro che prendere i dati del cliente dal database dato l'username
      */
-    public void caricaDaDB() {
+    private void caricaDaDB() {
         String query = "SELECT * FROM clienti WHERE username='" + this.username + "';";
         System.out.println(query);
 
         try {
+
             ResultSet rs = DBConnectionManager.selectQuery(query);
+
             if (rs.next()) {
                 this.setNome(rs.getString("nome"));
                 this.setCognome(rs.getString("cognome"));
@@ -71,11 +81,10 @@ public class DBCliente {
                 this.setTelefono(rs.getString("telefono"));
                 this.setEmail(rs.getString("email"));
                 this.setPassword(rs.getString("password"));
-            } else{}
+            }
         } catch (SQLException | ClassNotFoundException e) {
-            ((Exception)e).printStackTrace();
+            e.printStackTrace();
         }
-
     }
 
     /*
@@ -83,12 +92,15 @@ public class DBCliente {
         tabella clienti, false altrimenti
      */
     public boolean emailPresenteInDB(String email) {
+
         boolean emailpresente = false;
-        String query = "SELECT * FROM clienti WHERE email='"+email+"';";
+        String query = "SELECT * FROM clienti WHERE email='" + email + "';";
         System.out.println(query);
 
         try {
+
             ResultSet rs = DBConnectionManager.selectQuery(query);
+
             if (rs.next()) {
                 System.out.println("Esiste già una mail nel sistema come quella indicata");
                 emailpresente = true;
@@ -108,12 +120,15 @@ public class DBCliente {
         è presente nella tabella clienti, false altrimenti
      */
     public boolean usernamePresenteInDB(String username) {
+
         boolean usernamepresente = false;
-        String query = "SELECT * FROM clienti WHERE username='"+username+"';";
+        String query = "SELECT * FROM clienti WHERE username='" + username + "';";
         System.out.println(query);
 
         try {
+
             ResultSet rs = DBConnectionManager.selectQuery(query);
+
             if (rs.next()) {
                 System.out.println("Esiste già un username nel sistema come quello indicato");
                 usernamepresente = true;
@@ -169,6 +184,8 @@ public class DBCliente {
     }
 
     */
+
+    // Getter e Setter
     public void setNome(String nome) {
         this.nome = nome;
     }

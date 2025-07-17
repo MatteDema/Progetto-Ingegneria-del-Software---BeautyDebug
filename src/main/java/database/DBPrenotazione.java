@@ -16,28 +16,27 @@ public class DBPrenotazione {
     private String tipologiaTrattamento;
     private String usernameCliente;
 
-    // costruttore che prende in ingresso la chiave primaria, ossia l'ID della prenotazione
-    // viene usato dall'entity per effettuare la lettura dal database
+    // Costruttore che prende in ingresso la chiave primaria, ossia l'ID della prenotazione.
+    // Viene usato dall'entity per effettuare la lettura dal database
     public DBPrenotazione(int ID) {
         this.ID = ID;
         caricaDaDB();
     }
 
-    // costruttore vuoto
+    // Costruttore vuoto
     public DBPrenotazione() {}
 
-    public void caricaDaDB() {
+    private void caricaDaDB() {
 
-        // definisco la query
+        // Definisco la query
         String query = "SELECT * FROM Prenotazioni WHERE ID = " + this.ID +";";
-
-        System.out.println(query); // stampa di debug della query
+        System.out.println(query); // Stampa di debug della query
 
         try {
-            // faccio la query di SELECT sfruttando il DBConnectionManager
+            // Faccio la query di SELECT sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
-            // se la query dà risultati, prendo i dati della prenotazione dai campi-colonne della tabella
+            // Se la query dà risultati, prendo i dati della prenotazione dai campi-colonne della tabella
             // Prenotazioni e li uso per settare gli attributi dell'oggetto DBPrenotazione
             if(rs.next()) {
                 this.ID = rs.getInt("ID");
@@ -56,31 +55,34 @@ public class DBPrenotazione {
 
         int esitoQuery = 0; // 0 = nessun errore di scrittura sul database
 
-        // definisco la query
+        // Definisco la query
         String query = "INSERT INTO Prenotazioni(data, stato, Clienti_username, Trattamenti_nome) VALUES (\""
                 + this.data.format(DATE_TIME_FORMATTER) + "\", \"" + this.stato + "\", \"" + this.usernameCliente + "\", \"" + this.tipologiaTrattamento + "\");";
 
         // N.B: nella query non ho passato l'ID della prenotazione, poiché tale chiave primaria viene automaticamente
         // generata nel database, incrementando l'ID dell'ultima prenotazione che è stata aggiunta
         // (per fare ciò, abbiamo impostato nel database su MySQL l'opzione AUTO INCREMENT per il campo ID della tabella Prenotazioni)
-        System.out.println(query); // stampa di debug della query
+        System.out.println(query); // Stampa di debug della query
 
         try {
 
-            // eseguo la query di INSERT sfruttando il DBConnectionManager
+            // Eseguo la query di INSERT sfruttando il DBConnectionManager
+            // updateQuery restituisce il numero di righe inserite
+            // Se la query di UPDATE va a buon fine, esitoQuery diventa 1
             esitoQuery = DBConnectionManager.updateQuery(query);
 
         }
         /*
-        // il primo catch per l'eccezione di violazione del vincolo di primary key è stato aggiunto da me
+        // Il primo catch serve per l'eccezione di violazione del vincolo di primary key
+        // In questo caso è commentato in quanto è il DB che gestisce l'ID
         catch(SQLIntegrityConstraintViolationException e) {
             esitoQuery = -1;
-            System.out.println("Esiste già una prenotazione" + matricola + "!");
+            System.out.println("Esiste già una prenotazione con ID " + ID + "!");
             e.printStackTrace();
         }*/
         catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            esitoQuery = -1; //per segnalare l'errore di scrittura
+            esitoQuery = -1; // Per segnalare l'errore di scrittura
         }
 
         return esitoQuery;
@@ -90,17 +92,16 @@ public class DBPrenotazione {
 
         boolean esitoQuery = false; // false = il cliente non ha già una prenotazione attiva per la tipologia di trattamento indicata
 
-        // definisco la query
+        // Definisco la query
         String query = "SELECT * FROM Prenotazioni WHERE Trattamenti_nome = \"" + nomeTrattamento + "\" AND Clienti_username = \"" + usernameCliente + "\" AND stato = \"attivo\";";
-
-        System.out.println(query); // stampa di debug della query
+        System.out.println(query); // Stampa di debug della query
 
         try {
-            // faccio la query di SELECT sfruttando il DBConnectionManager
+            // Faccio la query di SELECT sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
             if (rs.next()) {
-                // la query di SELECT dà un risultato -> il cliente avente l'username passato come parametro
+                // La query di SELECT dà un risultato -> il cliente avente l'username passato come parametro
                 // ha già una prenotazione attiva per la tipologia di trattamento specificata nell'altro parametro
                 esitoQuery = true;
             }
@@ -113,23 +114,23 @@ public class DBPrenotazione {
 
     public ArrayList<DBPrenotazione> caricaListaPrenotazioniAttiveDaDB() {
 
-        // lista di appoggio contenente tutte le prenotazioni attive
+        // Lista di appoggio contenente tutte le prenotazioni attive
         ArrayList<DBPrenotazione> prenotazioni_attive = new ArrayList<>();
 
-        // abbiamo aggiunto la condizione di stato = 'effettuato' per comprendere anche le prenotazioni effettuate
+        // Abbiamo aggiunto la condizione di stato = 'effettuato' per comprendere anche le prenotazioni effettuate
         // in modo che esse non vengano mostrate all'utente
         String query = "SELECT * FROM Prenotazioni WHERE stato = 'attivo' OR stato = 'effettuato';";
-
-        System.out.println(query); // stampa di debug della query
+        System.out.println(query); // Stampa di debug della query
 
         try {
+
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
             while(rs.next()) {
-                // finché ho un risultato, prelevo dalla tabella Prenotazioni i valori delle sue colonne, e li uso
+                // Finché ho un risultato, prelevo dalla tabella Prenotazioni i valori delle sue colonne, e li uso
                 // per settare gli attributi di ogni oggetto DBPrenotazione che aggiungerò alla lista di appoggio da restituire
 
-                // creo un DAO di tipo DBPrenotazione
+                // Creo un DAO di tipo DBPrenotazione
                 DBPrenotazione dbPrenotazione = new DBPrenotazione();
                 dbPrenotazione.setID(rs.getInt("ID"));
                 dbPrenotazione.setData(rs.getObject("data", LocalDateTime.class));
@@ -137,7 +138,7 @@ public class DBPrenotazione {
                 dbPrenotazione.setUsernameCliente(rs.getString("Clienti_username"));
                 dbPrenotazione.setTipologiaTrattamento(rs.getString("Trattamenti_nome"));
 
-                // aggiungo il nuovo DAO Prenotazione alla lista da restituire
+                // Aggiungo il nuovo DAO Prenotazione alla lista da restituire
                 prenotazioni_attive.add(dbPrenotazione);
             }
         } catch(ClassNotFoundException | SQLException e) {

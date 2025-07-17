@@ -2,6 +2,7 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 public class DBTrattamento {
@@ -18,36 +19,48 @@ public class DBTrattamento {
         caricaDaDB();
     }
 
+    // Costruttore vuoto
+    public DBTrattamento(){}
+
     public int salvaInDB(String nome){
         int esitoQuery = 0;
 
         String query = "INSERT INTO Trattamenti(nome,descrizione,costo,ripetizionePeriodica) VALUES (\""+nome+"\",\""+this.descrizione+"\","+this.costo+",\""+this.ripetizionePeriodica+"\")";
         System.out.println(query);
+
         try {
-            // faccio la query di UPDATE sfruttando il DBConnectionManager
+            // Faccio la query di UPDATE sfruttando il DBConnectionManager
+            // updateQuery restituisce il numero di righe inserite
+            // Se la query di UPDATE va a buon fine, esitoQuery diventa 1
             esitoQuery = DBConnectionManager.updateQuery(query);
 
+        }
+        // Il primo catch serve per l'eccezione di violazione del vincolo di primary key
+        catch(SQLIntegrityConstraintViolationException e) {
+            esitoQuery = -1;
+            System.out.println("Esiste già un trattamento chiamato " + nome + "!");
+            e.printStackTrace();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            // Se la query di UPDATE non va a buon fine, esitoQuery diventa -1
             esitoQuery = -1;
         }
 
         return esitoQuery;
-
-
     }
 
-    public void caricaDaDB(){
-        //Definisco la query
+    private void caricaDaDB(){
 
+        // Definisco la query
         String query = "SELECT * FROM Trattamenti WHERE nome=\""+this.nome+"\";";
-        System.out.println(query); //per debug
+        System.out.println(query); // Per debug
+
         try {
-            //Query di select sfruttando il DBConnectionManager
+            // Query di select sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
 
             if(rs.next()) {
-                //3.Accedo tramite il nome dell'attributo-colonna ai dati
+                // Accedo tramite il nome dell'attributo-colonna ai dati
 
                 this.setDescrizione(rs.getString("descrizione"));
                 this.setCosto(rs.getInt("costo"));
@@ -55,7 +68,6 @@ public class DBTrattamento {
             }
 
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -63,15 +75,17 @@ public class DBTrattamento {
 
     public boolean trattamentoPresenteInDB(String nomeTrattamento){
         boolean trattamentoPresente = false;
-        //Definisco la query
-        String query = "SELECT * FROM Trattamenti WHERE nome=\""+nomeTrattamento+"\";";
-        System.out.println(query); //per debug
+
+        // Definisco la query
+        String query = "SELECT * FROM Trattamenti WHERE nome=\"" + nomeTrattamento + "\";";
+        System.out.println(query); // Per debug
 
         try {
-            //Query di select sfruttando il DBConnectionManager
+            // Query di select sfruttando il DBConnectionManager
             ResultSet rs = DBConnectionManager.selectQuery(query);
+
             if(rs.next()) {
-                //se la query fornisce un risultato
+                // Se la query fornisce un risultato
                 trattamentoPresente = true;
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -81,11 +95,14 @@ public class DBTrattamento {
     }
 
     public ArrayList<DBTrattamento> caricaTrattamentiPerCostoDaDB(int costo){
-        //Creo una lista temporanea
+
+        // Creo una lista temporanea
         ArrayList<DBTrattamento> trattamenti_lista_temp = new ArrayList<>();
-        //Definisco la query
-        String query="SELECT * FROM Trattamenti WHERE costo<="+costo+";";
-        System.out.println(query); //per debug
+
+        // Definisco la query
+        String query="SELECT * FROM Trattamenti WHERE costo<=" + costo + ";";
+        System.out.println(query); // Per debug
+
         try {
 
             ResultSet rs = DBConnectionManager.selectQuery(query);
@@ -93,31 +110,33 @@ public class DBTrattamento {
             while(rs.next()) {
 
                 DBTrattamento trattamento_temp = new DBTrattamento();
-                //Accedo tramite il nome dell'attributo-colonna ai dati
+                // Accedo tramite il nome dell'attributo-colonna ai dati
 
                 trattamento_temp.setNome(rs.getString("nome"));
                 trattamento_temp.setDescrizione(rs.getString("descrizione"));
                 trattamento_temp.setCosto(rs.getInt("costo"));
                 trattamento_temp.setRipetizionePeriodica(rs.getString("ripetizionePeriodica"));
-                //Aggiungo trattamento alla lista
+                // Aggiungo trattamento alla lista
                 trattamenti_lista_temp.add(trattamento_temp);
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        //Ritorno la lista dei trattamenti
+
+        // Ritorno la lista dei trattamenti
         return trattamenti_lista_temp;
-
-
     }
 
 
     public ArrayList<DBTrattamento> caricaListaTrattamentiDaDB(){
-        //Creo una lista temporanea
+
+        // Creo una lista temporanea
         ArrayList<DBTrattamento> trattamenti_lista_temp = new ArrayList<>();
-        //Definisco la query
+
+        // Definisco la query
         String query="SELECT * FROM Trattamenti";
-        System.out.println(query);//per debug
+        System.out.println(query); // Per debug
+
         try {
 
             ResultSet rs = DBConnectionManager.selectQuery(query);
@@ -125,6 +144,7 @@ public class DBTrattamento {
             while(rs.next()) {
 
                 DBTrattamento trattamento_temp = new DBTrattamento();
+                // Accedo tramite il nome dell'attributo-colonna ai dati
 
                 trattamento_temp.setNome(rs.getString("nome"));
                 trattamento_temp.setDescrizione(rs.getString("descrizione"));
@@ -134,12 +154,11 @@ public class DBTrattamento {
                 trattamenti_lista_temp.add(trattamento_temp);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         //Ritorno la lista dei trattamenti
         return trattamenti_lista_temp;
-
     }
 
    /* public void aggiornaDB(){
@@ -151,13 +170,10 @@ public class DBTrattamento {
     }
     */
 
-    //costruttore vuoto
-    public DBTrattamento(){}
-
     //getter e setter
-    public int getCosto() {return costo;}
-    public String getDescrizione() {return descrizione;}
     public String getNome() {return nome;}
+    public String getDescrizione() {return descrizione;}
+    public int getCosto() {return costo;}
     public String getRipetizionePeriodica() {return ripetizionePeriodica;}
     public void setNome(String nome) {this.nome = nome;}
     public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
