@@ -39,7 +39,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
      * solo l'interfaccia iniziale.
      * */
 
-
+    /*
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
@@ -50,6 +50,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
             }
         });
     }
+     */
 
 
 
@@ -198,6 +199,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
         );
     }
 
+    // metodo per la INPUT VALIDATION di tutti i dati personali inseriti
     /**
      * Verifica la coerenza dei dati inseriti.
      * Questi devono rispettare la semantica definita in fase di progettazione

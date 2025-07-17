@@ -10,6 +10,12 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
     private static final long serialVersionUID = 1L;
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]{6,30}");
 
+    private JPanel panel;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JPasswordField confermaPasswordField;
+    private JCheckBox showPasswordCheckBox;
+
     // private String nome;
     // private String cognome;
     // private String email;
@@ -30,11 +36,11 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
 
-        JPanel panel = new JPanel(new java.awt.GridLayout(4, 2, 5, 5));
-        JTextField usernameField = new JTextField(20);
-        JPasswordField passwordField = new JPasswordField(20);
-        JPasswordField confermaPasswordField = new JPasswordField(20);
-        JCheckBox showPasswordCheckBox = new JCheckBox("Mostra Password");
+        panel = new JPanel(new java.awt.GridLayout(4, 2, 5, 5));
+        usernameField = new JTextField(20);
+        passwordField = new JPasswordField(20);
+        confermaPasswordField = new JPasswordField(20);
+        showPasswordCheckBox = new JCheckBox("Mostra Password");
 
         panel.add(new JLabel("Username:"));
         panel.add(usernameField);
@@ -116,6 +122,7 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
 
     }
 
+    // metodi per la INPUT VALIDATION di username e password inseriti
     private boolean validaUsername(String username, StringBuilder errori) {
         if (username.isEmpty()) {
             errori.append("- Username vuoto. Inserisci un nome utente.\n");
@@ -125,15 +132,7 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
             errori.append("- Username non valido. Deve contenere tra 6 e 30 caratteri (lettere, numeri o underscore).\n");
             return false;
         }
-        /* Bisogna creare un metodo che restituisce true se l'username è già presente all'interno del database
-         *
-         * if(username già presente nel sistema){
-         * 	errori.append("- Username già presente nel sistema, si prega di inserirne un altro\n");
-         * 	return false;
-         * }
-         *
-         *
-         * */
+
         return true;
     }
 

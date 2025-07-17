@@ -28,14 +28,14 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
     private JButton btn_aggiunta_trattamento;
     private JTextArea textArea_esito_aggiunta_trattamento;
 
-
+    // per il controllo del costo
     private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]+");
-
 
 
     /**
      * Launch the application.
      */
+    /*
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -48,6 +48,8 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
             }
         });
     }
+    */
+
 
     /**
      * Create the frame.
@@ -182,6 +184,7 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
 
     }
 
+    // metodi per la INPUT VALIDATION dei dati inseriti
     private boolean validaNomeTrattamento(String nomeTrattamento){
         if (nomeTrattamento.isEmpty()) {
             setErrore("Il nome del trattamento non deve essere vuoto!");
@@ -216,6 +219,9 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
             return false;
         }else if (Integer.parseInt(costo) > 1000) {
             setErrore("Il costo del trattamento è troppo alto!");
+            return false;
+        } else if(Integer.parseInt(costo) < 0) {
+            setErrore("Il costo del trattamento non può essere negativo!");
             return false;
         }
         return true;

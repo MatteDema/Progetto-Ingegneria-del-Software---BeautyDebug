@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Pattern;
 
 public class FormVisualizzazioneTrattamenti extends JFrame {
 
@@ -27,9 +28,13 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
     private JTextArea textArea_esito_visualizzazione;
     private JScrollPane scrollPane;
     private JTable table_trattamenti;
+
+    // per il controllo del costo
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]+");
     /**
      * Launch the application.
      */
+    /*
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -42,7 +47,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
             }
         });
     }
-
+    */
     /**
      * Create the frame.
      */
@@ -106,7 +111,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
         contentPane.add(btn_cerca_trattamento_per_nome);
 
         textField_nomeTrattamento = new JTextField();
-        textField_nomeTrattamento.setBounds(30, 112, 141, 19);
+        textField_nomeTrattamento.setBounds(10, 112, 209, 19);
         contentPane.add(textField_nomeTrattamento);
         textField_nomeTrattamento.setColumns(10);
         textField_nomeTrattamento.setEnabled(false);
@@ -144,7 +149,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
             }
         });
         btn_cerca_per_nome.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        btn_cerca_per_nome.setBounds(120, 141, 85, 21);
+        btn_cerca_per_nome.setBounds(73, 141, 85, 21);
         contentPane.add(btn_cerca_per_nome);
 
         btn_cerca_trattamenti_per_costo = new JButton("Cerca trattamenti per costo");
@@ -154,6 +159,10 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 // abilita il campo di testo per inserire il costo massimo e il bottone Cerca per costo
                 textField_costo.setEnabled(true);
                 btn_cerca_per_costo.setEnabled(true);
+
+                // mostra un messaggio che spiega la modalità di visualizzazione per costo
+                textArea_esito_visualizzazione.setText("Verranno mostrati i trattamenti con " +
+                        "\ncosto inferiore o uguale a quello\ninserito.");
             }
         });
         btn_cerca_trattamenti_per_costo.setForeground(new Color(153, 0, 255));
@@ -162,7 +171,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
         contentPane.add(btn_cerca_trattamenti_per_costo);
 
         textField_costo = new JTextField();
-        textField_costo.setBounds(30, 203, 141, 19);
+        textField_costo.setBounds(10, 203, 209, 19);
         contentPane.add(textField_costo);
         textField_costo.setColumns(10);
         textField_costo.setEnabled(false);
@@ -176,41 +185,43 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 // prelevo dal campo testuale il costo massimo inserito
                 String costo_max = textField_costo.getText();
 
-                // Ottengo l'unica istanza della classe Singleton ControllerCentroEstetico, e la uso per avviare la richiesta
-                // di visualizzazione dei trattamenti aventi costo non superiore a quello inserito
-                ControllerCentroEstetico controller_centro_estetico = ControllerCentroEstetico.getControllerCentroEstetico();
+                if (validaCosto(costo_max)) {
+                    // Ottengo l'unica istanza della classe Singleton ControllerCentroEstetico, e la uso per avviare la richiesta
+                    // di visualizzazione dei trattamenti aventi costo non superiore a quello inserito
+                    ControllerCentroEstetico controller_centro_estetico = ControllerCentroEstetico.getControllerCentroEstetico();
 
-                // il metodo parseInt della classe Wrapper Integer (usato di seguito per convertire la stringa costo_max in intero)
-                // solleva una eccezione di tipo NumberFormatException se l'utente non inserisce un numero intero nel campo testuale dedicato
-                try {
-                    ArrayList<DTOTrattamento> lista_trattamenti_dto = controller_centro_estetico.visualizzaTrattamentiPerCosto(Integer.parseInt(costo_max));
+                    // il metodo parseInt della classe Wrapper Integer (usato di seguito per convertire la stringa costo_max in intero)
+                    // solleva una eccezione di tipo NumberFormatException se l'utente non inserisce un numero intero nel campo testuale dedicato
+                    try {
+                        ArrayList<DTOTrattamento> lista_trattamenti_dto = controller_centro_estetico.visualizzaTrattamentiPerCosto(Integer.parseInt(costo_max));
 
-                    // i trattamenti vengono mostrati nella tabella solo se la lista di oggetti DTOTrattamento non è vuota
-                    if (!lista_trattamenti_dto.isEmpty()) {
-                        // Avvio la visualizzazione dei trattamenti nella lista
-                        visualizza_trattamenti(lista_trattamenti_dto);
+                        // i trattamenti vengono mostrati nella tabella solo se la lista di oggetti DTOTrattamento non è vuota
+                        if (!lista_trattamenti_dto.isEmpty()) {
+                            // Avvio la visualizzazione dei trattamenti nella lista
+                            visualizza_trattamenti(lista_trattamenti_dto);
 
-                        textArea_esito_visualizzazione.setText("Trattamenti visualizzati " + "\ncon successo!");
-                    } else {
-                        textArea_esito_visualizzazione.setText("Nessun trattamento offerto " + "\nha un costo inferiore o uguale " +
-                                "\na quello che hai inserito!");
-                        System.out.println("Nessun trattamento offerto ha un costo inferiore o uguale " +
-                                "a quello che hai inserito!");
+                            textArea_esito_visualizzazione.setText("Trattamenti visualizzati " + "\ncon successo!");
+                        } else {
+                            textArea_esito_visualizzazione.setText("Nessun trattamento offerto " + "\nha un costo inferiore o uguale " +
+                                    "\na quello che hai inserito!");
+                            System.out.println("Nessun trattamento offerto ha un costo inferiore o uguale " +
+                                    "a quello che hai inserito!");
+                        }
+
+                        // svuoto il campo testuale usato per inserire il costo
+                        textField_costo.setText("");
+                        // disabilito nuovamente il campo di testo usato per inserire il costo e il bottone Cerca per costo
+                        textField_costo.setEnabled(false);
+                        btn_cerca_per_costo.setEnabled(false);
+                    } catch(NumberFormatException exception) {
+                        System.out.println("Il costo che inserisci deve essere un numero intero!");
+                        textArea_esito_visualizzazione.setText("Il costo che inserisci deve essere " + "\nun numero intero!");
                     }
-
-                    // svuoto il campo testuale usato per inserire il costo
-                    textField_costo.setText("");
-                    // disabilito nuovamente il campo di testo usato per inserire il costo e il bottone Cerca per costo
-                    textField_costo.setEnabled(false);
-                    btn_cerca_per_costo.setEnabled(false);
-                } catch(NumberFormatException exception) {
-                    System.out.println("Il costo che inserisci deve essere un numero intero!");
-                    textArea_esito_visualizzazione.setText("Il costo che inserisci deve essere " + "\nun numero intero!");
                 }
             }
         });
         btn_cerca_per_costo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        btn_cerca_per_costo.setBounds(120, 232, 85, 21);
+        btn_cerca_per_costo.setBounds(73, 232, 85, 21);
         contentPane.add(btn_cerca_per_costo);
 
         textArea_esito_visualizzazione = new JTextArea();
@@ -273,5 +284,29 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
             System.out.println("Visualizzato il trattamento: " + nomeTrattamento + ", Descrizione: " + descrizione +
                     ", Costo: " + costo + ", Ripetizione periodica: " + ripetizionePeriodica);
         }
+    }
+
+    // INPUT VALIDATION per il costo inserito
+    // metodo per validare il costo inserito nella visualizzazione dei trattamenti per costo
+    private boolean validaCosto(String costo){
+        if (costo.isEmpty()) {
+            setErrore("Il campo costo è vuoto!");
+            return false;
+        }else if (!NUMBER_PATTERN.matcher(costo).matches()) {
+            setErrore("Il costo del trattamento\ndeve contenere solo cifre\nnumeriche.");
+            return false;
+        }else if (Integer.parseInt(costo) > 1000) {
+            setErrore("Il costo del trattamento\nè troppo alto!");
+            return false;
+        } else if(Integer.parseInt(costo) < 0) {
+            setErrore("Il costo del trattamento\nnon può essere negativo!");
+            return false;
+        }
+        return true;
+    }
+
+    private void setErrore(String messaggio) {
+        textArea_esito_visualizzazione.setForeground(Color.RED);
+        textArea_esito_visualizzazione.setText("Attenzione: " + messaggio);
     }
 }

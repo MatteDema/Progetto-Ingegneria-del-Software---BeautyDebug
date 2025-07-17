@@ -30,6 +30,7 @@ public class FormHomePageAmministratore extends JFrame {
     /**
      * Launch the application.
      */
+    /*
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -42,6 +43,7 @@ public class FormHomePageAmministratore extends JFrame {
             }
         });
     }
+    */
 
     /**
      * Create the frame.

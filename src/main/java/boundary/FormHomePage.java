@@ -19,8 +19,16 @@ public class FormHomePage extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    private JLabel titoloLabel;
+    private JLabel usernameLabel;
     private JTextField usernameField;
+    private JLabel passwordLabel;
     private JPasswordField passwordField;
+    private JButton btnLoginUtente;
+    private JButton btnLoginAmministratore;
+    private JPanel registrazionePanel;
+    private JLabel lblNonRegistrato;
+    private  JLabel lblRegistratiQui;
     private JLabel errorLabel;
 
     public static void main(String[] args) {
@@ -60,7 +68,7 @@ public class FormHomePage extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new GridBagLayout());
 
-        JLabel titoloLabel = new JLabel("BeautyDebug");
+        titoloLabel = new JLabel("BeautyDebug");
         titoloLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
         Color colore_titolo = new Color(0x9783B4);
         titoloLabel.setForeground(colore_titolo);
@@ -73,7 +81,7 @@ public class FormHomePage extends JFrame {
         gbcTitolo.anchor = GridBagConstraints.CENTER;
         contentPane.add(titoloLabel, gbcTitolo);
 
-        JLabel usernameLabel = new JLabel("Username:");
+        usernameLabel = new JLabel("Username:");
         GridBagConstraints gbcUsernameLabel = new GridBagConstraints();
         gbcUsernameLabel.insets = new Insets(10, 10, 10, 10);
         gbcUsernameLabel.gridx = 0;
@@ -89,7 +97,7 @@ public class FormHomePage extends JFrame {
         gbcUsernameField.anchor = GridBagConstraints.WEST;
         contentPane.add(usernameField, gbcUsernameField);
 
-        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel = new JLabel("Password:");
         GridBagConstraints gbcPasswordLabel = new GridBagConstraints();
         gbcPasswordLabel.insets = new Insets(10, 10, 10, 10);
         gbcPasswordLabel.gridx = 0;
@@ -105,7 +113,7 @@ public class FormHomePage extends JFrame {
         gbcPasswordField.anchor = GridBagConstraints.WEST;
         contentPane.add(passwordField, gbcPasswordField);
 
-        JButton btnLoginUtente = new JButton("Login Utente");
+        btnLoginUtente = new JButton("Login Utente");
         GridBagConstraints gbcBtnLoginUtente = new GridBagConstraints();
         gbcBtnLoginUtente.insets = new Insets(10, 10, 10, 10);
         gbcBtnLoginUtente.gridx = 0;
@@ -127,30 +135,18 @@ public class FormHomePage extends JFrame {
                 finestra_cliente.setVisible(true);
 
                 // logica di autenticazione utente
-
+                /*
                 if(username.isEmpty() || password.isEmpty()) {
                     setError("Inserisci username e password!");
                 } else {
                     setError(""); //pulisce errori precedenti
 
-                    /*
-                     * if(nome utente non esiste nel sistema){
-                     *     setError("L'utente con questo username non risulta registrato nel sistema.\nUtilizza un username valido oppure registrati.");
-                     * } else{
-                     * 		if(username e password non combaciano){
-                     * 			setError("Password sbagliata, riprovare.");
-                     * 		} else{
-                     * 			System.out.println("Login utente effettuato con: " + username);
-                     *           FormHomePageCliente finestra_cliente= new FormHomePageCliente(username);
-                     *           finestra_cliente.setVisible(true);
-                     * 		}
-                     * }
-                     */
                 }
+                */
             }
         });
 
-        JButton btnLoginAmministratore = new JButton("Login Amministratore");
+        btnLoginAmministratore = new JButton("Login Amministratore");
         GridBagConstraints gbcBtnLoginAdmin = new GridBagConstraints();
         gbcBtnLoginAdmin.insets = new Insets(10, 10, 10, 10);
         gbcBtnLoginAdmin.gridx = 0;
@@ -166,30 +162,31 @@ public class FormHomePage extends JFrame {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                /*
+
                 FormHomePageAmministratore finestra_amministratore = new FormHomePageAmministratore();
                 finestra_amministratore.setVisible(true);
-                */
-                // logica di autenticazione amministratore
 
+                // logica di autenticazione amministratore
+                /*
                 if(username.isEmpty() || password.isEmpty()) {
                     setError("Inserisci username e password");
                 } else {
                     setError(""); //pulisce errori precedenti
                     //System.out.println("Login amministratore effettuato con: " + username);
                 }
+                */
             }
         });
 
         // Pannello interno per testo “Non sei registrato? Registrati qui”
 
-        JPanel registrazionePanel = new JPanel();
+        registrazionePanel = new JPanel();
         registrazionePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        JLabel lblNonRegistrato = new JLabel("Non sei registrato? ");
+        lblNonRegistrato = new JLabel("Non sei registrato? ");
         registrazionePanel.add(lblNonRegistrato);
 
-        JLabel lblRegistratiQui = new JLabel("<html><u>Registrati qui</u></html>");
+        lblRegistratiQui = new JLabel("<html><u>Registrati qui</u></html>");
         lblRegistratiQui.setForeground(java.awt.Color.BLUE);
         lblRegistratiQui.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegistratiQui.addMouseListener(new MouseAdapter() {
@@ -223,7 +220,9 @@ public class FormHomePage extends JFrame {
         contentPane.add(errorLabel, gbcErrorLabel);
     }
 
+    /*
     public void setError(String message) {
         errorLabel.setText(message);
     }
+     */
 }
