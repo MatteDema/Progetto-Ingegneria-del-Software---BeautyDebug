@@ -129,6 +129,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
         contentPane.add(btnCercaFasceOrarie);
 
         textArea_esito_ricerca_fasce = new JTextArea();
+        textArea_esito_ricerca_fasce.setEditable(false); // area di testo non editabile
         textArea_esito_ricerca_fasce.setBounds(245, 78, 206, 51);
         contentPane.add(textArea_esito_ricerca_fasce);
 
@@ -211,6 +212,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
 
 
         textArea_esito_selezione_fascia = new JTextArea();
+        textArea_esito_selezione_fascia.setEditable(false); // area di testo non editabile
         textArea_esito_selezione_fascia.setBackground(new Color(255, 204, 255));
         textArea_esito_selezione_fascia.setForeground(new Color(255, 0, 0));
         textArea_esito_selezione_fascia.setBounds(220, 162, 250, 60);
@@ -269,6 +271,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
         contentPane.add(btn_prenotazione);
 
         textArea_esito_prenotazione = new JTextArea();
+        textArea_esito_prenotazione.setEditable(false); // area di testo non editabile
         textArea_esito_prenotazione.setBounds(227, 332, 243, 22);
         textArea_esito_prenotazione.setForeground(new Color(128, 0, 255));
         contentPane.add(textArea_esito_prenotazione);
