@@ -229,6 +229,8 @@ public class FormPrenotazioneTrattamento extends JFrame {
                     // dopo aver completato la prenotazione, la tabella delle fasce orarie viene svuotato
                     DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
                     tableModel.setRowCount(0);
+
+                    dispose();
                 } else {
                     textArea_esito_prenotazione.setText("Prenotazione fallita!");
                     System.out.println("Prenotazione fallita!");
