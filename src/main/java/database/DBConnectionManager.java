@@ -12,7 +12,7 @@ public class DBConnectionManager {
     public static String dbName = "dbcentroestetico";
     public static String driver = "com.mysql.cj.jdbc.Driver";
     public static String userName = "root";
-    public static String password = "#DatabaseIS2025"; // ognuno mette la propria password di MySQL
+    public static String password = ""; // ognuno mette la propria password di MySQL
 
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -29,11 +29,9 @@ public class DBConnectionManager {
     }
 
     public static void closeConnection(Connection c) throws SQLException {
-
         // chiusura della connessione
         c.close();
     }
-
 
 
     public static ResultSet selectQuery(String query) throws ClassNotFoundException, SQLException {

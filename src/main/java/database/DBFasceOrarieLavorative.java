@@ -53,15 +53,14 @@ public class DBFasceOrarieLavorative {
         metodo per creare delle disponibilità orarie nel DB
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     }
-     */
 
-
-    /*
     public int aggiornaElencoDisponibilitaInDB() {
         metodo per aggiornare alcune disponibilita orarie nel DB
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     }
      */
+
+     // Getter e Setter
 
     public void setDisponibilitaOraria(LocalDateTime disponibilitaOraria) {
         this.disponibilitaOraria = disponibilitaOraria;

@@ -13,13 +13,17 @@ public class DBDisponibilitaOrarieSettimanali {
     private LocalTime orarioUltimoAppuntamento;
 
 
-    //costruttore che prende in ingresso la PK di DisponibilitaOrarieSettimanali
+    // costruttore che prende in ingresso la PK di DisponibilitaOrarieSettimanali
     public DBDisponibilitaOrarieSettimanali(String giorno) {
         this.giorno = giorno;
         //caricaDaDB();
     }
 
-    /* METODI COMMENTATATI perché non facenti parte delle funzionalità che abbiamo implementato
+    // costruttore vuoto
+    public DBDisponibilitaOrarieSettimanali() {
+    }
+
+    /* Metodi commentati perché non facenti parte delle funzionalità che abbiamo implementato
     public void caricaDaDB() {
         //definisco la query di select
         String query="SELECT * FROM DisponibilitaOrarieSettimanali WHERE giorno='"+this.giorno+"';";
@@ -44,7 +48,7 @@ public class DBDisponibilitaOrarieSettimanali {
     public int SalvaInDB(String giorno){
         int esitoQuery = 0;
 
-        int valoreApertura = this.apertura ? 1 : 0; //meglio convertire il valore booleano per non avere problemi di incompatibilità con il tipo TINYINT su MySQL
+        int valoreApertura = this.apertura ? 1 : 0; // meglio convertire il valore booleano per non avere problemi di incompatibilità con il tipo TINYINT su MySQL
         String query = "INSERT INTO DisponibilitaOrarieSettimanali(giorno,apertura,orarioPrimoAppuntamento,orarioUltimoAppuntamento) " +
                 "VALUES ('"+ this.giorno +"',"+valoreApertura+",'"+this.orarioPrimoAppuntamento.format(TIME_FORMATTER)+"','"+this.orarioUltimoAppuntamento.format(TIME_FORMATTER)+"')";
         System.out.println(query);
@@ -55,7 +59,7 @@ public class DBDisponibilitaOrarieSettimanali {
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            esitoQuery = -1; //per segnalare l'errore di scrittura
+            esitoQuery = -1; // per segnalare l'errore di scrittura
         }
 
         return esitoQuery;
@@ -74,8 +78,8 @@ public class DBDisponibilitaOrarieSettimanali {
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
 
-    public DBDisponibilitaOrarieSettimanali() {
-    }
+
+    // Getter e Setter
 
     public String getGiorno() { return giorno; }
 

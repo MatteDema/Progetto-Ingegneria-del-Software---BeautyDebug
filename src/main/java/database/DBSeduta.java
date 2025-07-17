@@ -10,58 +10,11 @@ public class DBSeduta {
     private int idPrenotazione;
     private String usernameCliente;
 
+    // costruttore
     public DBSeduta() {
     }
 
-    public String getNoteCliente() {
-        return noteCliente;
-    }
-
-    public void setNoteCliente(String noteCliente) {
-        this.noteCliente = noteCliente;
-    }
-
-    public String getProdottiUtilizzati() {
-        return prodottiUtilizzati;
-    }
-
-    public void setProdottiUtilizzati(String prodottiUtilizzati) {
-        this.prodottiUtilizzati = prodottiUtilizzati;
-    }
-
-    public float getCostoEffettivo() {
-        return costoEffettivo;
-    }
-
-    public void setCostoEffettivo(float costoEffettivo) {
-        this.costoEffettivo = costoEffettivo;
-    }
-
-    public LocalDate getDataConsigliata() {
-        return dataConsigliata;
-    }
-
-    public void setDataConsigliata(LocalDate dataConsigliata) {
-        this.dataConsigliata = dataConsigliata;
-    }
-
-    public int getIdPrenotazione() {
-        return idPrenotazione;
-    }
-
-    public void setIdPrenotazione(int idPrenotazione) {
-        this.idPrenotazione = idPrenotazione;
-    }
-
-    public String getUsernameCliente() {
-        return usernameCliente;
-    }
-
-    public void setUsernameCliente(String usernameCliente) {
-        this.usernameCliente = usernameCliente;
-    }
-
-    /*
+      /*
     public void caricaDaDB(){
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
@@ -80,4 +33,45 @@ public class DBSeduta {
     public ArrayList<DBSeduta> caricaListaSedutePerDataDaDB(){
         non implementato perché non facente parte delle funzionalità che abbiamo implementato
     } */
+
+    // Getter e Setter
+
+    public String getNoteCliente() {
+        return noteCliente;
+    }
+    public void setNoteCliente(String noteCliente) {
+        this.noteCliente = noteCliente;
+    }
+    public String getProdottiUtilizzati() {
+        return prodottiUtilizzati;
+    }
+    public void setProdottiUtilizzati(String prodottiUtilizzati) {
+        this.prodottiUtilizzati = prodottiUtilizzati;
+    }
+    public float getCostoEffettivo() {
+        return costoEffettivo;
+    }
+    public void setCostoEffettivo(float costoEffettivo) {
+        this.costoEffettivo = costoEffettivo;
+    }
+    public LocalDate getDataConsigliata() {
+        return dataConsigliata;
+    }
+    public void setDataConsigliata(LocalDate dataConsigliata) {
+        this.dataConsigliata = dataConsigliata;
+    }
+    public int getIdPrenotazione() {
+        return idPrenotazione;
+    }
+    public void setIdPrenotazione(int idPrenotazione) {
+        this.idPrenotazione = idPrenotazione;
+    }
+    public String getUsernameCliente() {
+        return usernameCliente;
+    }
+    public void setUsernameCliente(String usernameCliente) {
+        this.usernameCliente = usernameCliente;
+    }
+
+
 }
