@@ -142,7 +142,19 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 new String[] {
                         "Fasce orarie libere"
                 }
-        ));
+        ) {
+            Class[] columnTypes = new Class[] {
+                    String.class
+            };
+            public Class getColumnClass(int columnIndex) {
+            return columnTypes[columnIndex];
+        }
+            boolean[] columnEditables = new boolean[] {
+                    false // rendo la colonna della tabella non editabile
+            };
+            public boolean isCellEditable(int row, int column) {
+            return columnEditables[column];
+        }});
         scrollPane.setViewportView(table_fasce_orarie_libere);
 
         // aggiungo il listener per gestire la selezione di una fascia oraria dalla tabella
