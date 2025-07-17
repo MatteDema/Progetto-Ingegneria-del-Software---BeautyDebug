@@ -81,6 +81,10 @@ public class FormPrenotazioneTrattamento extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // avvia la prenotazione di un trattamento
 
+                // svuoto la tabella, se contiene già delle righe risultato di visualizzazioni precedenti
+                DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
+                tableModel.setRowCount(0);
+
                 // prelevo dal campo testuale il nome del trattamento inserito
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
 
@@ -103,8 +107,6 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 } else {
                     // i controlli vanno a buon fine
                     // inserisce le fasce orarie libere nella JTable
-
-                    DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
 
                     // definisco un certo formato per le date da mostare nella tabella
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
