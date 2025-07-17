@@ -214,6 +214,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
         contentPane.add(btn_cerca_per_costo);
 
         textArea_esito_visualizzazione = new JTextArea();
+        textArea_esito_visualizzazione.setEditable(false); // area di testo non editabile
         textArea_esito_visualizzazione.setBounds(21, 383, 184, 70);
         contentPane.add(textArea_esito_visualizzazione);
         textArea_esito_visualizzazione.setForeground(Color.RED);
@@ -229,7 +230,19 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 new String[] {
                         "Nome trattamento", "Descrizione", "Costo", "Ripetizione periodica"
                 }
-        ));
+        ){
+            Class[] columnTypes = new Class[] {
+                    String.class, String.class, String.class, String.class
+            };
+            public Class getColumnClass(int columnIndex) {
+                return columnTypes[columnIndex];
+            }
+            boolean[] columnEditables = new boolean[] {
+                    false, false, false, false // rendo le colonne della tabella non editabili
+            };
+            public boolean isCellEditable(int row, int column) {
+                return columnEditables[column];
+        }});
         table_trattamenti.getColumnModel().getColumn(0).setPreferredWidth(130);
         table_trattamenti.getColumnModel().getColumn(1).setPreferredWidth(400);
         table_trattamenti.getColumnModel().getColumn(3).setPreferredWidth(110);

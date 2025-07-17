@@ -84,6 +84,10 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // svuoto la tabella, se contiene già delle righe risultato di visualizzazioni precedenti
                 DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
                 tableModel.setRowCount(0);
+                // svuoto le aree di testo contenenti eventuali messaggi relativi a prenotazioni precedenti
+                textArea_esito_selezione_fascia.setText("");
+                textArea_esito_prenotazione.setText("");
+
 
                 // prelevo dal campo testuale il nome del trattamento inserito
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
@@ -125,6 +129,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
         contentPane.add(btnCercaFasceOrarie);
 
         textArea_esito_ricerca_fasce = new JTextArea();
+        textArea_esito_ricerca_fasce.setEditable(false); // area di testo non editabile
         textArea_esito_ricerca_fasce.setBounds(245, 78, 206, 51);
         contentPane.add(textArea_esito_ricerca_fasce);
 
@@ -142,13 +147,28 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 new String[] {
                         "Fasce orarie libere"
                 }
-        ));
+        ) {
+            Class[] columnTypes = new Class[] {
+                    String.class
+            };
+            public Class getColumnClass(int columnIndex) {
+            return columnTypes[columnIndex];
+        }
+            boolean[] columnEditables = new boolean[] {
+                    false // rendo la colonna della tabella non editabile
+            };
+            public boolean isCellEditable(int row, int column) {
+            return columnEditables[column];
+        }});
         scrollPane.setViewportView(table_fasce_orarie_libere);
 
         // aggiungo il listener per gestire la selezione di una fascia oraria dalla tabella
         table_fasce_orarie_libere.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+
+                // mantengo disabilitato il bottone PRENOTATI (abilitandolo solo se clicco su una fascia oraria valida)
+                btn_prenotazione.setEnabled(false);
 
                 int selected_row  = table_fasce_orarie_libere.getSelectedRow(); // ritorna -1 se nessuna riga viene selezionata
 
@@ -182,6 +202,9 @@ public class FormPrenotazioneTrattamento extends JFrame {
                                 "\nSeleziona un'altra data per prenotare " + "\ncorrettamente il tuo trattamento!");
                         //System.out.println("Fascia oraria selezionata non valida! " +
                         //        "Seleziona un'altra data per prenotare correttamente il tuo trattamento!");
+
+                        // il bottone PRENOTATI resta disabilitato
+                        btn_prenotazione.setEnabled(false);
                     }
                 }
             }
@@ -189,6 +212,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
 
 
         textArea_esito_selezione_fascia = new JTextArea();
+        textArea_esito_selezione_fascia.setEditable(false); // area di testo non editabile
         textArea_esito_selezione_fascia.setBackground(new Color(255, 204, 255));
         textArea_esito_selezione_fascia.setForeground(new Color(255, 0, 0));
         textArea_esito_selezione_fascia.setBounds(220, 162, 250, 60);
@@ -220,22 +244,24 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // recupero il trattamento da prenotare dal campo testuale
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
 
-                boolean prenotazione_aggiunta = controller_prenotazioni.aggiungiNuovaPrenotazione(fascia_oraria, trattamento_da_prenotare, usernameCliente);
+                if(controller_prenotazioni.verificaFasciaOraria(fascia_oraria)) {
+                    boolean prenotazione_aggiunta = controller_prenotazioni.aggiungiNuovaPrenotazione(fascia_oraria, trattamento_da_prenotare, usernameCliente);
 
-                if(prenotazione_aggiunta) {
-                    textArea_esito_prenotazione.setText("Prenotazione completata con successo!");
-                    // System.out.println("Prenotazione completata con successo!");
+                    if (prenotazione_aggiunta) {
+                        textArea_esito_prenotazione.setText("Prenotazione completata con successo!");
+                        // System.out.println("Prenotazione completata con successo!");
 
-                    // dopo aver completato la prenotazione, la tabella delle fasce orarie viene svuotato
-                    DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
-                    tableModel.setRowCount(0);
+                        // dopo aver completato la prenotazione, la tabella delle fasce orarie viene svuotato
+                        DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
+                        tableModel.setRowCount(0);
 
-                    dispose();
-                } else {
-                    textArea_esito_prenotazione.setText("Prenotazione fallita!");
-                    System.out.println("Prenotazione fallita!");
+                        // a prenotazione effettuata, disabilito il pulsante PRENOTATI
+                        btn_prenotazione.setEnabled(false);
+                    } else {
+                        textArea_esito_prenotazione.setText("Prenotazione fallita!");
+                        System.out.println("Prenotazione fallita!");
+                    }
                 }
-
             }
         });
         btn_prenotazione.setForeground(new Color(128, 0, 255));
@@ -245,6 +271,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
         contentPane.add(btn_prenotazione);
 
         textArea_esito_prenotazione = new JTextArea();
+        textArea_esito_prenotazione.setEditable(false); // area di testo non editabile
         textArea_esito_prenotazione.setBounds(227, 332, 243, 22);
         textArea_esito_prenotazione.setForeground(new Color(128, 0, 255));
         contentPane.add(textArea_esito_prenotazione);
