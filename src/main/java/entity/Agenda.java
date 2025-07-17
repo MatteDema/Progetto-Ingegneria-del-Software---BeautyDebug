@@ -9,10 +9,9 @@ import java.util.ArrayList;
 public class Agenda {
 
     // classe Singleton: in tutta l'applicazione avremo una sola istanza di Agenda
-
     private static Agenda agenda; // attributo statico che rappresenta l'unica istanza della classe Agenda
     private static ArrayList<LocalDateTime> fasceOrarieLibere;
-    private static ArrayList<Prenotazione> slotOccupati;
+    private static ArrayList<Prenotazione> slotOccupati; //ruolo dell'associazione con Prenotazione
 
     // costruttore privato
     private Agenda() {
@@ -37,7 +36,6 @@ public class Agenda {
         // uso il DAO per recuperare l'elenco disponibilità orarie dal DB
         ArrayList<DBFasceOrarieLavorative> DBfasceOrarieComplessive = DBfasceOrarieLavorative.caricaElencoDisponibilitaDaDB();
 
-
         // costruisco la lista di LocalDateTime da restituire, iterando sulla lista di oggetti DBFasceOrarieLavorative
         ArrayList<LocalDateTime> fasceOrarieComplessive = new ArrayList<>();
 
@@ -55,7 +53,6 @@ public class Agenda {
         DBPrenotazione dbPrenotazione = new DBPrenotazione();
         // uso il DAO per recuperare la lista di prenotazioni attive dal DB
         ArrayList<DBPrenotazione> DBprenotazioniAttive = dbPrenotazione.caricaListaPrenotazioniAttiveDaDB();
-
 
         // costruisco la lista di oggetti Entity Prenotazione corrispondenti alle prenotazioni attive di livello DAO,
         // iterando sulla lista DBPrenotazioniAttive
@@ -82,15 +79,14 @@ public class Agenda {
         // recupera tutte le disponibilità orarie del centro estetico (fasce orarie prenotate e non)
         ArrayList<LocalDateTime> fasce_orarie_complessive = getFasceOrarieLavorative();
 
-        // recupera le fasce orarie occupate (legate alle prenotazioni attive)
-        // recupera le prenotazioni attive
+        // recupera le prenotazioni attive ed effettuate, da cui recupera poi le fasce orarie occupate
         caricaSlotOccupati();
 
         // inizializzo le fasce orarie libere con tutte le disponibilità orarie del centro estetico
         fasceOrarieLibere.clear();
         for (LocalDateTime localDateTime : fasce_orarie_complessive) {
             // aggiungo solo le date successive alla data corrente
-            if(localDateTime.isAfter( /*LocalDateTime.of(2025,7,22,23, 0)*/ LocalDateTime.now())) {
+            if(localDateTime.isAfter(LocalDateTime.now())) {
                 fasceOrarieLibere.add(localDateTime);
             }
         }

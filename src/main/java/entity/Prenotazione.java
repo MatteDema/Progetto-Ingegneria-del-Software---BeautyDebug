@@ -12,8 +12,8 @@ public class Prenotazione {
     private Cliente cliente;
 
     //Costruttore
-    public Prenotazione(/*int ID*/ LocalDateTime data, String tipologiaTrattamento, String usernameCliente) {
-        //this.ID = ID;
+    public Prenotazione(LocalDateTime data, String tipologiaTrattamento, String usernameCliente) {
+        //this.ID = ID; // l'ID viene aggiunto automaticamente nel database
         this.data = data;
         this.stato = "attivo";
         // recupero Trattamento e Cliente associati alla Prenotazione dal DB, usando i loro costruttori con chiave primaria
@@ -27,7 +27,7 @@ public class Prenotazione {
     }
 
     int scriviSuDB(){
-        DBPrenotazione dbPrenotazione = new DBPrenotazione(); //DAO
+        DBPrenotazione dbPrenotazione = new DBPrenotazione(); // DAO
         dbPrenotazione.setData(this.data);
         dbPrenotazione.setStato(this.stato);
         dbPrenotazione.setTipologiaTrattamento(this.tipologiaTrattamento.getNome());
@@ -38,7 +38,7 @@ public class Prenotazione {
     }
 
 
-    //Di seguito i metodi che non implementeremo:
+    // Di seguito i metodi che non implementeremo:
     /*
     boolean registraDatiSeduta(String noteCliente, String prodottiUtilizzati, float costoEffettivo, LocalDate dataConsigliata){}
     void annullaPrenotazione(int id){}

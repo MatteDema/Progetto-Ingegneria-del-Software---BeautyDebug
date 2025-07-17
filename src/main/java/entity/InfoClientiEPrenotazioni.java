@@ -40,15 +40,16 @@ public class InfoClientiEPrenotazioni {
     }
 
     public static boolean verificaFasciaOraria(LocalDateTime fasciaOraria) {
-
-        // ricava l'unica istanza della classe Singleton Agenda, e su di essa invoca il metodo per verificare la fascia oraria inserita
+        // ricava l'unica istanza della classe Singleton Agenda,
+        // e su di essa invoca il metodo per verificare la fascia oraria inserita
         Agenda agenda = Agenda.getAgenda();
 
         return agenda.verificaFasciaOraria(fasciaOraria);
     }
 
     public static boolean aggiungiNuovaPrenotazione(LocalDateTime fasciaOraria, String nomeTrattamento, String usernameCliente) {
-        // ricava l'unica istanza della classe Singleton Agenda, e su di essa invoca il metodo per aggiungere una prenotazione
+        // ricava l'unica istanza della classe Singleton Agenda,
+        // e su di essa invoca il metodo per aggiungere una prenotazione
         Agenda agenda = Agenda.getAgenda();
 
         return agenda.aggiungiNuovaPrenotazione(fasciaOraria, nomeTrattamento, usernameCliente);

@@ -18,14 +18,14 @@ public class Cliente {
     // private ArrayList<Prenotazione> prenotazioni;
     // private ArrayList<Seduta> storicoTrattamenti;
     // i precedenti attributi commentati sono legati ai ruoli delle associazioni di Cliente con Prenotazione e Seduta,
-    // ed sono commentati poiché non li useremo nei metodi implementati
+    // e sono commentati poiché non li useremo nei metodi implementati
 
     // costruttore con chiave primaria per la lettura dal database di un cliente
     Cliente(String username) {
         // chiama il costruttore con chiave primaria della classe DAO associata
         DBCliente dbCliente = new DBCliente(username);
 
-        // popolo gli attributi del Cliente a livello Entity
+        // valorizzo gli attributi del Cliente a livello Entity
         this.nome = dbCliente.getNome();
         this.cognome = dbCliente.getCognome();
         this.indirizzo = dbCliente.getIndirizzo();
@@ -35,6 +35,7 @@ public class Cliente {
         this.password = dbCliente.getPassword();
     }
 
+    // costruttore con parametri
     Cliente(String nome, String cognome, String indirizzo, String telefono, String email, String username, String password) {
         this.nome = nome;
         this.cognome = cognome;
@@ -79,10 +80,10 @@ public class Cliente {
         DBPrenotazione prenotazione = new DBPrenotazione();
 
         return prenotazione.esistePrenotazioneAttivaClientePerTrattamentoDaDB(nomeTrattamento, usernameCliente);
-
     }
 
 
+    // di seguito i metodi commentati che non implementiamo
     /*
     DTOCliente visualizzaDatiPersonali(){}
 
@@ -98,7 +99,6 @@ public class Cliente {
     */
 
     int scriviSuDB(String username){
-
         // creazione DAO DBCliente
         DBCliente dbCliente = new DBCliente();
 
@@ -143,6 +143,7 @@ public class Cliente {
         this.password = password;
     }
 
+    // i seguenti setter fanno riferimento ai due attributi commentati
     /*
     public void setPrenotazioni(ArrayList<Prenotazione> prenotazioni) {
         this.prenotazioni = prenotazioni;
@@ -181,6 +182,7 @@ public class Cliente {
         return password;
     }
 
+    // i seguenti getter fanno riferimento ai due attributi commentati
     /*
     public ArrayList<Prenotazione> getPrenotazioni() {
         return prenotazioni;

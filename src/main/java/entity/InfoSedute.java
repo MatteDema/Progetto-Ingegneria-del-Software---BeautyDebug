@@ -21,7 +21,7 @@ public class InfoSedute {
         return Seduta.inviaNotificaNuovoAppuntamento();
     }
 
-    public ArrayList<DTOSeduta> conultaStoricoTrattamenti(){
+    public ArrayList<DTOSeduta> consultaStoricoTrattamenti(){
         return Cliente.consultaStoricoTrattamenti();
     }
     */

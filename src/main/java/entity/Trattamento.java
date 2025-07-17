@@ -6,7 +6,7 @@ public class Trattamento {
     private String nome;
     private String descrizione;
     private int costo;
-    private String ripetizionePeriodica="non prevista";
+    private String ripetizionePeriodica;
 
     // Costruttore con chiave primaria per la lettura dal database di un trattamento
     Trattamento(String nome) {
@@ -31,7 +31,7 @@ public class Trattamento {
     }
 
     int scriviSuDB(String nome){
-        DBTrattamento dbTrattamento= new DBTrattamento(); //DAO
+        DBTrattamento dbTrattamento= new DBTrattamento(); // creazione DAO
 
         dbTrattamento.setNome(nome);
         dbTrattamento.setDescrizione(this.descrizione);

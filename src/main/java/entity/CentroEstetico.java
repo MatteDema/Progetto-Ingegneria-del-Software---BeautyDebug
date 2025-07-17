@@ -13,9 +13,10 @@ public class CentroEstetico {
     // private ArrayList<Trattamento> trattamentiDisponibili;
     // private ArrayList<GiornoSettimanale> disponibilitaOrarieSettimanali;
     // i precedenti attributi commentati sono legati ai ruoli delle associazioni di CentroEstetico con RegistroClienti, Trattamento e GiornoSettimanale,
-    // ed sono commentati poiché non li useremo nei metodi implementati
+    // e sono commentati poiché non li useremo nei metodi implementati
 
-    public static CentroEstetico getCentroEstetico(){ //metodo per ottenere l'istanza di CentroEstetico
+    // metodo statico (con visibilità di package) che nasconde la creazione dell'unica istanza di CentroEstetico
+    public static CentroEstetico getCentroEstetico(){
         if(centroEstetico == null){
             centroEstetico = new CentroEstetico();
         }
