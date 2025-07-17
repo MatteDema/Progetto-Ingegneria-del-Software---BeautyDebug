@@ -84,6 +84,10 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // svuoto la tabella, se contiene già delle righe risultato di visualizzazioni precedenti
                 DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
                 tableModel.setRowCount(0);
+                // svuoto le aree di testo contenenti eventuali messaggi relativi a prenotazioni precedenti
+                textArea_esito_selezione_fascia.setText("");
+                textArea_esito_prenotazione.setText("");
+
 
                 // prelevo dal campo testuale il nome del trattamento inserito
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
@@ -162,6 +166,9 @@ public class FormPrenotazioneTrattamento extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
+                // mantengo disabilitato il bottone PRENOTATI (abilitandolo solo se clicco su una fascia oraria valida)
+                btn_prenotazione.setEnabled(false);
+
                 int selected_row  = table_fasce_orarie_libere.getSelectedRow(); // ritorna -1 se nessuna riga viene selezionata
 
                 if(selected_row >= 0) {
@@ -194,6 +201,9 @@ public class FormPrenotazioneTrattamento extends JFrame {
                                 "\nSeleziona un'altra data per prenotare " + "\ncorrettamente il tuo trattamento!");
                         //System.out.println("Fascia oraria selezionata non valida! " +
                         //        "Seleziona un'altra data per prenotare correttamente il tuo trattamento!");
+
+                        // il bottone PRENOTATI resta disabilitato
+                        btn_prenotazione.setEnabled(false);
                     }
                 }
             }
@@ -232,22 +242,24 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // recupero il trattamento da prenotare dal campo testuale
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
 
-                boolean prenotazione_aggiunta = controller_prenotazioni.aggiungiNuovaPrenotazione(fascia_oraria, trattamento_da_prenotare, usernameCliente);
+                if(controller_prenotazioni.verificaFasciaOraria(fascia_oraria)) {
+                    boolean prenotazione_aggiunta = controller_prenotazioni.aggiungiNuovaPrenotazione(fascia_oraria, trattamento_da_prenotare, usernameCliente);
 
-                if(prenotazione_aggiunta) {
-                    textArea_esito_prenotazione.setText("Prenotazione completata con successo!");
-                    // System.out.println("Prenotazione completata con successo!");
+                    if (prenotazione_aggiunta) {
+                        textArea_esito_prenotazione.setText("Prenotazione completata con successo!");
+                        // System.out.println("Prenotazione completata con successo!");
 
-                    // dopo aver completato la prenotazione, la tabella delle fasce orarie viene svuotato
-                    DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
-                    tableModel.setRowCount(0);
+                        // dopo aver completato la prenotazione, la tabella delle fasce orarie viene svuotato
+                        DefaultTableModel tableModel = (DefaultTableModel) table_fasce_orarie_libere.getModel();
+                        tableModel.setRowCount(0);
 
-                    dispose();
-                } else {
-                    textArea_esito_prenotazione.setText("Prenotazione fallita!");
-                    System.out.println("Prenotazione fallita!");
+                        // a prenotazione effettuata, disabilito il pulsante PRENOTATI
+                        btn_prenotazione.setEnabled(false);
+                    } else {
+                        textArea_esito_prenotazione.setText("Prenotazione fallita!");
+                        System.out.println("Prenotazione fallita!");
+                    }
                 }
-
             }
         });
         btn_prenotazione.setForeground(new Color(128, 0, 255));
