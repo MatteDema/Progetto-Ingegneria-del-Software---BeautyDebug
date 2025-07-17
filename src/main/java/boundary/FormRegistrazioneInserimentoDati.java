@@ -50,8 +50,6 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
     }
      */
 
-
-
     public FormRegistrazioneInserimentoDati() {
         setTitle("Registrazione Utente - Inserimento dati personali");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

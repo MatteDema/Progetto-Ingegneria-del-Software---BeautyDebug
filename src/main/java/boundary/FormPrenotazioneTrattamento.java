@@ -22,13 +22,13 @@ public class FormPrenotazioneTrattamento extends JFrame {
     private JPanel contentPane;
     private JTextField textField_nome_trattamento;
     private JLabel lbl_inserimento_nome_trattamento;
-    private  JButton btnCercaFasceOrarie;
+    private JButton btnCercaFasceOrarie;
     private JTextArea textArea_esito_ricerca_fasce;
     private JScrollPane scrollPane;
     private JTable table_fasce_orarie_libere;
     private JTextArea textArea_esito_selezione_fascia;
     private JButton btn_prenotazione;
-    private  JTextArea textArea_esito_prenotazione;
+    private JTextArea textArea_esito_prenotazione;
 
     /**
      * Launch the application.

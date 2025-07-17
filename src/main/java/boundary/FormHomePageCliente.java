@@ -17,10 +17,10 @@ public class FormHomePageCliente extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private  JLabel lbl_presentazione_home;
+    private JLabel lbl_presentazione_home;
     private JLabel lbl_immagine_centro_estetico;
     private JLabel lbl_scelta_operazione;
-    private  JButton btn_prenota_trattamento;
+    private JButton btn_prenota_trattamento;
     private JButton btn_visualizza_trattamenti;
 
 

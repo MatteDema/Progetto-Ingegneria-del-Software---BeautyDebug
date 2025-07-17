@@ -17,10 +17,10 @@ public class FormHomePageAmministratore extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private  JLabel lbl_presentazione_home;
+    private JLabel lbl_presentazione_home;
     private JLabel lbl_immagine_centro_estetico;
     private JLabel lbl_scelta_operazione;
-    private  JButton btn_prenota_trattamento;
+    private JButton btn_aggiungi_trattamento;
     private JButton btn_visualizza_trattamenti;
 
 
@@ -83,8 +83,8 @@ public class FormHomePageAmministratore extends JFrame {
         lbl_scelta_operazione.setBounds(280, 179, 220, 31);
         contentPane.add(lbl_scelta_operazione);
 
-        btn_prenota_trattamento = new JButton("Aggiungi un nuovo trattamento");
-        btn_prenota_trattamento.addMouseListener(new MouseAdapter() {
+        btn_aggiungi_trattamento = new JButton("Aggiungi un nuovo trattamento");
+        btn_aggiungi_trattamento.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // istanzio e rendo visibile la form di aggiunta di un trattamento
@@ -92,11 +92,11 @@ public class FormHomePageAmministratore extends JFrame {
                 form_aggiunta_trattamento.setVisible(true);
             }
         });
-        btn_prenota_trattamento.setForeground(new Color(255, 0, 0));
-        btn_prenota_trattamento.setBackground(new Color(255, 255, 128));
-        btn_prenota_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 16));
-        btn_prenota_trattamento.setBounds(210, 274, 360, 44);
-        contentPane.add(btn_prenota_trattamento);
+        btn_aggiungi_trattamento.setForeground(new Color(255, 0, 0));
+        btn_aggiungi_trattamento.setBackground(new Color(255, 255, 128));
+        btn_aggiungi_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 16));
+        btn_aggiungi_trattamento.setBounds(210, 274, 360, 44);
+        contentPane.add(btn_aggiungi_trattamento);
 
         btn_visualizza_trattamenti = new JButton("Visualizza i trattamenti");
         btn_visualizza_trattamenti.addMouseListener(new MouseAdapter() {

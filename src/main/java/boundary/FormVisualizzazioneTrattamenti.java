@@ -21,10 +21,10 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
     private JTextField textField_costo;
     private JLabel lbl_scelta_visualizzazione;
     private JButton btn_visualizza_tutti_trattamenti;
-    private  JButton btn_cerca_trattamento_per_nome;
+    private JButton btn_cerca_trattamento_per_nome;
     private JButton btn_cerca_per_nome;
     private JButton btn_cerca_trattamenti_per_costo;
-    private  JButton btn_cerca_per_costo;
+    private JButton btn_cerca_per_costo;
     private JTextArea textArea_esito_visualizzazione;
     private JScrollPane scrollPane;
     private JTable table_trattamenti;

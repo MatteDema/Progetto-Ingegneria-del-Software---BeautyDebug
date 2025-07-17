@@ -173,7 +173,5 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
         System.out.println("Nome ricevuto: " + email);
         System.out.println("Nome ricevuto: " + indirizzo);
         System.out.println("Nome ricevuto: " + telefono);
-
     }
-
 }

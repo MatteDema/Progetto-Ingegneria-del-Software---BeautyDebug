@@ -144,7 +144,7 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
                     return;
                 }
 
-                if (!validazionieRipetizionePeriodica(ripetizionePeriodica)){
+                if (!validaRipetizionePeriodica(ripetizionePeriodica)){
                     textField_ripetizione_periodica.requestFocusInWindow();
                     return;
                 }
@@ -225,7 +225,7 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         return true;
     }
 
-    private boolean validazionieRipetizionePeriodica(String ripetizione){
+    private boolean validaRipetizionePeriodica(String ripetizione){
         if (ripetizione.length() >50) {
             setErrore("La ripetizione periodica è troppo lunga,\ndiminuire il numero di caratteri!");
             return false;
