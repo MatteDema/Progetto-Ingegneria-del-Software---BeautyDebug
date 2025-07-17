@@ -150,7 +150,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
             return columnTypes[columnIndex];
         }
             boolean[] columnEditables = new boolean[] {
-                    false
+                    false // rendo la colonna della tabella non editabile
             };
             public boolean isCellEditable(int row, int column) {
             return columnEditables[column];
