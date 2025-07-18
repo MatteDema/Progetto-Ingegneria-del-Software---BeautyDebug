@@ -1,12 +1,10 @@
-import database.DBCliente;
 import entity.InfoClientiEPrenotazioni;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CentroEsteticoTest {
+public class TestRegistrazioneCliente {
 
     // testiamo con JUnit alcune funzionalità del nostro sistema
 
