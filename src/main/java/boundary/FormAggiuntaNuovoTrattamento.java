@@ -73,7 +73,7 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         lbl_inserimento_dati_trattamento = new JLabel("Inserisci i dettagli del trattamento che vuoi aggiungere");
         lbl_inserimento_dati_trattamento.setForeground(new Color(90, 80, 140));
         lbl_inserimento_dati_trattamento.setFont(new Font("Playfair Display", Font.BOLD, 15));
-        lbl_inserimento_dati_trattamento.setBounds(50, 10, 390, 43);
+        lbl_inserimento_dati_trattamento.setBounds(50, 10, 410, 43);
         contentPane.add(lbl_inserimento_dati_trattamento);
 
         lbl_nome = new JLabel("Nome");
