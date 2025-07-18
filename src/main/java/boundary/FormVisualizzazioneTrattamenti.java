@@ -90,7 +90,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
 
                 // Avvio la visualizzazione di tutti i trattamenti
                 visualizza_trattamenti(lista_trattamenti_dto);
-
+                textArea_esito_visualizzazione.setForeground(new Color(39, 174, 96));
                 textArea_esito_visualizzazione.setText("Trattamenti visualizzati " + "\ncon successo!");
             }
         });
@@ -141,8 +141,10 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 if(lista_trattamenti_dto != null) {
                     // Avvio la visualizzazione dei trattamenti nella lista (in questo caso, un solo trattamento)
                     visualizza_trattamenti(lista_trattamenti_dto);
+                    textArea_esito_visualizzazione.setForeground(new Color(39, 174, 96));
                     textArea_esito_visualizzazione.setText("Trattamento visualizzato " + "\ncon successo!");
                 } else {
+                    textArea_esito_visualizzazione.setForeground(new Color(192, 57, 43));
                     textArea_esito_visualizzazione.setText("Nessun trattamento offerto ha " + "\nil nome che hai inserito!");
                     System.out.println("Nessun trattamento offerto ha il nome che hai inserito!");
                 }
@@ -169,6 +171,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 btn_cerca_per_costo.setEnabled(true);
 
                 // mostra un messaggio che spiega la modalità di visualizzazione per costo
+                textArea_esito_visualizzazione.setForeground(new Color(50, 50, 50));
                 textArea_esito_visualizzazione.setText("Verranno mostrati i trattamenti con " +
                         "\ncosto inferiore o uguale a quello\ninserito.");
             }
@@ -208,9 +211,10 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                         if (!lista_trattamenti_dto.isEmpty()) {
                             // Avvio la visualizzazione dei trattamenti nella lista
                             visualizza_trattamenti(lista_trattamenti_dto);
-
+                            textArea_esito_visualizzazione.setForeground(new Color(39, 174, 96));
                             textArea_esito_visualizzazione.setText("Trattamenti visualizzati " + "\ncon successo!");
                         } else {
+                            textArea_esito_visualizzazione.setForeground(new Color(192, 57, 43));
                             textArea_esito_visualizzazione.setText("Nessun trattamento offerto " + "\nha un costo inferiore o uguale " +
                                     "\na quello che hai inserito!");
                             System.out.println("Nessun trattamento offerto ha un costo inferiore o uguale " +
@@ -223,6 +227,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                         textField_costo.setEnabled(false);
                         btn_cerca_per_costo.setEnabled(false);
                     } catch(NumberFormatException exception) {
+                        textArea_esito_visualizzazione.setForeground(new Color(192, 57, 43));
                         System.out.println("Il costo che inserisci deve essere un numero intero!");
                         textArea_esito_visualizzazione.setText("Il costo che inserisci deve essere " + "\nun numero intero!");
                     }
