@@ -71,13 +71,14 @@ public class FormPrenotazioneTrattamento extends JFrame {
 
 
         lbl_inserimento_nome_trattamento = new JLabel("Inserisci il nome del trattamento che intendi prenotare:");
-        lbl_inserimento_nome_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 13));
+        lbl_inserimento_nome_trattamento.setFont(new Font("Playfair Display", Font.BOLD, 13));
+        lbl_inserimento_nome_trattamento.setForeground(new Color(90, 80, 140));
         lbl_inserimento_nome_trattamento.setBackground(new Color(255, 255, 255));
-        lbl_inserimento_nome_trattamento.setBounds(76, 10, 375, 40);
+        lbl_inserimento_nome_trattamento.setBounds(72, 10, 375, 40);
         contentPane.add(lbl_inserimento_nome_trattamento);
 
         textField_nome_trattamento = new JTextField();
-        textField_nome_trattamento.setBounds(152, 43, 154, 25);
+        textField_nome_trattamento.setBounds(10, 46, 250, 25);
         contentPane.add(textField_nome_trattamento);
         textField_nome_trattamento.setColumns(10);
 
@@ -98,8 +99,8 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // prelevo dal campo testuale il nome del trattamento inserito
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
 
+                textArea_esito_ricerca_fasce.setForeground(new Color(192, 57, 43));
                 if(trattamento_da_prenotare.isEmpty()){
-                    textArea_esito_ricerca_fasce.setForeground(new Color(192, 57, 43));
                     textArea_esito_ricerca_fasce.setText("Compilare il campo del trattamento!");
                     return;
                 }
@@ -115,10 +116,10 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 // - se il cliente ha già una prenotazione attiva per la tipologia di trattamento specificata, restituisce una lista vuota
 
                 if(fasce_orarie_libere == null) {
-                    textArea_esito_ricerca_fasce.setText("ERRORE: Il trattamento inserito " + "\nnon è offerto dal nostro centro estetico!");
+                    textArea_esito_ricerca_fasce.setText("ERRORE: Il trattamento inserito non è offerto dal nostro centro estetico!");
                     System.out.println("ERRORE: Il trattamento inserito non è offerto dal nostro centro estetico!");
                 } else if(fasce_orarie_libere.isEmpty()) {
-                    textArea_esito_ricerca_fasce.setText("ERRORE: Hai già una prenotazione " + "\nattiva per questo trattamento!");
+                    textArea_esito_ricerca_fasce.setText("ERRORE: Hai già una prenotazione attiva per questo trattamento!");
                     System.out.println("ERRORE: Hai già una prenotazione attiva per questo trattamento!");
                 } else {
                     // i controlli vanno a buon fine
@@ -132,17 +133,21 @@ public class FormPrenotazioneTrattamento extends JFrame {
                         tableModel.addRow(new String[]{fascia_oraria.format(formatter)});
                     }
 
-                    textArea_esito_ricerca_fasce.setText("Seleziona dalla lista la fascia oraria " + "\nper la quale vuoi prenotarti.");
+                    textArea_esito_ricerca_fasce.setForeground(new Color(39, 174, 96));
+                    textArea_esito_ricerca_fasce.setText("Seleziona dalla lista la fascia oraria per la quale vuoi prenotarti.");
                     System.out.println("Seleziona dalla lista la fascia oraria per la quale vuoi prenotarti.");
                 }
             }
         });
-        btnCercaFasceOrarie.setBounds(25, 78, 210, 25);
+        btnCercaFasceOrarie.setBounds(270, 46, 200, 25);
+        btnCercaFasceOrarie.setBackground(new Color(90, 80, 140));
+        btnCercaFasceOrarie.setForeground(Color.white);
         contentPane.add(btnCercaFasceOrarie);
 
         textArea_esito_ricerca_fasce = new JTextArea();
         textArea_esito_ricerca_fasce.setEditable(false); // area di testo non editabile
-        textArea_esito_ricerca_fasce.setBounds(245, 78, 206, 51);
+        textArea_esito_ricerca_fasce.setBackground(new Color(239,239,238));
+        textArea_esito_ricerca_fasce.setBounds(10, 80, 470, 25);
         contentPane.add(textArea_esito_ricerca_fasce);
 
 
@@ -206,6 +211,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
                     boolean fascia_oraria_valida = controller_prenotazioni.verificaFasciaOraria(fascia_oraria);
 
                     if(fascia_oraria_valida) {
+                        textArea_esito_selezione_fascia.setForeground(new Color(39, 174, 96));
                         textArea_esito_selezione_fascia.setText("Fascia oraria selezionata valida! " + "\nClicca su PRENOTATI!");
                         // abilito il bottone PRENOTATI
                         btn_prenotazione.setEnabled(true);
@@ -225,9 +231,9 @@ public class FormPrenotazioneTrattamento extends JFrame {
 
         textArea_esito_selezione_fascia = new JTextArea();
         textArea_esito_selezione_fascia.setEditable(false); // area di testo non editabile
-        textArea_esito_selezione_fascia.setBackground(new Color(255, 204, 255));
-        textArea_esito_selezione_fascia.setForeground(new Color(255, 0, 0));
-        textArea_esito_selezione_fascia.setBounds(220, 162, 250, 60);
+        textArea_esito_selezione_fascia.setBackground(new Color(239,239,238));
+        textArea_esito_selezione_fascia.setForeground(new Color(192, 57, 43));
+        textArea_esito_selezione_fascia.setBounds(230, 140, 250, 75);
         contentPane.add(textArea_esito_selezione_fascia);
 
         btn_prenotazione = new JButton("PRENOTATI");
@@ -270,22 +276,25 @@ public class FormPrenotazioneTrattamento extends JFrame {
                         // a prenotazione effettuata, disabilito il pulsante PRENOTATI
                         btn_prenotazione.setEnabled(false);
                     } else {
+                        textArea_esito_prenotazione.setForeground(new Color(192, 57, 43));
                         textArea_esito_prenotazione.setText("Prenotazione fallita!");
                         System.out.println("Prenotazione fallita!");
                     }
                 }
             }
         });
-        btn_prenotazione.setForeground(new Color(128, 0, 255));
-        btn_prenotazione.setFont(new Font("Cooper Black", Font.PLAIN, 15));
-        btn_prenotazione.setBounds(278, 287, 152, 35);
+        btn_prenotazione.setForeground(Color.white);
+        btn_prenotazione.setBackground(new Color(216, 187, 117));
+        btn_prenotazione.setFont(new Font("Georgia", Font.BOLD, 15));
+        btn_prenotazione.setBounds(268, 287, 152, 35);
         btn_prenotazione.setEnabled(false); // il bottone PRENOTATI è inizialmente disabilitato
         contentPane.add(btn_prenotazione);
 
         textArea_esito_prenotazione = new JTextArea();
         textArea_esito_prenotazione.setEditable(false); // area di testo non editabile
         textArea_esito_prenotazione.setBounds(227, 332, 243, 22);
-        textArea_esito_prenotazione.setForeground(new Color(128, 0, 255));
+        textArea_esito_prenotazione.setForeground(new Color(39, 174, 96));
+        textArea_esito_prenotazione.setBackground(new Color(239,239,238));
         contentPane.add(textArea_esito_prenotazione);
     }
 }
