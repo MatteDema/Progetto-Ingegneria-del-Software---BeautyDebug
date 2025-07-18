@@ -81,7 +81,7 @@ public class FormHomePageAmministratore extends JFrame {
         lbl_scelta_operazione.setForeground(new Color(70,70,70));
         lbl_scelta_operazione.setHorizontalAlignment(SwingConstants.CENTER);
         lbl_scelta_operazione.setFont(new Font("Playfair Display", Font.PLAIN, 15));
-        lbl_scelta_operazione.setBounds(280, 179, 220, 31);
+        lbl_scelta_operazione.setBounds(272, 179, 250, 31);
         contentPane.add(lbl_scelta_operazione);
 
         btn_aggiungi_trattamento = new JButton("Aggiungi un nuovo trattamento");
