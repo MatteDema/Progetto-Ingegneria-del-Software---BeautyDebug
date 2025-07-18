@@ -46,7 +46,7 @@ public class FormHomePageAmministratore extends JFrame {
      * Create the frame.
      */
     public FormHomePageAmministratore() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 780, 400);
 
         setTitle("Home amministratore");

@@ -99,7 +99,7 @@ public class FormPrenotazioneTrattamento extends JFrame {
                 String trattamento_da_prenotare = textField_nome_trattamento.getText();
 
                 if(trattamento_da_prenotare.isEmpty()){
-                    textArea_esito_ricerca_fasce.setForeground(Color.RED);
+                    textArea_esito_ricerca_fasce.setForeground(new Color(192, 57, 43));
                     textArea_esito_ricerca_fasce.setText("Compilare il campo del trattamento!");
                     return;
                 }

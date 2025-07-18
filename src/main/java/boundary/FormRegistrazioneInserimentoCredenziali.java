@@ -105,7 +105,18 @@ public class FormRegistrazioneInserimentoCredenziali extends JFrame {
                             "Le credenziali sono state create con successo. L'utente ora è registrato nel sistema.",
                             "Messaggio di conferma", JOptionPane.INFORMATION_MESSAGE);
 
+                    // All'atto della creazione dell'utente all'interno del DB viene effettuato
+                    // il dispose della frame precedente che viene chiusa.
                     finestraPrecedente.dispose();
+
+                    // Successivamente si effettua il dispose su questa finestra per rilasciare le risorse
+                    // e chiudere la form
+                    dispose();
+
+                    // Mostro all'utente appena registrato la homepage per effettuare l'accesso se vuole
+                    FormHomePage homePage = new FormHomePage();
+                    homePage.setVisible(true);
+
                 } else {
                     JOptionPane.showConfirmDialog(this,
                             "Username già presente nel sistema! Inserisci un altro username.", "Messaggio di errore",

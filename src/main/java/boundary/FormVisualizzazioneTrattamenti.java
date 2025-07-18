@@ -318,7 +318,7 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
     }
 
     private void setErrore(String messaggio) {
-        textArea_esito_visualizzazione.setForeground(Color.RED);
+        textArea_esito_visualizzazione.setForeground(new Color(192, 57, 43));
         textArea_esito_visualizzazione.setText("Attenzione: " + messaggio);
     }
 }

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.Normalizer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -136,6 +137,7 @@ public class FormHomePage extends JFrame {
                 // in questo modo la nostra applicazione funzionerà, poiché non abbiamo implementato la funzionalità di accesso
                 FormHomePageCliente finestra_cliente= new FormHomePageCliente("pippozzo");
                 finestra_cliente.setVisible(true);
+                dispose(); // Chiude la finestra attuale, quella della homepage
 
                 // logica di autenticazione utente
                 /*
@@ -171,6 +173,7 @@ public class FormHomePage extends JFrame {
 
                 FormHomePageAmministratore finestra_amministratore = new FormHomePageAmministratore();
                 finestra_amministratore.setVisible(true);
+                dispose(); // Chiude la finestra attuale, quella della homepage
 
                 // logica di autenticazione amministratore
                 /*
@@ -202,6 +205,7 @@ public class FormHomePage extends JFrame {
                 System.out.println("Registrazione cliccata");
                 FormRegistrazioneInserimentoDati finestra = new FormRegistrazioneInserimentoDati();
                 finestra.setVisible(true);
+                dispose(); // Chiude la finestra attuale, quella della homepage
             }
         });
         registrazionePanel.add(lblRegistratiQui);

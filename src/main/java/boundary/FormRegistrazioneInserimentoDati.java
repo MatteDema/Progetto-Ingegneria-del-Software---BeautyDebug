@@ -52,7 +52,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
 
     public FormRegistrazioneInserimentoDati() {
         setTitle("Registrazione Utente - Inserimento dati personali");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 650, 420);
         setLocationRelativeTo(null);
 
@@ -333,7 +333,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
      * impostando il testo in rosso.
      */
     private void setErrore(String messaggio) {
-        messaggiErroreLabel.setForeground(Color.RED);
+        messaggiErroreLabel.setForeground(new Color(192, 57, 43));
         messaggiErroreLabel.setText("Attenzione: " + messaggio);
     }
 
