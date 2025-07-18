@@ -118,6 +118,6 @@ public class TestMainDB {
 //        boolean username_presente=cliente.usernamePresenteInDB("ciaAosonoio");
 //        System.out.println(username_presente);
 
-        //fine classi DAO EHEH
+        //fine classi DAO
     }
 }

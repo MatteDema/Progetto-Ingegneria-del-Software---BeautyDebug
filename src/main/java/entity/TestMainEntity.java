@@ -12,8 +12,8 @@ public class TestMainEntity {
 
         // TEST CLASSE ENTITY TRATTAMENTO
         //TEST 1 SCRIVI SU DB
-//        Trattamento trattamento = new Trattamento("banane", "banane in testa", 5, "");
-//        Trattamento trattamento2 = new Trattamento("pesche", "pesche in testa", 10, "Mensile");
+//        Trattamento trattamento = new Trattamento("banane", "banane", 5, "");
+//        Trattamento trattamento2 = new Trattamento("pesche", "pesche", 10, "Mensile");
 //
 //        System.out.println(trattamento.scriviSuDB("banane"));
 //        System.out.println(trattamento2.scriviSuDB("pesche"));
@@ -23,7 +23,7 @@ public class TestMainEntity {
 
         //TEST CLASSE ENTITY REGISTRO CLIENTI
         //TEST 1 INSERISCI CLIENTE
-//        boolean cliente_aggiunto = RegistroClienti.getRegistroClienti().inserisciCliente("aaaaa","aaaaa","aaaaaa 3","1231231231","alessandro@gmail.com", "daje","DAIperfavore12#");
+//        boolean cliente_aggiunto = RegistroClienti.getRegistroClienti().inserisciCliente("aaaaa","aaaaa","aaaaaa 3","1231231231","alessandro@gmail.com", "daje","DAIfavore12#");
 //        System.out.println(cliente_aggiunto);
 
         //TEST 2 VERFICA SE UTENTE GIA REGISTRATO
