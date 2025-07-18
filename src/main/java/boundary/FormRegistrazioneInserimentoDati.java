@@ -333,7 +333,7 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
      * impostando il testo in rosso.
      */
     private void setErrore(String messaggio) {
-        messaggiErroreLabel.setForeground(Color.RED);
+        messaggiErroreLabel.setForeground(new Color(192, 57, 43));
         messaggiErroreLabel.setText("Attenzione: " + messaggio);
     }
 
