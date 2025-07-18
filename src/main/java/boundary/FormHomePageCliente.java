@@ -60,9 +60,9 @@ public class FormHomePageCliente extends JFrame {
         contentPane.setLayout(null);
 
         lbl_presentazione_home = new JLabel("Benvenuto " + usernameCliente +" nel nostro centro estetico Beauty Debug!");
-        lbl_presentazione_home.setForeground(new Color(128, 128, 255));
-        lbl_presentazione_home.setFont(new Font("Cooper Black", Font.PLAIN, 20));
-        lbl_presentazione_home.setBounds(57, 121, 666, 61);
+        lbl_presentazione_home.setForeground(new Color(90, 80, 140));
+        lbl_presentazione_home.setFont(new Font("Georgia", Font.BOLD, 20));
+        lbl_presentazione_home.setBounds(64, 121, 666, 61);
         contentPane.add(lbl_presentazione_home);
 
         // imposto il logo del centro estetico come icona della form
@@ -78,8 +78,9 @@ public class FormHomePageCliente extends JFrame {
 
 
         lbl_scelta_operazione = new JLabel("Scegli l'operazione da effettuare!");
+        lbl_scelta_operazione.setForeground(new Color(70,70,70));
         lbl_scelta_operazione.setHorizontalAlignment(SwingConstants.CENTER);
-        lbl_scelta_operazione.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lbl_scelta_operazione.setFont(new Font("Playfair Display", Font.PLAIN, 15));
         lbl_scelta_operazione.setBounds(280, 179, 220, 31);
         contentPane.add(lbl_scelta_operazione);
 
@@ -92,9 +93,9 @@ public class FormHomePageCliente extends JFrame {
                 form_prenotazione_trattamento.setVisible(true);
             }
         });
-        btn_prenota_trattamento.setForeground(new Color(255, 0, 0));
-        btn_prenota_trattamento.setBackground(new Color(255, 255, 128));
-        btn_prenota_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 16));
+        btn_prenota_trattamento.setForeground(new Color(255, 255, 255));
+        btn_prenota_trattamento.setBackground(new Color(216, 187, 117));
+        btn_prenota_trattamento.setFont(new Font("Georgia", Font.PLAIN, 16));
         btn_prenota_trattamento.setBounds(210, 274, 360, 44);
         contentPane.add(btn_prenota_trattamento);
 
@@ -107,9 +108,9 @@ public class FormHomePageCliente extends JFrame {
                 form_visualizzazione_trattamenti.setVisible(true);
             }
         });
-        btn_visualizza_trattamenti.setBackground(new Color(255, 255, 128));
-        btn_visualizza_trattamenti.setForeground(new Color(255, 0, 0));
-        btn_visualizza_trattamenti.setFont(new Font("Cooper Black", Font.PLAIN, 16));
+        btn_visualizza_trattamenti.setBackground(new Color(216, 187, 117));
+        btn_visualizza_trattamenti.setForeground(new Color(255, 255, 255));
+        btn_visualizza_trattamenti.setFont(new Font("Georgia", Font.PLAIN, 16));
         btn_visualizza_trattamenti.setBounds(210, 220, 360, 44);
         contentPane.add(btn_visualizza_trattamenti);
     }

@@ -71,13 +71,14 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         setIconImage(appIcon.getImage());
 
         lbl_inserimento_dati_trattamento = new JLabel("Inserisci i dettagli del trattamento che vuoi aggiungere");
-        lbl_inserimento_dati_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 13));
-        lbl_inserimento_dati_trattamento.setBounds(55, 10, 386, 43);
+        lbl_inserimento_dati_trattamento.setForeground(new Color(90, 80, 140));
+        lbl_inserimento_dati_trattamento.setFont(new Font("Playfair Display", Font.BOLD, 15));
+        lbl_inserimento_dati_trattamento.setBounds(50, 10, 390, 43);
         contentPane.add(lbl_inserimento_dati_trattamento);
 
         lbl_nome = new JLabel("Nome");
-        lbl_nome.setForeground(new Color(255, 0, 0));
-        lbl_nome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lbl_nome.setForeground(new Color(50, 50, 50));
+        lbl_nome.setFont(new Font("Playfair Display", Font.PLAIN, 12));
         lbl_nome.setBounds(73, 63, 34, 19);
         contentPane.add(lbl_nome);
 
@@ -87,8 +88,8 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         textField_nome.setColumns(10);
 
         lbl_descrizione = new JLabel("Descrizione");
-        lbl_descrizione.setForeground(new Color(255, 0, 0));
-        lbl_descrizione.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lbl_descrizione.setForeground(new Color(50, 50, 50));
+        lbl_descrizione.setFont(new Font("Playfair Display", Font.PLAIN, 12));
         lbl_descrizione.setBounds(55, 102, 76, 19);
         contentPane.add(lbl_descrizione);
 
@@ -98,8 +99,8 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         textField_descrizione.setColumns(10);
 
         lbl_costo = new JLabel("Costo");
-        lbl_costo.setForeground(new Color(255, 0, 0));
-        lbl_costo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lbl_costo.setForeground(new Color(50, 50, 50));
+        lbl_costo.setFont(new Font("Playfair Display", Font.PLAIN, 12));
         lbl_costo.setBounds(73, 145, 45, 13);
         contentPane.add(lbl_costo);
 
@@ -109,8 +110,8 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
         textField_costo.setColumns(10);
 
         lbl_ripetizione_periodica = new JLabel("Ripetizione periodica");
-        lbl_ripetizione_periodica.setForeground(new Color(255, 0, 0));
-        lbl_ripetizione_periodica.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lbl_ripetizione_periodica.setForeground(new Color(50, 50, 50));
+        lbl_ripetizione_periodica.setFont(new Font("Playfair Display", Font.PLAIN, 12));
         lbl_ripetizione_periodica.setBounds(24, 181, 117, 19);
         contentPane.add(lbl_ripetizione_periodica);
 
@@ -169,13 +170,15 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
 
             }
         });
-        btn_aggiunta_trattamento.setForeground(new Color(128, 0, 255));
-        btn_aggiunta_trattamento.setFont(new Font("Cooper Black", Font.PLAIN, 17));
+        btn_aggiunta_trattamento.setForeground(new Color(255, 255, 255));
+        btn_aggiunta_trattamento.setBackground(new Color(216, 187, 117));
+        btn_aggiunta_trattamento.setFont(new Font("Georgia", Font.PLAIN, 15));
         btn_aggiunta_trattamento.setBounds(179, 234, 117, 21);
         contentPane.add(btn_aggiunta_trattamento);
 
         textArea_esito_aggiunta_trattamento = new JTextArea();
-        textArea_esito_aggiunta_trattamento.setForeground(new Color(128, 0, 255));
+        textArea_esito_aggiunta_trattamento.setForeground(new Color(192, 57, 43));
+        textArea_esito_aggiunta_trattamento.setBackground(new Color(239,239,238));
         textArea_esito_aggiunta_trattamento.setBounds(89, 271, 350, 35);
         contentPane.add(textArea_esito_aggiunta_trattamento);
         textArea_esito_aggiunta_trattamento.setEditable(false);
@@ -234,7 +237,7 @@ public class FormAggiuntaNuovoTrattamento extends JFrame {
     }
 
     private void setErrore(String messaggio) {
-        textArea_esito_aggiunta_trattamento.setForeground(Color.RED);
+        textArea_esito_aggiunta_trattamento.setForeground(new Color(192, 57, 43));
         textArea_esito_aggiunta_trattamento.setText("Attenzione: " + messaggio);
     }
 

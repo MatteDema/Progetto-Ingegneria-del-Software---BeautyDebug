@@ -70,9 +70,9 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
         setIconImage(appIcon.getImage());
 
         lbl_scelta_visualizzazione = new JLabel("Scegli il tipo di visualizzazione");
-        lbl_scelta_visualizzazione.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        lbl_scelta_visualizzazione.setFont(new Font("Playfair Display", Font.BOLD, 14));
         lbl_scelta_visualizzazione.setBounds(10, 10, 224, 30);
-        lbl_scelta_visualizzazione.setForeground(Color.MAGENTA);
+        lbl_scelta_visualizzazione.setForeground(new Color(90, 80, 140));
         contentPane.add(lbl_scelta_visualizzazione);
 
         btn_visualizza_tutti_trattamenti = new JButton("Visualizza tutti i trattamenti");
@@ -94,8 +94,9 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 textArea_esito_visualizzazione.setText("Trattamenti visualizzati " + "\ncon successo!");
             }
         });
-        btn_visualizza_tutti_trattamenti.setForeground(new Color(153, 0, 255));
-        btn_visualizza_tutti_trattamenti.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btn_visualizza_tutti_trattamenti.setForeground(new Color(255, 255, 255));
+        btn_visualizza_tutti_trattamenti.setBackground(new Color(216, 187, 117));
+        btn_visualizza_tutti_trattamenti.setFont(new Font("Playfair Display", Font.BOLD, 13));
         btn_visualizza_tutti_trattamenti.setBounds(10, 50, 209, 21);
         contentPane.add(btn_visualizza_tutti_trattamenti);
 
@@ -109,8 +110,9 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 btn_cerca_per_nome.setEnabled(true);
             }
         });
-        btn_cerca_trattamento_per_nome.setForeground(new Color(153, 0, 255));
-        btn_cerca_trattamento_per_nome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btn_cerca_trattamento_per_nome.setForeground(new Color(255, 255, 255));
+        btn_cerca_trattamento_per_nome.setBackground(new Color(216, 187, 117));
+        btn_cerca_trattamento_per_nome.setFont(new Font("Playfair Display", Font.BOLD, 13));
         btn_cerca_trattamento_per_nome.setBounds(10, 81, 209, 21);
         contentPane.add(btn_cerca_trattamento_per_nome);
 
@@ -152,7 +154,9 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 btn_cerca_per_nome.setEnabled(false);
             }
         });
-        btn_cerca_per_nome.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        btn_cerca_per_nome.setFont(new Font("Playfair Display", Font.PLAIN, 12));
+        btn_cerca_per_nome.setBackground(new Color(150,130,180));
+        btn_cerca_per_nome.setForeground(Color.white);
         btn_cerca_per_nome.setBounds(73, 141, 85, 21);
         contentPane.add(btn_cerca_per_nome);
 
@@ -169,8 +173,9 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                         "\ncosto inferiore o uguale a quello\ninserito.");
             }
         });
-        btn_cerca_trattamenti_per_costo.setForeground(new Color(153, 0, 255));
-        btn_cerca_trattamenti_per_costo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btn_cerca_trattamenti_per_costo.setForeground(new Color(255, 255, 255));
+        btn_cerca_trattamenti_per_costo.setBackground(new Color(216, 187, 117));
+        btn_cerca_trattamenti_per_costo.setFont(new Font("Playfair Display", Font.BOLD, 13));
         btn_cerca_trattamenti_per_costo.setBounds(10, 172, 209, 21);
         contentPane.add(btn_cerca_trattamenti_per_costo);
 
@@ -224,7 +229,9 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
                 }
             }
         });
-        btn_cerca_per_costo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        btn_cerca_per_costo.setFont(new Font("Playfair Display", Font.PLAIN, 12));
+        btn_cerca_per_costo.setBackground(new Color(150,130,180));
+        btn_cerca_per_costo.setForeground(Color.white);
         btn_cerca_per_costo.setBounds(73, 232, 85, 21);
         contentPane.add(btn_cerca_per_costo);
 
@@ -232,7 +239,8 @@ public class FormVisualizzazioneTrattamenti extends JFrame {
         textArea_esito_visualizzazione.setEditable(false); // area di testo non editabile
         textArea_esito_visualizzazione.setBounds(21, 383, 184, 70);
         contentPane.add(textArea_esito_visualizzazione);
-        textArea_esito_visualizzazione.setForeground(Color.RED);
+        textArea_esito_visualizzazione.setBackground(new Color(239,239,238));
+        textArea_esito_visualizzazione.setForeground(new Color(192, 57, 43));
 
         scrollPane = new JScrollPane();
         scrollPane.setBounds(229, 10, 757, 443);

@@ -68,8 +68,8 @@ public class FormHomePage extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new GridBagLayout());
 
-        titoloLabel = new JLabel("BeautyDebug");
-        titoloLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+        titoloLabel = new JLabel("Beauty Debug");
+        titoloLabel.setFont(new Font("Georgia", Font.BOLD, 30));
         Color colore_titolo = new Color(0x9783B4);
         titoloLabel.setForeground(colore_titolo);
 
@@ -120,6 +120,9 @@ public class FormHomePage extends JFrame {
         gbcBtnLoginUtente.gridy = 3;
         gbcBtnLoginUtente.gridwidth = 2;
         gbcBtnLoginUtente.anchor = GridBagConstraints.CENTER;
+        btnLoginUtente.setForeground(new Color(255,255,255));
+        btnLoginUtente.setBackground(new Color(150,130,180));
+        btnLoginUtente.setFont(new Font("Georgia", Font.PLAIN, 13));
         contentPane.add(btnLoginUtente, gbcBtnLoginUtente);
 
         btnLoginUtente.addActionListener(new ActionListener() {
@@ -153,6 +156,9 @@ public class FormHomePage extends JFrame {
         gbcBtnLoginAdmin.gridy = 4;
         gbcBtnLoginAdmin.gridwidth = 2;
         gbcBtnLoginAdmin.anchor = GridBagConstraints.CENTER;
+        btnLoginAmministratore.setForeground(new Color(255,255,255));
+        btnLoginAmministratore.setBackground(new Color(150,130,180));
+        btnLoginAmministratore.setFont(new Font("Georgia", Font.PLAIN, 13));
         contentPane.add(btnLoginAmministratore, gbcBtnLoginAdmin);
 
         btnLoginAmministratore.addActionListener(new ActionListener() {
@@ -187,7 +193,7 @@ public class FormHomePage extends JFrame {
         registrazionePanel.add(lblNonRegistrato);
 
         lblRegistratiQui = new JLabel("<html><u>Registrati qui</u></html>");
-        lblRegistratiQui.setForeground(java.awt.Color.BLUE);
+        lblRegistratiQui.setForeground(new Color(90, 80, 140));
         lblRegistratiQui.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegistratiQui.addMouseListener(new MouseAdapter() {
             @Override

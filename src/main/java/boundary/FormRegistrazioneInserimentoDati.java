@@ -4,7 +4,7 @@ import control.ControllerGestioneProfiloCliente;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
@@ -107,6 +107,9 @@ public class FormRegistrazioneInserimentoDati extends JFrame {
         disclaimerLabel.setForeground(new Color(0, 102, 204));
 
         confermaButton = new JButton("Conferma dati inseriti");
+        confermaButton.setBackground(new Color(150,130,180));
+        confermaButton.setForeground(new Color(255, 255, 255));
+        confermaButton.setFont(new Font("Playfair Display", Font.PLAIN, 13));
         confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
